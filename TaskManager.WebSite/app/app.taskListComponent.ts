@@ -15,11 +15,11 @@ export class TaskListComponent {
     private heroesUrl = 'http://localhost:42992/api/hello';  // URL to web API
 
     constructor(private http: Http) {
-        this.title = "blah blah blah";
+        this.title = "loading...";
 
         this.http.get(this.heroesUrl)
             .subscribe((res: Response) => {
-                this.title = res.text();
+                this.title = res.json().message;
             });
     }
 }

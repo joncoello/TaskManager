@@ -1,4 +1,6 @@
 ﻿using Microsoft.Owin.Hosting;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,7 +32,9 @@ namespace TaskManager.APITests
 
                     var content = await response.Content.ReadAsStringAsync();
 
-                    Assert.Equal("\"hello world\"", content);
+                    var obj = (JObject)JsonConvert.DeserializeObject(content);
+
+                    Assert.Equal("hello world", obj["message"].ToString());
 
                 }
             }

@@ -12,8 +12,12 @@ namespace TaskManager.API.Controllers
     public class HelloController : ApiController
     {
         [Route("")]
-        public async Task<string> Get() {
-            return "hello world";
+        public async Task<object> Get()
+        {
+            return new
+            {
+                Message = "hello world"
+            };
         }
     }
 }
