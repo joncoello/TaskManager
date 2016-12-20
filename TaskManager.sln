@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskManager.APITests", "Tas
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskManager.API", "TaskManager.API\TaskManager.API.csproj", "{AFDAE20C-1B01-417A-9D94-C6418F450002}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskManager.WebSite", "TaskManager.WebSite\TaskManager.WebSite.csproj", "{6864165E-693D-4A16-B3C9-7A3D0B5196AA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{AFDAE20C-1B01-417A-9D94-C6418F450002}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AFDAE20C-1B01-417A-9D94-C6418F450002}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AFDAE20C-1B01-417A-9D94-C6418F450002}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6864165E-693D-4A16-B3C9-7A3D0B5196AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6864165E-693D-4A16-B3C9-7A3D0B5196AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6864165E-693D-4A16-B3C9-7A3D0B5196AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6864165E-693D-4A16-B3C9-7A3D0B5196AA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
