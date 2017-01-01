@@ -5,7 +5,7 @@ import { Http, Response } from '@angular/http';
 import { Observable }     from 'rxjs/Observable';
 
 @Component({
-    selector: 'my-app',
+    selector: 'tasks',
     template: `
     <h1>{{title}}</h1>
     <ul>
@@ -15,6 +15,7 @@ import { Observable }     from 'rxjs/Observable';
     </ul>
 `
 })
+
 export class TaskListComponent {
     title: string;
     data: Object[];
