@@ -96,6 +96,7 @@
     <TypeScriptCompile Include="app\home\app.homeComponent.ts" />
     <TypeScriptCompile Include="app\app.component.ts" />
     <TypeScriptCompile Include="app\app.module.ts" />
+    <TypeScriptCompile Include="app\task\app.taskListComponent.spec.ts" />
     <TypeScriptCompile Include="app\task\app.taskListComponent.ts" />
     <TypeScriptCompile Include="app\main.ts" />
   </ItemGroup>
