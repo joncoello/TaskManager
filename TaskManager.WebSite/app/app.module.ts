@@ -4,9 +4,9 @@ import { HttpModule }      from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
 import {APP_BASE_HREF} from '@angular/common';
 
-import { MainApp } from './app.mainComponent';
-import { HomeComponent } from './app.homeComponent';
-import { TaskListComponent }  from './app.taskListComponent';
+import { AppComponent } from './app.component';
+import { HomeComponent } from './home/app.homeComponent';
+import { TaskListComponent }  from './task/app.taskListComponent';
 
 const routes: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -21,11 +21,11 @@ const routes: Routes = [
         RouterModule.forRoot(routes)
     ],
     declarations: [
-        MainApp,
+        AppComponent,
         TaskListComponent,
         HomeComponent
     ],
-    bootstrap: [MainApp],
+    bootstrap: [AppComponent],
     providers: [
         { provide: APP_BASE_HREF, useValue: '/' }
     ]
