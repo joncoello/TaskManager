@@ -2,6 +2,10 @@
 	"version": "1.0.0",
 	"name": "ASP.NET",
   "private": true,
+  "scripts": {
+        "typings": "typings",
+        "postinstall": "typings install"
+    },
   "dependencies": {
     
     "@angular/common":  "2.0.0",
