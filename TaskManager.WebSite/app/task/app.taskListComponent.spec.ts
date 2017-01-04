@@ -8,8 +8,6 @@ import { TaskListComponent } from './app.taskListComponent';
 ////////  SPECS  /////////////
 
 describe('TaskListComponent', function () {
-
-    //var sut: TaskListComponent;
     
     beforeEach(() => {
 
@@ -26,19 +24,15 @@ describe('TaskListComponent', function () {
                 }
             ]
         });
-
-        //sut = new TaskListComponent();
-    });
-
-    it('should create', () => {
-
-        inject([TaskListComponent], fakeAsync((taskListComponent: TaskListComponent) => {
-            expect(taskListComponent instanceof TaskListComponent).toBe(true, 'should create AppComponent');
-        }));
         
     });
 
-    //it('should start with the correct title', () => {
-    //    expect(sut.pageTitle).toEqual('Task Manager');
-    //});
+    it('should create', 
+        inject([TaskListComponent], fakeAsync((taskListComponent: TaskListComponent) => {
+
+            expect(taskListComponent instanceof TaskListComponent).toBe(true, 'should create AppComponent');
+
+        }))
+    );
+    
 });
