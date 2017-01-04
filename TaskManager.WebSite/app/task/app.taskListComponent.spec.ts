@@ -32,6 +32,8 @@ describe('TaskListComponent', function () {
 
             expect(taskListComponent instanceof TaskListComponent).toBe(true, 'should create AppComponent');
 
+            expect(taskListComponent.title).toBe('loading...');
+
         }))
     );
     

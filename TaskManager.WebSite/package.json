@@ -3,8 +3,20 @@
 	"name": "ASP.NET",
   "private": true,
   "scripts": {
+        "start": "tsc && concurrently \"tsc -w\" \"lite-server\" ",
+        "docker-build": "docker build -t ng2-quickstart .",
+        "docker": "npm run docker-build && docker run -it --rm -p 3000:3000 -p 3001:3001 ng2-quickstart",
+        "pree2e": "npm run webdriver:update",
+        "e2e": "tsc && concurrently \"http-server -s\" \"protractor protractor.config.js\" --kill-others --success first",
+        "lint": "tslint ./app/**/*.ts -t verbose",
+        "lite": "lite-server",
+        "postinstall": "typings install",
+        "test": "tsc && concurrently \"tsc -w\" \"karma start karma.conf.js\"",
+        "test-once": "tsc && karma start karma.conf.js --single-run",
+        "tsc": "tsc",
+        "tsc:w": "tsc -w",
         "typings": "typings",
-        "postinstall": "typings install"
+        "webdriver:update": "webdriver-manager update"
     },
   "dependencies": {
     
