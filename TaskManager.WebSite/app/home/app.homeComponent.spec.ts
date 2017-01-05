@@ -16,6 +16,6 @@ describe('HomeComponent', function () {
     });
 
     it('should start with the correct title', () => {
-        expect(sut.pageTitle).toEqual('Task Manager');
+        expect(sut.pageTitle).toEqual('Home');
     });
 });

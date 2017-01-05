@@ -85,6 +85,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <TypeScriptCompile Include="app\about\app.aboutcomponent.spec.ts" />
+    <TypeScriptCompile Include="app\about\app.aboutcomponent.ts" />
     <TypeScriptCompile Include="app\app.component.spec.ts" />
     <TypeScriptCompile Include="app\home\app.homeComponent.spec.ts" />
     <TypeScriptCompile Include="app\home\app.homeComponent.ts" />

@@ -7,11 +7,13 @@ import {APP_BASE_HREF} from '@angular/common';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/app.homeComponent';
 import { TaskListComponent }  from './task/app.taskListComponent';
+import { AboutComponent }  from './about/app.aboutcomponent';
 
 const routes: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
     { path: 'home', component: HomeComponent },
-    { path: 'tasks', component: TaskListComponent }
+    { path: 'tasks', component: TaskListComponent },
+    { path: 'about', component: AboutComponent }
 ];
 
 @NgModule({
@@ -23,7 +25,8 @@ const routes: Routes = [
     declarations: [
         AppComponent,
         TaskListComponent,
-        HomeComponent
+        HomeComponent,
+        AboutComponent
     ],
     bootstrap: [AppComponent],
     providers: [
