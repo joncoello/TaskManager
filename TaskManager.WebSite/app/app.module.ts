@@ -14,7 +14,7 @@ const routes: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
     { path: 'home', component: HomeComponent },
     { path: 'tasks', component: TaskListComponent },
-    { path: 'tasks/task', component: TaskComponent },
+    { path: 'tasks/task/:id', component: TaskComponent },
     { path: 'about', component: AboutComponent }
 ];
 

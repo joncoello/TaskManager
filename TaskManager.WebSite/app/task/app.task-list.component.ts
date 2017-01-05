@@ -10,7 +10,7 @@ import { Observable }     from 'rxjs/Observable';
     <h1>{{title}}</h1>
     <ul>
        <li *ngFor="let item of data">
-          <a [routerLink]="['task']">{{item.name}}</a>
+          <a [routerLink]="['task', item.id]">{{item.name}}</a>
        </li>
     </ul>
 `
