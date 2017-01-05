@@ -6,13 +6,15 @@ import {APP_BASE_HREF} from '@angular/common';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/app.homeComponent';
-import { TaskListComponent }  from './task/app.taskListComponent';
+import { TaskListComponent }  from './task/app.task-list.component';
+import { TaskComponent }  from './task/app.task.component';
 import { AboutComponent }  from './about/app.aboutcomponent';
 
 const routes: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
     { path: 'home', component: HomeComponent },
     { path: 'tasks', component: TaskListComponent },
+    { path: 'tasks/task', component: TaskComponent },
     { path: 'about', component: AboutComponent }
 ];
 
@@ -25,6 +27,7 @@ const routes: Routes = [
     declarations: [
         AppComponent,
         TaskListComponent,
+        TaskComponent,
         HomeComponent,
         AboutComponent
     ],

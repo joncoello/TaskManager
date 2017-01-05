@@ -3,7 +3,7 @@ import { inject, fakeAsync, tick, TestBed } from '@angular/core/testing';
 import { MockBackend } from '@angular/http/testing';
 import { Http, ConnectionBackend, BaseRequestOptions, Response, ResponseOptions } from '@angular/http';
 
-import { TaskListComponent } from './app.taskListComponent';
+import { TaskListComponent } from './app.task-list.component';
 
 ////////  SPECS  /////////////
 
