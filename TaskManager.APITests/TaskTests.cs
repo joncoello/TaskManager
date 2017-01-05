@@ -8,6 +8,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using TaskManager.API;
+using TaskManager.API.Models;
 using Xunit;
 
 namespace TaskManager.APITests
@@ -17,7 +18,8 @@ namespace TaskManager.APITests
     {
 
         [Fact]
-        public async Task Task_Get() {
+        public async Task Task_Get()
+        {
 
             var url = "http://localhost:8990";
 
@@ -31,17 +33,13 @@ namespace TaskManager.APITests
 
                     response.EnsureSuccessStatusCode();
 
-                    var content = await response.Content.ReadAsStringAsync();
-
-                    response.EnsureSuccessStatusCode();
-
                 }
             }
 
         }
 
         [Fact]
-        public async Task Task_Post()
+        public async Task<Guid> Task_Post()
         {
 
             var url = "http://localhost:8990";
@@ -52,11 +50,40 @@ namespace TaskManager.APITests
                 {
                     client.BaseAddress = new Uri(url);
 
-                    var response = await client.PostAsync("api/task", null);
+                    var newID = Guid.NewGuid();
+
+                    var response = await client.PostAsJsonAsync<TaskItem>(
+                        "api/task",
+                        new TaskItem()
+                        {
+                            ID = newID,
+                            Name = "Task 1"
+                        });
 
                     response.EnsureSuccessStatusCode();
 
-                    var content = await response.Content.ReadAsStringAsync();
+                    return newID;
+
+                }
+            }
+
+        }
+
+        [Fact]
+        public async Task Task_GetSingle()
+        {
+
+            var id = await Task_Post();
+
+            var url = "http://localhost:8990";
+
+            using (WebApp.Start<Startup>(url))
+            {
+                using (var client = new HttpClient())
+                {
+                    client.BaseAddress = new Uri(url);
+
+                    var response = await client.GetAsync("api/task/" + id);
 
                     response.EnsureSuccessStatusCode();
 
@@ -64,6 +91,7 @@ namespace TaskManager.APITests
             }
 
         }
+
 
     }
 }

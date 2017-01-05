@@ -35,9 +35,19 @@ namespace TaskManager.API.Controllers
             return _tasks;
         }
 
+        [Route("{id}")]
+        public async Task<object> Get(string id)
+        {
+            return _tasks.FirstOrDefault(t => t.ID == Guid.Parse(id));
+        }
+
         [Route("")]
         public async Task<object> Post(TaskItem task)
         {
+            if (task == null)
+            {
+                throw new ArgumentNullException("task");
+            }
             return task;
         }
 
