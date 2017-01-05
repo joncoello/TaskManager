@@ -12,11 +12,13 @@ using Xunit;
 
 namespace TaskManager.APITests
 {
+    [Trait("Category", "API")]
     public class HelloWorldTests
     {
 
         [Fact]
-        public async void HelloWorld_CanGet() {
+        public async Task HelloWorld_CanGet()
+        {
 
             var url = "http://localhost:8989";
 
@@ -40,6 +42,7 @@ namespace TaskManager.APITests
             }
 
         }
+        
 
     }
 }

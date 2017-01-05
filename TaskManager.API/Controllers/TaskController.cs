@@ -12,10 +12,12 @@ namespace TaskManager.API.Controllers
     [RoutePrefix("api/task")]
     public class TaskController : ApiController
     {
-        [Route("")]
-        public async Task<object> Get()
+
+        private readonly List<TaskItem> _tasks;
+
+        public TaskController()
         {
-            return new List<TaskItem> {
+            _tasks = new List<TaskItem> {
                 new TaskItem {
                     ID = Guid.NewGuid(),
                     Name = "Task 1"
@@ -26,5 +28,18 @@ namespace TaskManager.API.Controllers
                 }
             };
         }
+
+        [Route("")]
+        public async Task<object> Get()
+        {
+            return _tasks;
+        }
+
+        [Route("")]
+        public async Task<object> Post(TaskItem task)
+        {
+            return task;
+        }
+
     }
 }
