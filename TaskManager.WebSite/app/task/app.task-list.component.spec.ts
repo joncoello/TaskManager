@@ -1,14 +1,14 @@
 ﻿/* tslint:disable:no-unused-variable */
-import { inject, fakeAsync, tick, TestBed } from '@angular/core/testing';
-import { MockBackend } from '@angular/http/testing';
-import { Http, ConnectionBackend, BaseRequestOptions, Response, ResponseOptions } from '@angular/http';
+import { inject, fakeAsync, tick, TestBed } from "@angular/core/testing";
+import { MockBackend } from "@angular/http/testing";
+import { Http, ConnectionBackend, BaseRequestOptions, Response, ResponseOptions } from "@angular/http";
 
-import { TaskListComponent } from './app.task-list.component';
+import { TaskListComponent } from "./app.task-list.component";
 
 ////////  SPECS  /////////////
 
-describe('TaskListComponent', function () {
-    
+describe("TaskListComponent", function () {
+
     beforeEach(() => {
 
         TestBed.configureTestingModule({
@@ -24,17 +24,15 @@ describe('TaskListComponent', function () {
                 }
             ]
         });
-        
     });
 
-    it('should create', 
+    it("should create",
         inject([TaskListComponent], fakeAsync((taskListComponent: TaskListComponent) => {
 
-            expect(taskListComponent instanceof TaskListComponent).toBe(true, 'should create AppComponent');
+            expect(taskListComponent instanceof TaskListComponent).toBe(true, "should create AppComponent");
 
-            expect(taskListComponent.title).toBe('loading...');
+            expect(taskListComponent.title).toBe("loading...");
 
         }))
     );
-    
 });
