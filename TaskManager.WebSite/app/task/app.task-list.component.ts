@@ -8,7 +8,7 @@ import { Http, Response } from '@angular/http';
     <h1>{{title}}</h1>
     <ul>
        <li *ngFor='let item of data'>
-          <a [routerLink]='['task', item.id]'>{{item.name}}</a>
+          <a [routerLink]="['task', item.id]">{{item.name}}</a>
        </li>
     </ul>
 `

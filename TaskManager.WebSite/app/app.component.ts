@@ -8,9 +8,9 @@
             <div class='container-fluid'>
                 <a class='navbar-brand'>{{pageTitle}}</a>
                 <ul class='nav navbar-nav'>
-                    <li><a [routerLink]='['home']'>Home</a></li>
-                    <li><a [routerLink]='['tasks']'>Tasks</a></li>
-                    <li><a [routerLink]='['about']'>About</a></li>
+                    <li><a [routerLink]="['home']">Home</a></li>
+                    <li><a [routerLink]="['tasks']">Tasks</a></li>
+                    <li><a [routerLink]="['about']">About</a></li>
                 </ul>
             </div>
         </nav>
