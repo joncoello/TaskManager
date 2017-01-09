@@ -1,16 +1,16 @@
-﻿import { Component } from "@angular/core";
+﻿import { Component } from '@angular/core';
 
 @Component({
-    selector: "main-app",
+    selector: 'main-app',
     template: `
     <div>
         <nav class='navbar navbar-default'>
             <div class='container-fluid'>
                 <a class='navbar-brand'>{{pageTitle}}</a>
                 <ul class='nav navbar-nav'>
-                    <li><a [routerLink]="['home']">Home</a></li>
-                    <li><a [routerLink]="['tasks']">Tasks</a></li>
-                    <li><a [routerLink]="['about']">About</a></li>
+                    <li><a [routerLink]='['home']'>Home</a></li>
+                    <li><a [routerLink]='['tasks']'>Tasks</a></li>
+                    <li><a [routerLink]='['about']'>About</a></li>
                 </ul>
             </div>
         </nav>
@@ -21,5 +21,5 @@
     `
 })
 export class AppComponent {
-    pageTitle: string = "Task Manager";
+    pageTitle: string = 'Task Manager';
 }
