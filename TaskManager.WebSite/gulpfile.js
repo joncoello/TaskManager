@@ -89,9 +89,9 @@ gulp.task('bundle:js', function () {
 // Minify JS bundle
 gulp.task('minify:js', function () {
     return gulp
-      .src('dist/js/app.min.js')
+      .src('dist/app/main.js')
       .pipe(uglify())
-      .pipe(gulp.dest('dist/js'));
+      .pipe(gulp.dest('dist/app'));
 });
 
 // Lint Sass
