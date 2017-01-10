@@ -1,11 +1,7 @@
 ﻿const del = require('del');
 const gulp = require('gulp');
-const cleanCSS = require('gulp-clean-css');
-const concat = require('gulp-concat');
 const plumber = require('gulp-plumber');
 const runSequence = require('run-sequence');
-const sass = require('gulp-sass');
-const sassLint = require('gulp-sass-lint');
 const sourcemaps = require('gulp-sourcemaps');
 const sysBuilder = require('systemjs-builder');
 const tslint = require('gulp-tslint');
@@ -14,9 +10,8 @@ const uglify = require('gulp-uglify');
 const clean = require('gulp-clean');
 const deleteEmpty = require('delete-empty');
 const gzip = require('gulp-gzip');
-
 const tscConfig = require('./tsconfig.json');
-const testTscConfig = require('./tsconfig.json');
+
 
 gulp.task('clean:full', function () {
     return del('dist/*');
