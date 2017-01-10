@@ -22,8 +22,7 @@ const tscConfig = require('./tsconfig.json');
 const testTscConfig = require('./tsconfig.json');
 
 gulp.task('clean:full', function () {
-    return gulp.src('dist', { read: false })
-        .pipe(clean());
+    return del('dist/*');
 });
 
 // Clean the js distribution directory

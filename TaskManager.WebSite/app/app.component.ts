@@ -6,7 +6,7 @@
     <div>
         <nav class='navbar navbar-default'>
             <div class='container-fluid'>
-                <a class='navbar-brand'>{{pageTitle}}</a>
+                <a href="/" class='navbar-brand'>{{pageTitle}}</a>
                 <ul class='nav navbar-nav'>
                     <li><a [routerLink]="['home']">Home</a></li>
                     <li><a [routerLink]="['tasks']">Tasks</a></li>
