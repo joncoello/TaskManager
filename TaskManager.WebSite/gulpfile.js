@@ -16,6 +16,7 @@ const uglify = require('gulp-uglify');
 const tsconfig = require('tsconfig-glob');
 const clean = require('gulp-clean');
 const deleteEmpty = require('delete-empty');
+const gzip = require('gulp-gzip');
 
 const tscConfig = require('./tsconfig.json');
 const testTscConfig = require('./tsconfig.json');
@@ -91,6 +92,7 @@ gulp.task('minify:js', function () {
     return gulp
       .src('dist/app/main.js')
       .pipe(uglify())
+      //.pipe(gzip())
       .pipe(gulp.dest('dist/app'));
 });
 
