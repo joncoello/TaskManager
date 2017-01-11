@@ -1,4 +1,7 @@
-﻿const del = require('del');
+﻿
+// #region requires
+
+const del = require('del');
 const gulp = require('gulp');
 const plumber = require('gulp-plumber');
 const runSequence = require('run-sequence');
@@ -12,14 +15,24 @@ const deleteEmpty = require('delete-empty');
 const gzip = require('gulp-gzip');
 const tscConfig = require('./tsconfig.json');
 
+// #endregion
+
+gulp.task('default', function (callback) {
+    runSequence('clean:full', 'copy:assets', 'compile:ts', 'bundle:js', 'minify:js',
+        'delete-empty-directories', 'copy:libs', callback);
+});
 
 gulp.task('clean:full', function () {
     return del('dist/*');
 });
 
-// delete empty directories
-gulp.task('delete-empty-directories', function () {
-    deleteEmpty.sync('dist/');
+// Copy static assets
+gulp.task('copy:assets', function () {
+    return gulp.src(
+      [
+        'index.html'
+      ])
+      .pipe(gulp.dest('dist'))
 });
 
 // Compile TypeScript to JS
@@ -57,6 +70,11 @@ gulp.task('minify:js', function () {
       .pipe(uglify())
       //.pipe(gzip())
       .pipe(gulp.dest('dist/app'));
+});
+
+// delete empty directories
+gulp.task('delete-empty-directories', function () {
+    deleteEmpty.sync('dist/');
 });
 
 // Copy dependencies
@@ -108,15 +126,3 @@ gulp.task('copy:libs', function () {
       .pipe(gulp.dest('dist/node_modules/@angular'));
 });
 
-// Copy static assets
-gulp.task('copy:assets', function () {
-    return gulp.src(
-      [
-        'index.html'
-      ])
-      .pipe(gulp.dest('dist'))
-});
-
-gulp.task('default', function (callback) {
-    runSequence('clean:full', 'copy:assets', 'compile:ts', 'bundle:js', 'minify:js', 'delete-empty-directories', 'copy:libs', callback);
-});
