@@ -76,6 +76,7 @@
     "gulp-clean": "0.3.2",
     "delete-empty": "0.1.3",
     "gulp-gzip": "1.4.0",
+    "gulp-minify": "0.0.14",
 
     "del": "2.2.2"
 
