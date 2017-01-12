@@ -265,3 +265,4 @@ _temp
 !wallaby.js
 /TaskManager.WebSite/typings
 /TaskManager.WebSite/dist
+/TaskManager.WebSite/lib

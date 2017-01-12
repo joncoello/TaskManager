@@ -13,6 +13,7 @@ const clean = require('gulp-clean');
 const deleteEmpty = require('delete-empty');
 const gzip = require('gulp-gzip');
 const tscConfig = require('./tsconfig.json');
+const concat = require('gulp-concat');
 
 // #endregion
 
@@ -105,3 +106,34 @@ gulp.task('copy:libs', function () {
 });
 
 // #endregion
+
+gulp.task('vendor', function (callback) {
+    runSequence('vendor:clean', 'vendor:copy', callback);
+});
+
+// empty distribution directory
+gulp.task('vendor:clean', function () {
+    return del('lib/*');
+});
+
+// Copy static assets
+gulp.task('vendor:copy', function () {
+    return gulp.src(
+      [
+        'node_modules/zone.js/dist/zone.js',
+        'node_modules/reflect-metadata/reflect.js',
+        'node_modules/systemjs/dist/system.src.js',
+        'systemjs.config.js',
+        'node_modules/bootstrap/dist/css/bootstrap.css'
+      ])
+      .pipe(gulp.dest('lib'))
+});
+
+gulp.task('vendor:bundle', function () {
+    gulp.src('lib/*.js')
+      .pipe(concat('vendor.min.js'))
+      .pipe(uglify())
+      .pipe(gulp.dest('lib'));
+
+    return del(['lib/*.js', '!lib/vendor.min.js']);
+});
