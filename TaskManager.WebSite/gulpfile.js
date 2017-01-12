@@ -1,5 +1,4 @@
-﻿
-// #region requires
+﻿// #region requires
 
 const del = require('del');
 const gulp = require('gulp');
@@ -17,11 +16,15 @@ const tscConfig = require('./tsconfig.json');
 
 // #endregion
 
+// #region deployment
+
+// many deployment script
 gulp.task('default', function (callback) {
     runSequence('clean:full', 'copy:assets', 'compile:ts', 'bundle:js', 'minify:js',
         'delete-empty-directories', 'copy:libs', callback);
 });
 
+// empty distribution directory
 gulp.task('clean:full', function () {
     return del('dist/*');
 });
@@ -80,49 +83,25 @@ gulp.task('delete-empty-directories', function () {
 // Copy dependencies
 gulp.task('copy:libs', function () {
 
-    gulp.src(['node_modules/rxjs/**/*'])
-      .pipe(gulp.dest('dist/node_modules/rxjs'));
+    gulp.src([
+      'node_modules/zone.js/dist/zone.js'
+    ]).pipe(gulp.dest('dist/node_modules/zone.js/dist/'));
+
+    gulp.src([
+      'node_modules/reflect-metadata/reflect.js'
+    ]).pipe(gulp.dest('dist/node_modules/reflect-metadata/'));
+
+    gulp.src([
+      'node_modules/systemjs/dist/system.src.js'
+    ]).pipe(gulp.dest('dist/node_modules/systemjs/dist/'));
 
     gulp.src(['systemjs.config.js'
     ]).pipe(gulp.dest('dist/'));
 
-    // copy vendor
-    gulp.src([
-      'node_modules/jquery/**/*'
-    ]).pipe(gulp.dest('dist/node_modules/jquery'));
+    return gulp.src([
+      'node_modules/bootstrap/dist/css/bootstrap.css'
+    ]).pipe(gulp.dest('dist/node_modules/bootstrap/dist/css/'));
 
-    gulp.src([
-      'node_modules/es6-shim/**/*'
-    ]).pipe(gulp.dest('dist/node_modules/es6-shim'));
-
-    gulp.src([
-      'node_modules/es6-promise/**/*'
-    ]).pipe(gulp.dest('dist/node_modules/es6-promise'));
-
-    gulp.src([
-      'node_modules/zone.js/**/*'
-    ]).pipe(gulp.dest('dist/node_modules/zone.js'));
-
-    // copy source maps
-    gulp.src([
-      'node_modules/es6-shim/**/*'
-    ]).pipe(gulp.dest('dist/node_modules/es6-shim'));
-
-    gulp.src([
-      'node_modules/reflect-metadata/**/*'
-    ]).pipe(gulp.dest('dist/node_modules/reflect-metadata'));
-
-    gulp.src([
-      'node_modules/systemjs/**/*'
-    ]).pipe(gulp.dest('dist/node_modules/systemjs'));
-
-    // bootstrap
-    gulp.src([
-      'node_modules/bootstrap/**/*'
-    ]).pipe(gulp.dest('dist/node_modules/bootstrap'));
-
-    // ng
-    return gulp.src(['node_modules/@angular/**/*'])
-      .pipe(gulp.dest('dist/node_modules/@angular'));
 });
 
+// #endregion
