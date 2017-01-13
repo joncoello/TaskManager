@@ -6,13 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link href="lib/vendor.min.css" rel="stylesheet" />
+    
+</head>
+<body>
+    <main-app>
+        <!--any content here will be stripped out once bootstrapped so works for loading-->
+        loading...
+    </main-app>
+
     <script src="lib/vendor.min.js"></script>
 
     <script>
         System.import('app').catch(function (err) { console.error(err); });
     </script>
-</head>
-<body>
-    <main-app></main-app>
+
 </body>
 </html>
