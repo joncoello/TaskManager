@@ -23,18 +23,24 @@ const tscConfig = require('./tsconfig.json');
 // #region deployment
 
 // many deployment script
-gulp.task('default', function (callback) {
-    runSequence('clean:full', 'copy:assets', 'compile:ts', 'bundle:js', 'minify:js',
-        'delete-empty-directories', callback);
+gulp.task('deployment', function (callback) {
+    runSequence(
+        'deployment:10:clean',
+        'deployment:20:copy:assets',
+        'deployment:30:compile:ts',
+        'deployment:40:bundle:js',
+        'deployment:50:delete-empty-directories',
+        'deployment:60:minify:js',
+        'deployment:70:compress:js', callback);
 });
 
 // empty distribution directory
-gulp.task('clean:full', function () {
+gulp.task('deployment:10:clean', function () {
     return del('dist/*');
 });
 
 // Copy static assets
-gulp.task('copy:assets', function () {
+gulp.task('deployment:20:copy:assets', function () {
     gulp.src(['lib/*.*'])
       .pipe(gulp.dest('dist/lib'))
     return gulp.src(
@@ -46,7 +52,7 @@ gulp.task('copy:assets', function () {
 });
 
 // Compile TypeScript to JS
-gulp.task('compile:ts', function () {
+gulp.task('deployment:30:compile:ts', function () {
     return gulp
       .src(["app/**/*.ts", "typings/**/*.d.ts"])
       .pipe(plumber({
@@ -62,7 +68,7 @@ gulp.task('compile:ts', function () {
 });
 
 // Generate systemjs-based builds
-gulp.task('bundle:js', function () {
+gulp.task('deployment:40:bundle:js', function () {
     var builder = new sysBuilder('', './systemjs.config.js');
     return builder.buildStatic('app', 'dist/app/main.js')
       .then(function () {
@@ -73,18 +79,24 @@ gulp.task('bundle:js', function () {
       });
 });
 
+// delete empty directories
+gulp.task('deployment:50:delete-empty-directories', function () {
+    deleteEmpty.sync('dist/');
+});
+
 // Minify JS bundle
-gulp.task('minify:js', function () {
+gulp.task('deployment:60:minify:js', function () {
     return gulp
       .src('dist/app/main.js')
       .pipe(uglify())
-      .pipe(gzip({ append: false }))
       .pipe(gulp.dest('dist/app'));
 });
 
-// delete empty directories
-gulp.task('delete-empty-directories', function () {
-    deleteEmpty.sync('dist/');
+gulp.task('deployment:70:compress:js', function () {
+    return gulp
+      .src('dist/app/main.js')
+      .pipe(gzip({ append: false }))
+      .pipe(gulp.dest('dist/app'));
 });
 
 // #endregion
