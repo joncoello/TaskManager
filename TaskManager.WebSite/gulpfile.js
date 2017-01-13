@@ -39,7 +39,8 @@ gulp.task('copy:assets', function () {
       .pipe(gulp.dest('dist/lib'))
     return gulp.src(
       [
-        'index.html'
+        'index.html',
+        'web.config'
       ])
       .pipe(gulp.dest('dist'))
 });
@@ -77,7 +78,7 @@ gulp.task('minify:js', function () {
     return gulp
       .src('dist/app/main.js')
       .pipe(uglify())
-      //.pipe(gzip())
+      .pipe(gzip({ append: false }))
       .pipe(gulp.dest('dist/app'));
 });
 
