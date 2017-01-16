@@ -18,8 +18,9 @@ export class TaskListComponent {
     title: string;
     data: Object[];
 
-    private helloUrl = 'http://localhost:42992/api/hello';  // url to web API
-    private tasksUrl = 'http://localhost:42992/api/task';  // url to web API
+    private baseUrl = 'http://jctaskmanagerapi.azurewebsites.net/';
+    private helloUrl = this.baseUrl + '/api/hello';  // url to web API
+    private tasksUrl = this.baseUrl + '/api/task';  // url to web API
 
     constructor(private http: Http) {
         this.title = 'loading...';
