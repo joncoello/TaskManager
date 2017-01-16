@@ -104,16 +104,21 @@ gulp.task('deployment:70:compress:js', function () {
 // #region vendor
 
 gulp.task('vendor', function (callback) {
-    runSequence('vendor:clean', 'vendor:copy', 'vendor:js:bundle', 'vendor:css:bundle', 'vendor:deletesource', callback);
+    runSequence(
+        'vendor:10:clean',
+        'vendor:20:copy',
+        ['vendor:30:js:bundle', 'vendor:30:css:bundle'],
+        'vendor:40:deletesource',
+        callback);
 });
 
 // empty distribution directory
-gulp.task('vendor:clean', function () {
+gulp.task('vendor:10:clean', function () {
     return del('lib/*');
 });
 
 // Copy vendor files to lib
-gulp.task('vendor:copy', function () {
+gulp.task('vendor:20:copy', function () {
     return gulp.src(
       [
         'node_modules/zone.js/dist/zone.js',
@@ -126,7 +131,7 @@ gulp.task('vendor:copy', function () {
 });
 
 // bundle and minify js
-gulp.task('vendor:js:bundle', function () {
+gulp.task('vendor:30:js:bundle', function () {
     return gulp.src('lib/*.js')
       .pipe(concat('vendor.min.js'))
       .pipe(uglify())
@@ -134,14 +139,14 @@ gulp.task('vendor:js:bundle', function () {
 });
 
 // bundle and minify css
-gulp.task('vendor:css:bundle', function () {
+gulp.task('vendor:30:css:bundle', function () {
     return gulp.src('lib/*.css')
       .pipe(concat('vendor.min.css'))
       .pipe(minify())
       .pipe(gulp.dest('lib'));
 });
 
-gulp.task('vendor:deletesource', function () {
+gulp.task('vendor:40:deletesource', function () {
     del(['lib/*.css', '!lib/vendor.min.css']);
     return del(['lib/*.js', '!lib/vendor.min.js']);
 });
