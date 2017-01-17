@@ -46,7 +46,8 @@ gulp.task('deployment:20:copy:assets', function () {
     return gulp.src(
       [
         'index.html',
-        'web.config'
+        'web.config',
+        'shim.min.js'
       ])
       .pipe(gulp.dest('dist'))
 });
@@ -109,6 +110,7 @@ gulp.task('vendor', function (callback) {
         'vendor:20:copy',
         ['vendor:30:js:bundle', 'vendor:30:css:bundle'],
         'vendor:40:deletesource',
+        'vendor:50:copypollyfill'
         callback);
 });
 
@@ -121,11 +123,11 @@ gulp.task('vendor:10:clean', function () {
 gulp.task('vendor:20:copy', function () {
     return gulp.src(
       [
-        'node_modules/zone.js/dist/zone.js',
-        'node_modules/reflect-metadata/reflect.js',
-        'node_modules/systemjs/dist/system.src.js',
-        'systemjs.config.js',
-        'node_modules/bootstrap/dist/css/bootstrap.css'
+          'node_modules/zone.js/dist/zone.js',
+          'node_modules/reflect-metadata/reflect.js',
+          'node_modules/systemjs/dist/system.src.js',
+          'systemjs.config.js',
+          'node_modules/bootstrap/dist/css/bootstrap.css'
       ])
       .pipe(gulp.dest('lib'))
 });
@@ -149,6 +151,15 @@ gulp.task('vendor:30:css:bundle', function () {
 gulp.task('vendor:40:deletesource', function () {
     del(['lib/*.css', '!lib/vendor.min.css']);
     return del(['lib/*.js', '!lib/vendor.min.js']);
+});
+
+// Copy vendor files to lib
+gulp.task('vendor:50:copypollyfill', function () {
+    return gulp.src(
+      [
+          'node_modules/core-js/client/shim.min.js'
+      ])
+      .pipe(gulp.dest(''))
 });
 
 // #endregion
