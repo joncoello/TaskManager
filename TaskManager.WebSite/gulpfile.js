@@ -23,30 +23,37 @@ const tscConfig = require('./tsconfig.json');
 // #region deployment
 
 // many deployment script
-gulp.task('default', function (callback) {
-    runSequence('clean:full', 'copy:assets', 'compile:ts', 'bundle:js', 'minify:js',
-        'delete-empty-directories', callback);
+gulp.task('deployment', function (callback) {
+    runSequence(
+        'deployment:10:clean',
+        'deployment:20:copy:assets',
+        'deployment:30:compile:ts',
+        'deployment:40:bundle:js',
+        'deployment:50:delete-empty-directories',
+        'deployment:60:minify:js',
+        'deployment:70:compress:js', callback);
 });
 
 // empty distribution directory
-gulp.task('clean:full', function () {
+gulp.task('deployment:10:clean', function () {
     return del('dist/*');
 });
 
 // Copy static assets
-gulp.task('copy:assets', function () {
+gulp.task('deployment:20:copy:assets', function () {
     gulp.src(['lib/*.*'])
       .pipe(gulp.dest('dist/lib'))
     return gulp.src(
       [
         'index.html',
-        'web.config'
+        'web.config',
+        'shim.min.js'
       ])
       .pipe(gulp.dest('dist'))
 });
 
 // Compile TypeScript to JS
-gulp.task('compile:ts', function () {
+gulp.task('deployment:30:compile:ts', function () {
     return gulp
       .src(["app/**/*.ts", "typings/**/*.d.ts"])
       .pipe(plumber({
@@ -62,7 +69,7 @@ gulp.task('compile:ts', function () {
 });
 
 // Generate systemjs-based builds
-gulp.task('bundle:js', function () {
+gulp.task('deployment:40:bundle:js', function () {
     var builder = new sysBuilder('', './systemjs.config.js');
     return builder.buildStatic('app', 'dist/app/main.js')
       .then(function () {
@@ -73,18 +80,24 @@ gulp.task('bundle:js', function () {
       });
 });
 
+// delete empty directories
+gulp.task('deployment:50:delete-empty-directories', function () {
+    deleteEmpty.sync('dist/');
+});
+
 // Minify JS bundle
-gulp.task('minify:js', function () {
+gulp.task('deployment:60:minify:js', function () {
     return gulp
       .src('dist/app/main.js')
       .pipe(uglify())
-      .pipe(gzip({ append: false }))
       .pipe(gulp.dest('dist/app'));
 });
 
-// delete empty directories
-gulp.task('delete-empty-directories', function () {
-    deleteEmpty.sync('dist/');
+gulp.task('deployment:70:compress:js', function () {
+    return gulp
+      .src('dist/app/main.js')
+      .pipe(gzip({ append: false }))
+      .pipe(gulp.dest('dist/app'));
 });
 
 // #endregion
@@ -92,29 +105,35 @@ gulp.task('delete-empty-directories', function () {
 // #region vendor
 
 gulp.task('vendor', function (callback) {
-    runSequence('vendor:clean', 'vendor:copy', 'vendor:js:bundle', 'vendor:css:bundle', 'vendor:deletesource', callback);
+    runSequence(
+        'vendor:10:clean',
+        'vendor:20:copy',
+        ['vendor:30:js:bundle', 'vendor:30:css:bundle'],
+        'vendor:40:deletesource',
+        'vendor:50:copypollyfill',
+        callback);
 });
 
 // empty distribution directory
-gulp.task('vendor:clean', function () {
+gulp.task('vendor:10:clean', function () {
     return del('lib/*');
 });
 
 // Copy vendor files to lib
-gulp.task('vendor:copy', function () {
+gulp.task('vendor:20:copy', function () {
     return gulp.src(
       [
-        'node_modules/zone.js/dist/zone.js',
-        'node_modules/reflect-metadata/reflect.js',
-        'node_modules/systemjs/dist/system.src.js',
-        'systemjs.config.js',
-        'node_modules/bootstrap/dist/css/bootstrap.css'
+          'node_modules/zone.js/dist/zone.js',
+          'node_modules/reflect-metadata/reflect.js',
+          'node_modules/systemjs/dist/system.src.js',
+          'systemjs.config.js',
+          'node_modules/bootstrap/dist/css/bootstrap.css'
       ])
       .pipe(gulp.dest('lib'))
 });
 
 // bundle and minify js
-gulp.task('vendor:js:bundle', function () {
+gulp.task('vendor:30:js:bundle', function () {
     return gulp.src('lib/*.js')
       .pipe(concat('vendor.min.js'))
       .pipe(uglify())
@@ -122,16 +141,25 @@ gulp.task('vendor:js:bundle', function () {
 });
 
 // bundle and minify css
-gulp.task('vendor:css:bundle', function () {
+gulp.task('vendor:30:css:bundle', function () {
     return gulp.src('lib/*.css')
       .pipe(concat('vendor.min.css'))
       .pipe(minify())
       .pipe(gulp.dest('lib'));
 });
 
-gulp.task('vendor:deletesource', function () {
+gulp.task('vendor:40:deletesource', function () {
     del(['lib/*.css', '!lib/vendor.min.css']);
     return del(['lib/*.js', '!lib/vendor.min.js']);
+});
+
+// Copy vendor files to lib
+gulp.task('vendor:50:copypollyfill', function () {
+    return gulp.src(
+      [
+          'node_modules/core-js/client/shim.min.js'
+      ])
+      .pipe(gulp.dest(''))
 });
 
 // #endregion

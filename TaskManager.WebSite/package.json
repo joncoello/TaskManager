@@ -83,4 +83,5 @@
     "del": "2.2.2"
 
   }
+, "-vs-binding":{"ProjectOpened":["install"]}
 }
