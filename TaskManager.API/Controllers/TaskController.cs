@@ -41,6 +41,28 @@ namespace TaskManager.API.Controllers
             return _tasks.FirstOrDefault(t => t.ID == Guid.Parse(id));
         }
 
+        [Route("{id}")]
+        public async Task<IHttpActionResult> Delete(string id)
+        {
+            var taskToDelete = _tasks.FirstOrDefault(t => t.ID == Guid.Parse(id));
+            if (taskToDelete != null)
+            {
+                _tasks.Remove(taskToDelete);
+            }
+            return Ok();
+        }
+
+        [Route("")]
+        public async Task<IHttpActionResult> Patch(TaskItem task)
+        {
+            var taskToUpdate = _tasks.FirstOrDefault(t => t.ID == task.ID);
+            if (taskToUpdate != null)
+            {
+                taskToUpdate.Name = task.Name;
+            }
+            return Ok();
+        }
+
         [Route("")]
         public async Task<object> Post(TaskItem task)
         {
@@ -48,6 +70,7 @@ namespace TaskManager.API.Controllers
             {
                 throw new ArgumentNullException("task");
             }
+            _tasks.Add(task);
             return task;
         }
 
