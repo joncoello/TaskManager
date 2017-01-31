@@ -48,7 +48,9 @@ gulp.task('deployment:20:copy:assets', function () {
       [
         'index.html',
         'web.config',
-        'shim.min.js'
+        'shim.min.js',
+        'jquery.min.js',
+        'site.css'
       ])
       .pipe(gulp.dest('dist'))
 });
