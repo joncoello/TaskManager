@@ -13,11 +13,7 @@ namespace TaskManager.API.Controllers
     public class TaskController : ApiController
     {
 
-        private readonly List<TaskItem> _tasks;
-
-        public TaskController()
-        {
-            _tasks = new List<TaskItem> {
+        private static readonly List<TaskItem> _tasks = new List<TaskItem> {
                 new TaskItem {
                     ID = Guid.NewGuid(),
                     Name = "Task 1"
@@ -27,8 +23,7 @@ namespace TaskManager.API.Controllers
                     Name = "Task 2"
                 }
             };
-        }
-
+        
         [Route("")]
         public async Task<object> Get()
         {
