@@ -5,6 +5,7 @@ const del = require('del');
 const gulp = require('gulp');
 const plumber = require('gulp-plumber');
 const runSequence = require('run-sequence');
+const order = require('gulp-order');
 const sourcemaps = require('gulp-sourcemaps');
 const sysBuilder = require('systemjs-builder');
 const tslint = require('gulp-tslint');
@@ -127,7 +128,8 @@ gulp.task('vendor:20:copy', function () {
           'node_modules/reflect-metadata/reflect.js',
           'node_modules/systemjs/dist/system.src.js',
           'systemjs.config.js',
-          'node_modules/bootstrap/dist/css/bootstrap.css'
+          'node_modules/bootstrap/dist/css/bootstrap.css',
+          'node_modules/bootstrap/dist/js/bootstrap.min.js'
       ])
       .pipe(gulp.dest('lib'))
 });
@@ -157,6 +159,7 @@ gulp.task('vendor:40:deletesource', function () {
 gulp.task('vendor:50:copypollyfill', function () {
     return gulp.src(
       [
+          'node_modules/jquery/dist/jquery.min.js',
           'node_modules/core-js/client/shim.min.js'
       ])
       .pipe(gulp.dest(''))

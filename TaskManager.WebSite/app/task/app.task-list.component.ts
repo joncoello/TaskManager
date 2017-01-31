@@ -18,8 +18,8 @@ import { FormBuilder, FormGroup } from '@angular/forms';
         <button type="submit">Submit</button>
 
     </form>
-    <ul>
-       <li *ngFor='let item of data'>
+    <ul class="list-group">
+       <li *ngFor='let item of data' class="list-group-item">
           <a [routerLink]="['task', item.id]">{{item.name}}</a>
        </li>
     </ul>
