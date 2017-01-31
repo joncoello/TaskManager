@@ -10,12 +10,16 @@ import { FormBuilder, FormGroup } from '@angular/forms';
     <h1>{{title}}</h1>
     <form   [formGroup]="myForm"
             (ngSubmit)="onSubmit(myForm.value)">
-
-        <input  type="text"
-                id="name"
-                [formControl]="myForm.controls['name']">
-
-        <button type="submit">Submit</button>
+        <div class="input-group">
+            <input  class="form-control"
+                    placeholder="new task"
+                    type="text"
+                    id="name"
+                    [formControl]="myForm.controls['name']">
+            <span class="input-group-btn">
+                <button class="btn btn-default" type="submit">add</button>
+            </span>
+        </div>
 
     </form>
     <ul class="list-group">
@@ -32,21 +36,15 @@ export class TaskListComponent {
     myForm: FormGroup;
 
     private baseUrl = 'http://jctaskmanagerapi.azurewebsites.net/';
-    private helloUrl = this.baseUrl + '/api/hello';  // url to web API
     private tasksUrl = this.baseUrl + '/api/task';  // url to web API
 
     constructor(private http: Http, fb: FormBuilder) {
-        this.title = 'loading...';
+        this.title = 'tasks';
 
         this.myForm = fb.group({
-            'name': ['ABC123']
+            'name': ['']
         });
-
-        this.http.get(this.helloUrl)
-            .subscribe((res: Response) => {
-                this.title = res.json().message;
-            });
-
+        
         this.http.get(this.tasksUrl)
             .subscribe((res: Response) => {
                 this.data = res.json();
