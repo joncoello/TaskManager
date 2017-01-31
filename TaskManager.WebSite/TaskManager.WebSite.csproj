@@ -66,6 +66,7 @@
     <Content Include="karma-test-shim.js" />
     <Content Include="karma.conf.js" />
     <Content Include="package.json" />
+    <Content Include="site.css" />
     <Content Include="tsconfig.json" />
     <Content Include="typings.json" />
     <Content Include="tslint.json" />

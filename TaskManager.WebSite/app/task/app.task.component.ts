@@ -6,17 +6,26 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 @Component({
     selector: 'task',
     template: `
-        <h2>{{pageTitle}}</h2>
-        <form   [formGroup]="myForm"
+        
+        <form   id="taskEdit"
+                [formGroup]="myForm"
                 (ngSubmit)="onSubmit(myForm.value)">
-            <div>
-                <label for="skuInput">SKU</label>
-                <input  type="text"
+            <div class="input-group">
+                <span class="input-group-addon" id="basic-addon1">ID</span>
+                <label class="form-control">{{pageTitle}}</label>
+            </div>
+            <div class="input-group">
+                <span class="input-group-addon" id="basic-addon1">Name</span>
+                <input  class="form-control"
+                        type="text"
                         id="skuInput"
-                        placeholder="SKU"
+                        placeholder="Name"
                         [formControl]="myForm.controls['sku']">
             </div>
-            <button type="submit">Submit</button>
+            <div>       
+                <textarea class="multi-line-text" placeholder="What's up?" required></textarea>
+            </div>
+            <button class="btn btn-primary" type="submit">Submit</button>
         </form>
     `
 })
@@ -25,13 +34,15 @@ export class TaskComponent {
     myForm: FormGroup;
 
     constructor(private route: ActivatedRoute, fb: FormBuilder) {
-        route.params.subscribe((params: {[key: string] : any}) => {
-            this.pageTitle = params['id'];
-        });
-
         this.myForm = fb.group({
             'sku': ['ABC123']
         });
+
+        route.params.subscribe((params: { [key: string]: any }) => {
+            this.pageTitle = params['id'];
+        });
+
+        
 
     }
 

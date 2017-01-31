@@ -1,0 +1,13 @@
+﻿.input-group{
+    margin-bottom: 5px;
+}
+
+#taskEdit .input-group-addon {
+    min-width: 70px;
+    text-align: left;
+}
+
+.multi-line-text {
+    margin-left: 2px;
+    min-width: 100%;
+}
