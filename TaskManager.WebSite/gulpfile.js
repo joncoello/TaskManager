@@ -110,7 +110,7 @@ gulp.task('vendor', function (callback) {
         'vendor:20:copy',
         ['vendor:30:js:bundle', 'vendor:30:css:bundle'],
         'vendor:40:deletesource',
-        'vendor:50:copypollyfill'
+        'vendor:50:copypollyfill',
         callback);
 });
 
