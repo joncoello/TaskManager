@@ -10,7 +10,8 @@ import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/app.homeComponent';
 import { TaskListComponent }  from './task/app.task-list.component';
-import { TaskComponent }  from './task/app.task.component';
+import { TaskComponent } from './task/app.task.component';
+import { CategoryListComponent } from './category/app.category-list.component';
 import { AboutComponent } from './about/app.aboutcomponent';
 
 import { ChartsModule } from 'ng2-charts';
@@ -22,6 +23,7 @@ const routes: Routes = [
     { path: 'home', component: HomeComponent },
     { path: 'tasks', component: TaskListComponent },
     { path: 'tasks/task/:id', component: TaskComponent },
+    { path: 'categories', component: CategoryListComponent },
     { path: 'about', component: AboutComponent }
 ];
 
@@ -39,6 +41,7 @@ const routes: Routes = [
         TaskListComponent,
         TaskComponent,
         HomeComponent,
+        CategoryListComponent,
         AboutComponent
     ],
     bootstrap: [AppComponent],
