@@ -26,7 +26,7 @@ namespace TaskManager.API.Controllers
         [Route("")]
         public async Task<IHttpActionResult> Get()
         {
-            var result = _categoryRepository.All();
+            var result = _taskRepository.All();
             return Ok(result);
         }
 
