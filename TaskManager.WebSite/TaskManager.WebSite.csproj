@@ -62,6 +62,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="favicon.ico" />
     <Content Include="gulpfile.js" />
     <Content Include="karma-test-shim.js" />
     <Content Include="karma.conf.js" />

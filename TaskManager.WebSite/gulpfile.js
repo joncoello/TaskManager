@@ -50,8 +50,7 @@ gulp.task('deployment:20:copy:assets', function () {
         'web.config',
         'shim.min.js',
         'jquery.min.js',
-        'site.css',
-        'chart.js'
+        'favicon.ico'
       ])
       .pipe(gulp.dest('dist'))
 });
@@ -133,7 +132,8 @@ gulp.task('vendor:20:copy', function () {
           'systemjs.config.js',
           'node_modules/bootstrap/dist/css/bootstrap.css',
           'node_modules/bootstrap/dist/js/bootstrap.min.js',
-          'node_modules/chart.js/dist/chart.js'
+          'node_modules/chart.js/dist/chart.js',
+          'site.css'
       ])
       .pipe(gulp.dest('lib'))
 });
