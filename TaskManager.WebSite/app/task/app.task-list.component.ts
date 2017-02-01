@@ -44,8 +44,8 @@ export class TaskListComponent implements OnInit {
     public isLoading: boolean = false;
     public isAdding: boolean = false;
 
-    // private baseUrl = 'http://jctaskmanagerapi.azurewebsites.net/';
-    private baseUrl = 'http://localhost:42992/';
+    private baseUrl = 'http://jctaskmanagerapi.azurewebsites.net/';
+    // private baseUrl = 'http://localhost:42992/';
     private tasksUrl = this.baseUrl + '/api/task';  // url to web API
 
     constructor(private http: Http, private fb: FormBuilder) {
