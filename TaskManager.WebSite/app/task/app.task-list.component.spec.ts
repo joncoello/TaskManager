@@ -31,7 +31,7 @@ describe('TaskListComponent', function () {
     it('should create',
         inject([TaskListComponent], fakeAsync((taskListComponent: TaskListComponent) => {
 
-            expect(taskListComponent instanceof TaskListComponent).toBe(true, 'should create AppComponent');
+            expect(taskListComponent instanceof TaskListComponent).toBe(true, 'should create TaskListComponent');
 
             expect(taskListComponent.title).toBe('tasks');
 
