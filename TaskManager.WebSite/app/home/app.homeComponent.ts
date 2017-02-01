@@ -6,6 +6,7 @@
         <h2>{{pageTitle}}</h2>
         <div style="display: block">
           <canvas baseChart
+                      style="max-width: 500px;"
                       [data]="doughnutChartData"
                       [labels]="doughnutChartLabels"
                       [chartType]="doughnutChartType"
@@ -30,8 +31,8 @@ export class HomeComponent {
     
     public colours: Array<any> = [
         { // grey
-            backgroundColor: ['rgba(240,125,136,1)', 'rgba(255,140,0,1)', 'rgba(254,203,111,1)', 'rgba(255,241,0,1)', 'rgba(86,168,89,1)'],
-            borderColor: 'rgba(148,159,177,1)',
+            backgroundColor: ['rgba(240,125,136,0.7)', 'rgba(255,140,0,0.7)', 'rgba(254,203,111,0.7)', 'rgba(255,241,0,0.7)', 'rgba(86,168,89,0.7)'],
+            borderColor: '#fff',
             pointBackgroundColor: 'rgba(148,159,177,1)',
             pointBorderColor: '#fff',
             pointHoverBackgroundColor: '#fff',
