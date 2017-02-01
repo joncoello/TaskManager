@@ -44,6 +44,8 @@ gulp.task('deployment:10:clean', function () {
 gulp.task('deployment:20:copy:assets', function () {
     gulp.src(['lib/*.*'])
       .pipe(gulp.dest('dist/lib'))
+    gulp.src(['img/*.*'])
+      .pipe(gulp.dest('dist/img'))
     return gulp.src(
       [
         'index.html',
