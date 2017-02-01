@@ -132,7 +132,8 @@ gulp.task('vendor:20:copy', function () {
           'node_modules/systemjs/dist/system.src.js',
           'systemjs.config.js',
           'node_modules/bootstrap/dist/css/bootstrap.css',
-          'node_modules/bootstrap/dist/js/bootstrap.min.js'
+          'node_modules/bootstrap/dist/js/bootstrap.min.js',
+          'node_modules/chart.js/dist/chart.js'
       ])
       .pipe(gulp.dest('lib'))
 });
