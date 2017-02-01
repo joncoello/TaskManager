@@ -42,7 +42,7 @@ namespace TaskManager.API.Repositories
 
         public TaskItem Create(TaskItem task)
         {
-            task.ID = Guid.NewGuid();
+            //task.ID = Guid.NewGuid();
             _tasks.Add(task);
             return task;
         }

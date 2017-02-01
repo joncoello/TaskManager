@@ -71,6 +71,8 @@ namespace TaskManager.APITests
 
                 response.EnsureSuccessStatusCode();
 
+                var content = await response.Content.ReadAsStringAsync();
+
             }
 
         }
