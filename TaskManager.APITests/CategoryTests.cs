@@ -28,10 +28,8 @@ namespace TaskManager.APITests
 
                 var content = await response.Content.ReadAsStringAsync();
 
-                var obj = (JObject)JsonConvert.DeserializeObject(content);
-
-                Assert.Equal("hello world", obj["message"].ToString());
-
+                var obj = JsonConvert.DeserializeObject<IEnumerable<API.Models.TaskItem>>(content);
+                
             }
 
         }
