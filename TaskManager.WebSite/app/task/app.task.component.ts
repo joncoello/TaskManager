@@ -10,20 +10,22 @@ import { FormBuilder, FormGroup } from '@angular/forms';
         <form   id="taskEdit"
                 [formGroup]="myForm"
                 (ngSubmit)="onSubmit(myForm.value)">
-            <div class="input-group">
-                <span class="input-group-addon" id="basic-addon1">ID</span>
+            <div class="form-group">
+                <label>ID</label>
                 <label class="form-control">{{pageTitle}}</label>
             </div>
-            <div class="input-group">
-                <span class="input-group-addon" id="basic-addon1">Name</span>
+            <div class="form-group">
+                <label for="skuInput">Name</label>
                 <input  class="form-control"
                         type="text"
                         id="skuInput"
                         placeholder="Name"
                         [formControl]="myForm.controls['sku']">
             </div>
-            <div>       
-                <textarea class="multi-line-text" placeholder="What's up?" required></textarea>
+            <div class="form-group">       
+                <!--<textarea class="multi-line-text" placeholder="What's up?" required></textarea>-->
+                <label for="body">Body</label>
+                <textarea id="body" class="form-control" placeholder="Description" required></textarea>
             </div>
             <button class="btn btn-primary" type="submit">Submit</button>
         </form>

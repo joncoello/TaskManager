@@ -44,11 +44,9 @@ export class TaskListComponent {
         this.myForm = fb.group({
             'name': ['']
         });
+
+        this.loadTasks();
         
-        this.http.get(this.tasksUrl)
-            .subscribe((res: Response) => {
-                this.data = res.json();
-            });
     }
 
     onSubmit(form: any): void {
@@ -56,6 +54,14 @@ export class TaskListComponent {
         this.http.post(this.tasksUrl, form)
             .subscribe((res: Response) => {
                 console.log(res.statusText);
+                this.loadTasks();
+            });
+    }
+
+    loadTasks() {
+        this.http.get(this.tasksUrl)
+            .subscribe((res: Response) => {
+                this.data = res.json();
             });
     }
 
