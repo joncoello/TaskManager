@@ -2,6 +2,7 @@
 import { inject, fakeAsync, tick, TestBed } from '@angular/core/testing';
 import { MockBackend } from '@angular/http/testing';
 import { Http, ConnectionBackend, BaseRequestOptions, Response, ResponseOptions } from '@angular/http';
+import { FormBuilder } from '@angular/forms';
 
 import { TaskListComponent } from './app.task-list.component';
 
@@ -21,7 +22,8 @@ describe('TaskListComponent', function () {
                         defaultOptions: BaseRequestOptions) => {
                         return new Http(backend, defaultOptions);
                     }, deps: [MockBackend, BaseRequestOptions]
-                }
+                },
+                FormBuilder
             ]
         });
     });
@@ -31,7 +33,7 @@ describe('TaskListComponent', function () {
 
             expect(taskListComponent instanceof TaskListComponent).toBe(true, 'should create AppComponent');
 
-            expect(taskListComponent.title).toBe('loading...');
+            expect(taskListComponent.title).toBe('tasks');
 
         }))
     );
