@@ -9,7 +9,5 @@ namespace TaskManager.API.Models
     {
         public Guid ID { get; set; }
         public string Name { get; set; }
-        public string Body { get; set; }
-
     }
 }
