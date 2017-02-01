@@ -13,17 +13,16 @@ using Xunit;
 namespace TaskManager.APITests
 {
     [Trait("Category", "API")]
-    public class HelloWorldTests
+    public class CategoryTests
     {
-
         [Fact]
-        public async Task HelloWorld_Get()
+        public async Task Category_Get()
         {
 
             using (var serverAndClient = new HttpServerAndClient<Startup>())
             {
 
-                var response = await serverAndClient.Client.GetAsync("api/hello");
+                var response = await serverAndClient.Client.GetAsync("api/category");
 
                 response.EnsureSuccessStatusCode();
 
@@ -33,11 +32,10 @@ namespace TaskManager.APITests
 
                 Assert.Equal("hello world", obj["message"].ToString());
 
-
             }
 
         }
 
-
     }
+
 }

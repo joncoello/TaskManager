@@ -21,19 +21,13 @@ namespace TaskManager.APITests
         public async Task Task_Get()
         {
 
-            var url = "http://localhost:8990";
-
-            using (WebApp.Start<Startup>(url))
+            using (var serverAndClient = new HttpServerAndClient<Startup>())
             {
-                using (var client = new HttpClient())
-                {
-                    client.BaseAddress = new Uri(url);
 
-                    var response = await client.GetAsync("api/task");
+                var response = await serverAndClient.Client.GetAsync("api/task");
 
-                    response.EnsureSuccessStatusCode();
+                response.EnsureSuccessStatusCode();
 
-                }
             }
 
         }
@@ -42,29 +36,24 @@ namespace TaskManager.APITests
         public async Task<Guid> Task_Post()
         {
 
-            var url = "http://localhost:8990";
-
-            using (WebApp.Start<Startup>(url))
+            using (var serverAndClient = new HttpServerAndClient<Startup>())
             {
-                using (var client = new HttpClient())
-                {
-                    client.BaseAddress = new Uri(url);
 
-                    var newID = Guid.NewGuid();
 
-                    var response = await client.PostAsJsonAsync<TaskItem>(
-                        "api/task",
-                        new TaskItem()
-                        {
-                            ID = newID,
-                            Name = "Task 1"
-                        });
+                var newID = Guid.NewGuid();
 
-                    response.EnsureSuccessStatusCode();
+                var response = await serverAndClient.Client.PostAsJsonAsync<TaskItem>(
+                    "api/task",
+                    new TaskItem()
+                    {
+                        ID = newID,
+                        Name = "Task 1"
+                    });
 
-                    return newID;
+                response.EnsureSuccessStatusCode();
 
-                }
+                return newID;
+
             }
 
         }
@@ -75,19 +64,13 @@ namespace TaskManager.APITests
 
             var id = await Task_Post();
 
-            var url = "http://localhost:8990";
-
-            using (WebApp.Start<Startup>(url))
+            using (var serverAndClient = new HttpServerAndClient<Startup>())
             {
-                using (var client = new HttpClient())
-                {
-                    client.BaseAddress = new Uri(url);
 
-                    var response = await client.GetAsync("api/task/" + id);
+                var response = await serverAndClient.Client.GetAsync("api/task/" + id);
 
-                    response.EnsureSuccessStatusCode();
+                response.EnsureSuccessStatusCode();
 
-                }
             }
 
         }
