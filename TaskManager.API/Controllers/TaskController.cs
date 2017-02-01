@@ -40,7 +40,7 @@ namespace TaskManager.API.Controllers
             }
             var result = new
             {
-                tasks = _taskRepository.All(),
+                task = task,
                 categories = _categoryRepository.All()
             };
             return Ok(result);
