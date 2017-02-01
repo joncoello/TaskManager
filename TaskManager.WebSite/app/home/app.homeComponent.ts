@@ -11,6 +11,7 @@
                       [labels]="doughnutChartLabels"
                       [chartType]="doughnutChartType"
                       [colors]="colours"
+                      [options]="options"
                       (chartHover)="chartHovered($event)"
                       (chartClick)="chartClicked($event)"></canvas>
         </div>
@@ -39,6 +40,12 @@ export class HomeComponent {
             pointHoverBorderColor: 'rgba(148,159,177,0.8)'
         }
     ];
+
+    public options: any = {
+        legend: {
+            position: 'right'
+        }
+    };
 
     // events
     public chartClicked(e: any): void {
