@@ -64,6 +64,7 @@
   <ItemGroup>
     <Content Include="favicon.ico" />
     <Content Include="gulpfile.js" />
+    <Content Include="img\table-loading.gif" />
     <Content Include="karma-test-shim.js" />
     <Content Include="karma.conf.js" />
     <Content Include="package.json" />
