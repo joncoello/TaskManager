@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 using TaskManager.API.Models;
+using TaskManager.API.Repositories;
 
 namespace TaskManager.API.Controllers
 {
@@ -13,59 +14,43 @@ namespace TaskManager.API.Controllers
     public class TaskController : ApiController
     {
 
-        private static readonly List<TaskItem> _tasks = new List<TaskItem> {
-                new TaskItem {
-                    ID = Guid.NewGuid(),
-                    Name = "Task 1"
-                },
-                new TaskItem{
-                    ID = Guid.NewGuid(),
-                    Name = "Task 2"
-                }
-            };
+        private TaskRespository _taskRepository;
+
+        public TaskController()
+        {
+            _taskRepository = new TaskRespository();
+        }
         
         [Route("")]
         public async Task<object> Get()
         {
-            return _tasks;
+            return _taskRepository.All();
         }
 
         [Route("{id}")]
-        public async Task<object> Get(string id)
+        public async Task<object> Get(Guid id)
         {
-            return _tasks.FirstOrDefault(t => t.ID == Guid.Parse(id));
+            return _taskRepository.Find(id);
         }
 
         [Route("{id}")]
-        public async Task<IHttpActionResult> Delete(string id)
+        public async Task<IHttpActionResult> Delete(Guid id)
         {
-            var taskToDelete = _tasks.FirstOrDefault(t => t.ID == Guid.Parse(id));
-            if (taskToDelete != null)
-            {
-                _tasks.Remove(taskToDelete);
-            }
+            _taskRepository.Delete(id);
             return Ok();
         }
 
         [Route("")]
         public async Task<IHttpActionResult> Patch(TaskItem task)
         {
-            var taskToUpdate = _tasks.FirstOrDefault(t => t.ID == task.ID);
-            if (taskToUpdate != null)
-            {
-                taskToUpdate.Name = task.Name;
-            }
+            _taskRepository.Update(task);
             return Ok();
         }
 
         [Route("")]
         public async Task<object> Post(TaskItem task)
         {
-            if (task == null)
-            {
-                throw new ArgumentNullException("task");
-            }
-            _tasks.Add(task);
+            _taskRepository.Create(task);
             return task;
         }
 

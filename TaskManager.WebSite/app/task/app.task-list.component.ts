@@ -63,6 +63,7 @@ export class TaskListComponent implements OnInit {
     }
 
     public onSubmit(form: any): void {
+        this.addTaskNameField.setValue('');
         console.log('you submitted value:', form);
         this.isAdding = true;
         this.http.post(this.tasksUrl, form)
