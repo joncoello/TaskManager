@@ -11,7 +11,9 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/app.homeComponent';
 import { TaskListComponent }  from './task/app.task-list.component';
 import { TaskComponent }  from './task/app.task.component';
-import { AboutComponent }  from './about/app.aboutcomponent';
+import { AboutComponent } from './about/app.aboutcomponent';
+
+import { ChartsModule } from 'ng2-charts';
 
 // need to move this to its own module
 // clarify lazy loading approach
@@ -29,7 +31,8 @@ const routes: Routes = [
         HttpModule,
         RouterModule.forRoot(routes),
         FormsModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        ChartsModule
     ],
     declarations: [
         AppComponent,

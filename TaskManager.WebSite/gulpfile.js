@@ -162,7 +162,8 @@ gulp.task('vendor:50:copypollyfill', function () {
     return gulp.src(
       [
           'node_modules/jquery/dist/jquery.min.js',
-          'node_modules/core-js/client/shim.min.js'
+          'node_modules/core-js/client/shim.min.js',
+          'node_modules/chart.js/dist/chart.js'
       ])
       .pipe(gulp.dest(''))
 });
