@@ -26,17 +26,24 @@ namespace TaskManager.API.Controllers
         [Route("")]
         public async Task<IHttpActionResult> Get()
         {
-            var result = new {
-                tasks = _taskRepository.All(),
-                categories = _categoryRepository.All()
-            };
+            var result = _categoryRepository.All();
             return Ok(result);
         }
 
         [Route("{id}")]
-        public async Task<object> Get(Guid id)
+        public async Task<IHttpActionResult> Get(Guid id)
         {
-            return _taskRepository.Find(id);
+            var task = _taskRepository.Find(id);
+            if (task == null)
+            {
+                return NotFound();
+            }
+            var result = new
+            {
+                tasks = _taskRepository.All(),
+                categories = _categoryRepository.All()
+            };
+            return Ok(result);
         }
 
         [Route("{id}")]
