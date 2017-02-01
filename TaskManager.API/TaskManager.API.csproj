@@ -121,6 +121,7 @@
     <Compile Include="Models\CategoryItem.cs" />
     <Compile Include="Models\TaskItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\CategoryRepository.cs" />
     <Compile Include="Repositories\TaskRespository.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>

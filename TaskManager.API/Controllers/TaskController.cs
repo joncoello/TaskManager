@@ -15,16 +15,22 @@ namespace TaskManager.API.Controllers
     {
 
         private TaskRespository _taskRepository;
+        private CategoryRepository _categoryRepository;
 
         public TaskController()
         {
             _taskRepository = new TaskRespository();
+            _categoryRepository = new CategoryRepository();
         }
         
         [Route("")]
-        public async Task<object> Get()
+        public async Task<IHttpActionResult> Get()
         {
-            return _taskRepository.All();
+            var result = new {
+                tasks = _taskRepository.All(),
+                categories = _categoryRepository.All()
+            };
+            return Ok(result);
         }
 
         [Route("{id}")]
