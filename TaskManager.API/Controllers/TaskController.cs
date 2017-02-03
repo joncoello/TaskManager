@@ -54,7 +54,7 @@ namespace TaskManager.API.Controllers
         }
 
         [Route("")]
-        public async Task<IHttpActionResult> Patch(TaskItem task)
+        public async Task<IHttpActionResult> Put(TaskItem task)
         {
             _taskRepository.Update(task);
             return Ok();
