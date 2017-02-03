@@ -51,6 +51,7 @@ export class TaskComponent implements OnInit {
     private baseUrl = 'http://jctaskmanagerapi.azurewebsites.net';
     // private baseUrl = 'http://localhost:42992';
     private tasksUrl = this.baseUrl + '/api/task';  // url to web API
+    private taskID: string;
 
     constructor(private http: Http, private route: ActivatedRoute, private fb: FormBuilder) {
         this.nameField = new FormControl('', Validators.required);
@@ -64,11 +65,11 @@ export class TaskComponent implements OnInit {
     public ngOnInit() {
 
         this.route.params.subscribe((params: { [key: string]: any }) => {
-            var id = params['id'];
+            this.taskID = params['id'];
 
-            this.pageTitle = id;
+            this.pageTitle = this.taskID;
 
-            this.http.get(this.tasksUrl + '/' + id)
+            this.http.get(this.tasksUrl + '/' + this.taskID)
                 .subscribe((res: Response) => {
                     console.log(res);
                     this.nameField.patchValue(res.json().task.name);
@@ -81,6 +82,12 @@ export class TaskComponent implements OnInit {
 
     public onSubmit(form: any): void {
         console.log('you submitted value:', form);
+
+        this.http.patch(this.tasksUrl + '/' + this.taskID, form)
+            .subscribe((res: Response) => {
+                console.log(res);
+            });
+
     }
 
 }

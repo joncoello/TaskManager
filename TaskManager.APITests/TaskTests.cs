@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Net.Http.Formatting;
 using System.Text;
 using System.Threading.Tasks;
 using TaskManager.API;
@@ -59,6 +60,29 @@ namespace TaskManager.APITests
         }
 
         [Fact]
+        public async Task Task_Patch()
+        {
+
+            var id = await Task_Post();
+
+            using (var serverAndClient = new HttpServerAndClient<Startup>())
+            {
+                
+                var response = await serverAndClient.Client.PatchAsJsonAsync(
+                    "api/task/" + id,
+                    new TaskItem()
+                    {
+                        ID = id,
+                        Name = "Task 1"
+                    });
+
+                response.EnsureSuccessStatusCode();
+                
+            }
+
+        }
+
+        [Fact]
         public async Task Task_GetSingle()
         {
 
@@ -76,7 +100,24 @@ namespace TaskManager.APITests
             }
 
         }
+        
+    }
 
+    public static class Extensons
+    {
+
+        public static Task<HttpResponseMessage> PatchAsJsonAsync<T>(this HttpClient client, string requestUri, T value)
+        {
+            //Ensure.Argument.NotNull(client, "client");
+            //Ensure.Argument.NotNullOrEmpty(requestUri, "requestUri");
+            //Ensure.Argument.NotNull(value, "value");
+
+            var content = new ObjectContent<T>(value, new JsonMediaTypeFormatter());
+            var request = new HttpRequestMessage(new HttpMethod("PATCH"), requestUri) { Content = content };
+
+            return client.SendAsync(request);
+        }
 
     }
+
 }

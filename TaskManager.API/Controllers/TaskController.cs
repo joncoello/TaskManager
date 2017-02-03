@@ -53,8 +53,8 @@ namespace TaskManager.API.Controllers
             return Ok();
         }
 
-        [Route("")]
-        public async Task<IHttpActionResult> Put(TaskItem task)
+        [Route("{id}")]
+        public async Task<IHttpActionResult> Patch(Guid id, TaskItem task)
         {
             _taskRepository.Update(task);
             return Ok();
