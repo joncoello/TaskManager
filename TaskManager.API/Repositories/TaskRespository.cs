@@ -54,6 +54,7 @@ namespace TaskManager.API.Repositories
             if (taskToUpdate != null)
             {
                 taskToUpdate.Name = task.Name;
+                taskToUpdate.Body = task.Body;
             }
         }
     }
