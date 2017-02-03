@@ -46,6 +46,8 @@ gulp.task('deployment:20:copy:assets', function () {
       .pipe(gulp.dest('dist/lib'))
     gulp.src(['img/*.*'])
       .pipe(gulp.dest('dist/img'))
+    gulp.src(['fonts/*.*'])
+      .pipe(gulp.dest('dist/fonts'))
     return gulp.src(
       [
         'index.html',
@@ -126,13 +128,19 @@ gulp.task('vendor:10:clean', function () {
 
 // Copy vendor files to lib
 gulp.task('vendor:20:copy', function () {
+    gulp.src(
+      [
+          'node_modules/bootstrap/dist/fonts/*.*'
+      ])
+      .pipe(gulp.dest('fonts'))
+
     return gulp.src(
       [
           'node_modules/zone.js/dist/zone.js',
           'node_modules/reflect-metadata/reflect.js',
           'node_modules/systemjs/dist/system.src.js',
           'systemjs.config.js',
-          'node_modules/bootstrap/dist/css/bootstrap.css',
+          'node_modules/bootstrap/dist/css/bootstrap.min.css',
           'node_modules/bootstrap/dist/js/bootstrap.min.js',
           'node_modules/chart.js/dist/chart.js',
           'site.css'

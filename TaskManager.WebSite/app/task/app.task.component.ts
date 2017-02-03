@@ -1,7 +1,7 @@
 ﻿/* tslint:disable:no-string-literal */
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
+import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { Http, Response } from '@angular/http';
 
 @Component({
@@ -23,6 +23,11 @@ import { Http, Response } from '@angular/http';
                         placeholder="Name"
                         [formControl]="myForm.controls['name']">
             </div>
+                <div *ngIf="myForm.controls['name'].hasError('required')" class="alert alert-danger" role="alert">
+                  <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                  <span class="sr-only">Error:</span>
+                  Name is a required field
+                </div>
             <div class="form-group">       
                 <label for="body">Body</label>
                 <textarea   id="body" 
@@ -48,7 +53,7 @@ export class TaskComponent implements OnInit {
     private tasksUrl = this.baseUrl + '/api/task';  // url to web API
 
     constructor(private http: Http, private route: ActivatedRoute, private fb: FormBuilder) {
-        this.nameField = new FormControl('');
+        this.nameField = new FormControl('', Validators.required);
         this.bodyField = new FormControl('');
         this.myForm = this.fb.group({
             'name': this.nameField,

@@ -33,7 +33,7 @@ describe('CategoryListComponent', function () {
 
             expect(taskListComponent instanceof CategoryListComponent).toBe(true, 'should create CategoryListComponent');
 
-            expect(taskListComponent.pageTitle).toBe('tasks');
+            expect(taskListComponent.pageTitle).toBe('categories');
 
         }))
     );
