@@ -7,8 +7,8 @@ namespace TaskManager.API.Models
 {
     public class TaskItem
     {
-        public string Body { get; internal set; }
         public Guid ID { get; set; }
         public string Name { get; set; }
+        public string Body { get; set; }
     }
 }
