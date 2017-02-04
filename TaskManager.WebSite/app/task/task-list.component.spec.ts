@@ -4,7 +4,7 @@ import { MockBackend } from '@angular/http/testing';
 import { Http, ConnectionBackend, BaseRequestOptions, Response, ResponseOptions } from '@angular/http';
 import { FormBuilder } from '@angular/forms';
 
-import { TaskListComponent } from './app.task-list.component';
+import { TaskListComponent } from './task-list.component';
 
 ////////  SPECS  /////////////
 

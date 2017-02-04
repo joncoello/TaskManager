@@ -4,6 +4,8 @@ import { ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { Http, Response } from '@angular/http';
 
+import { TaskService } from './task.service';
+
 @Component({
     selector: 'task',
     template: `
@@ -56,7 +58,7 @@ export class TaskComponent implements OnInit {
     private tasksUrl = this.baseUrl + '/api/task';  // url to web API
     private taskID: string;
 
-    constructor(private http: Http, private route: ActivatedRoute, private fb: FormBuilder) {
+    constructor(private taskService: TaskService, private route: ActivatedRoute, private fb: FormBuilder) {
         this.idField = new FormControl('', Validators.required);
         this.nameField = new FormControl('', Validators.required);
         this.bodyField = new FormControl('');
@@ -74,7 +76,7 @@ export class TaskComponent implements OnInit {
 
             this.pageTitle = this.taskID;
 
-            this.http.get(this.tasksUrl + '/' + this.taskID)
+            this.taskService.getTask(this.taskID)
                 .subscribe((res: Response) => {
                     console.log(res);
                     this.idField.patchValue(res.json().task.id);
@@ -89,7 +91,7 @@ export class TaskComponent implements OnInit {
     public onSubmit(form: any): void {
         console.log('you submitted value:', form);
 
-        this.http.patch(this.tasksUrl + '/' + this.taskID, form)
+        this.taskService.updateTask(form)
             .subscribe((res: Response) => {
                 console.log(res);
             });

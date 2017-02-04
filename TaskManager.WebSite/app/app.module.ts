@@ -9,8 +9,9 @@ import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/app.homeComponent';
-import { TaskListComponent }  from './task/app.task-list.component';
-import { TaskComponent } from './task/app.task.component';
+import { TaskListComponent }  from './task/task-list.component';
+import { TaskComponent } from './task/task.component';
+import { TaskService } from './task/task.service';
 import { CategoryListComponent } from './category/app.category-list.component';
 import { AboutComponent } from './about/app.aboutcomponent';
 
@@ -46,7 +47,8 @@ const routes: Routes = [
     ],
     bootstrap: [AppComponent],
     providers: [
-        { provide: APP_BASE_HREF, useValue: '/' }
+        { provide: APP_BASE_HREF, useValue: '/' },
+        TaskService
     ]
 })
 export class AppModule { }

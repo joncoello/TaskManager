@@ -4,6 +4,8 @@ import { Http, Response } from '@angular/http';
 
 import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 
+import { TaskService } from './task.service';
+
 @Component({
     selector: 'tasks',
     template: `
@@ -43,12 +45,8 @@ export class TaskListComponent implements OnInit {
     public addTaskNameField: FormControl;
     public isLoading: boolean = false;
     public isAdding: boolean = false;
-
-    private baseUrl = 'http://jctaskmanagerapi.azurewebsites.net/';
-    // private baseUrl = 'http://localhost:42992/';
-    private tasksUrl = this.baseUrl + '/api/task';  // url to web API
-
-    constructor(private http: Http, private fb: FormBuilder) {
+    
+    constructor(private fb: FormBuilder, private taskService: TaskService) {
         this.title = 'tasks';
     }
 
@@ -66,7 +64,7 @@ export class TaskListComponent implements OnInit {
         this.addTaskNameField.setValue('');
         console.log('you submitted value:', form);
         this.isAdding = true;
-        this.http.post(this.tasksUrl, form)
+        this.taskService.createTask(form)
             .subscribe((res: Response) => {
                 console.log(res.statusText);
                 this.isAdding = false;
@@ -75,7 +73,7 @@ export class TaskListComponent implements OnInit {
     }
 
     public loadTasks() {
-        this.http.get(this.tasksUrl)
+        this.taskService.getTasks()
             .subscribe((res: Response) => {
                 this.data = res.json();
                 this.isLoading = false;
