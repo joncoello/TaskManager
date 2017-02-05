@@ -39,21 +39,19 @@ namespace TaskManager.APITests
 
             using (var serverAndClient = new HttpServerAndClient<Startup>())
             {
-
-
-                var newID = Guid.NewGuid();
-
+                
                 var response = await serverAndClient.Client.PostAsJsonAsync<TaskItem>(
                     "api/task",
                     new TaskItem()
                     {
-                        ID = newID,
                         Name = "Task 1"
                     });
 
                 response.EnsureSuccessStatusCode();
 
-                return newID;
+                var task = await response.Content.ReadAsAsync<TaskItem>();
+
+                return task.ID;
 
             }
 
