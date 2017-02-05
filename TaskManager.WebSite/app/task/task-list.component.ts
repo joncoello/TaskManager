@@ -26,11 +26,12 @@ import { TaskService } from './task.service';
             </div>
 
         </form>
-        <ul class="list-group">
-           <li *ngFor='let item of data' class="list-group-item">
-              <a [routerLink]="['task', item.id]">{{item.name}}</a>
-           </li>
-        </ul>
+        <div class="list-group">
+            <a *ngFor='let item of data' class="list-group-item" [routerLink]="['task', item.id]">
+                <h4 class="list-group-item-heading">{{item.name}}</h4>
+                <p class="list-group-item-text">{{item.body}}</p>
+            </a>
+        </div>
     </div>
     <div *ngIf='isLoading || isAdding' class="table-loader">
         <img src="/img/table-loading.gif" />
