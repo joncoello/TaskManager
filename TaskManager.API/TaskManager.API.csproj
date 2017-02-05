@@ -118,6 +118,7 @@
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\HelloController.cs" />
     <Compile Include="Controllers\TaskController.cs" />
+    <Compile Include="Infrastructure\NoCacheHeaderFilter.cs" />
     <Compile Include="Models\CategoryItem.cs" />
     <Compile Include="Models\TaskItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -16,14 +16,19 @@ namespace TaskManager.API
         {
             var config = new HttpConfiguration();
 
+            // json
             config.Formatters.JsonFormatter.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
             config.Formatters.JsonFormatter.UseDataContractJsonSerializer = false;
             config.Formatters.JsonFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue("text/html"));
 
+            // cors
             var cors = new EnableCorsAttribute("*", "*", "*");
             config.EnableCors(cors);
 
+            // routes
             config.MapHttpAttributeRoutes();
+
+            config.Filters.Add(new Infrastructure.NoCacheHeaderFilter());
 
             app.UseWebApi(config);
         }
