@@ -9,9 +9,11 @@ namespace TaskManager.API.Repositories
     public class CategoryRepository
     {
         private static IEnumerable<CategoryItem> _categories = new List<CategoryItem>() {
-                new CategoryItem() { ID = Guid.NewGuid(), Name = "Item 1" },
-                new CategoryItem() { ID = Guid.NewGuid(), Name = "Item 2" },
-                new CategoryItem() { ID = Guid.NewGuid(), Name = "Item 3" }
+                new CategoryItem() { ID = Guid.NewGuid(), Name = "Urgent" },
+                new CategoryItem() { ID = Guid.NewGuid(), Name = "High" },
+                new CategoryItem() { ID = Guid.NewGuid(), Name = "Medium" },
+                new CategoryItem() { ID = Guid.NewGuid(), Name = "Low" },
+                new CategoryItem() { ID = Guid.NewGuid(), Name = "Information" }
             };
 
         public IEnumerable<CategoryItem> All()

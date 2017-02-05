@@ -9,17 +9,22 @@ namespace TaskManager.API.Repositories
 
     public class TaskRespository
     {
-        private static string body = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
+        
         private static readonly List<TaskItem> _tasks = new List<TaskItem> {
                 new TaskItem {
                     ID = Guid.NewGuid(),
-                    Name = "Task 1",
-                    Body = body
+                    Name = "Finish PDRs",
+                    Body = "Sue, Bob, Alan, Claire" 
                 },
                 new TaskItem{
                     ID = Guid.NewGuid(),
-                    Name = "Task 2",
-                    Body = body
+                    Name = "Setup Insurance",
+                    Body = "3-6 months with no cancellation fee"
+                },
+                new TaskItem{
+                    ID = Guid.NewGuid(),
+                    Name = "Setup Expenses",
+                    Body = "Mileage and books"
                 }
             };
 
