@@ -1,0 +1,27 @@
+<h1>{{title}}</h1>
+<div *ngIf='!isLoading'>
+    <form [formGroup]="addTaskForm"
+          (ngSubmit)="onSubmit(addTaskForm.value)">
+        <div class="input-group">
+            <input class="form-control"
+                   placeholder="new task"
+                   type="text"
+                   id="name"
+                   autocomplete="off"
+                   [formControl]="addTaskForm.controls['name']">
+            <span class="input-group-btn">
+                <button class="btn btn-default" type="submit">add</button>
+            </span>
+        </div>
+
+    </form>
+    <div class="list-group">
+        <a *ngFor='let item of data' class="list-group-item" [routerLink]="['task', item.id]">
+            <h4 class="list-group-item-heading">{{item.name}}</h4>
+            <p class="list-group-item-text">{{item.body}}</p>
+        </a>
+    </div>
+</div>
+<div *ngIf='isLoading || isAdding' class="table-loader">
+    <img src="/img/table-loading.gif" />
+</div>

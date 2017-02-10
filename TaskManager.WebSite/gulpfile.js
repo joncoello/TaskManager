@@ -32,7 +32,8 @@ gulp.task('deployment', function (callback) {
         'deployment:40:bundle:js',
         'deployment:50:delete-empty-directories',
         'deployment:60:minify:js',
-        'deployment:70:compress:js', callback);
+        //'deployment:70:compress:js',
+        callback);
 });
 
 // empty distribution directory
@@ -61,6 +62,9 @@ gulp.task('deployment:20:copy:assets', function () {
 
 // Compile TypeScript to JS
 gulp.task('deployment:30:compile:ts', function () {
+    gulp.src(['app/**/*.html'])
+     .pipe(gulp.dest('dist/app'))
+
     return gulp
       .src(["app/**/*.ts", "typings/**/*.d.ts"])
       .pipe(plumber({

@@ -62,6 +62,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\task\task-list.component.html" />
     <Content Include="favicon.ico" />
     <Content Include="gulpfile.js" />
     <Content Include="img\loading.gif" />
