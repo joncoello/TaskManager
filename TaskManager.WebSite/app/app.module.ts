@@ -15,6 +15,7 @@ import { TaskService } from './task/task.service';
 import { CategoryListComponent } from './category/app.category-list.component';
 import { AboutComponent } from './about/app.aboutcomponent';
 import { GridComponent } from './grid/app.gridcomponent';
+import { GridService } from './grid/grid.service';
 
 import { ChartsModule } from 'ng2-charts';
 
@@ -51,7 +52,8 @@ const routes: Routes = [
     bootstrap: [AppComponent],
     providers: [
         { provide: APP_BASE_HREF, useValue: '/' },
-        TaskService
+        TaskService,
+        GridService
     ]
 })
 export class AppModule { }

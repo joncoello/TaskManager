@@ -116,10 +116,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\CategoryController.cs" />
+    <Compile Include="Controllers\GridController.cs" />
     <Compile Include="Controllers\HelloController.cs" />
     <Compile Include="Controllers\TaskController.cs" />
     <Compile Include="Infrastructure\NoCacheHeaderFilter.cs" />
     <Compile Include="Models\CategoryItem.cs" />
+    <Compile Include="Models\GridItem.cs" />
     <Compile Include="Models\TaskItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\CategoryRepository.cs" />
