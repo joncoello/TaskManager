@@ -14,6 +14,7 @@ import { TaskComponent } from './task/task.component';
 import { TaskService } from './task/task.service';
 import { CategoryListComponent } from './category/app.category-list.component';
 import { AboutComponent } from './about/app.aboutcomponent';
+import { GridComponent } from './grid/app.gridcomponent';
 
 import { ChartsModule } from 'ng2-charts';
 
@@ -25,7 +26,8 @@ const routes: Routes = [
     { path: 'tasks', component: TaskListComponent },
     { path: 'tasks/task/:id', component: TaskComponent },
     { path: 'categories', component: CategoryListComponent },
-    { path: 'about', component: AboutComponent }
+    { path: 'about', component: AboutComponent },
+    { path: 'grid', component: GridComponent }
 ];
 
 @NgModule({
@@ -43,7 +45,8 @@ const routes: Routes = [
         TaskComponent,
         HomeComponent,
         CategoryListComponent,
-        AboutComponent
+        AboutComponent,
+        GridComponent
     ],
     bootstrap: [AppComponent],
     providers: [

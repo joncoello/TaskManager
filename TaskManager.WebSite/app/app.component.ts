@@ -22,6 +22,7 @@
                         <li><a [routerLink]="['tasks']">Tasks</a></li>
                         <li><a [routerLink]="['categories']">Categories</a></li>
                         <li><a [routerLink]="['about']">About</a></li>
+                        <li><a [routerLink]="['grid']">Grid</a></li>
                     </ul>
                 </div>
             </div>
