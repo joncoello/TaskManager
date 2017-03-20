@@ -4,7 +4,7 @@ import { MockBackend } from '@angular/http/testing';
 import { Http, ConnectionBackend, BaseRequestOptions, Response, ResponseOptions } from '@angular/http';
 import { FormBuilder } from '@angular/forms';
 
-import { CategoryListComponent } from './app.category-list.component';
+import { CategoryListComponent } from './category-list.component';
 
 ////////  SPECS  /////////////
 
@@ -23,7 +23,8 @@ describe('CategoryListComponent', function () {
                         return new Http(backend, defaultOptions);
                     }, deps: [MockBackend, BaseRequestOptions]
                 },
-                FormBuilder
+                FormBuilder,
+                { provide: 'API_URL', useValue: 'http://jctaskmanagerapi.azurewebsites.net' }
             ]
         });
     });

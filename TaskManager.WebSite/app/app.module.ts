@@ -12,9 +12,9 @@ import { HomeComponent } from './home/app.homeComponent';
 import { TaskListComponent }  from './task/task-list.component';
 import { TaskComponent } from './task/task.component';
 import { TaskService } from './task/task.service';
-import { CategoryListComponent } from './category/app.category-list.component';
-import { AboutComponent } from './about/app.aboutcomponent';
-import { GridComponent } from './grid/app.gridcomponent';
+import { CategoryListComponent } from './category/category-list.component';
+import { AboutComponent } from './about/about.component';
+import { GridComponent } from './grid/grid.component';
 import { GridService } from './grid/grid.service';
 
 import { ChartsModule } from 'ng2-charts';
