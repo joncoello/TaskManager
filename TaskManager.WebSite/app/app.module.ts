@@ -53,7 +53,8 @@ const routes: Routes = [
     providers: [
         { provide: APP_BASE_HREF, useValue: '/' },
         TaskService,
-        GridService
+        GridService,
+        { provide: 'API_URL', useValue: 'http://jctaskmanagerapi.azurewebsites.net'}
     ]
 })
 export class AppModule { }

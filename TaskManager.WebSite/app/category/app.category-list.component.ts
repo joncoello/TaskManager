@@ -1,4 +1,4 @@
-﻿import { Component } from '@angular/core';
+﻿import { Inject, Component } from '@angular/core';
 
 import { Http, Response } from '@angular/http';
 
@@ -43,10 +43,10 @@ export class CategoryListComponent {
     public isLoading: boolean = false;
     public isAdding: boolean = false;
 
-    private baseUrl = 'http://jctaskmanagerapi.azurewebsites.net/';
-    private tasksUrl = this.baseUrl + '/api/category';  // url to web API
+    private tasksUrl: string;   
 
-    constructor(private http: Http, private fb: FormBuilder) {
+    constructor(private http: Http, private fb: FormBuilder, @Inject('API_URL') private apiURL: string) {
+        this.tasksUrl = apiURL + '/api/category';  // url to web API
         this.pageTitle = 'categories';
     }
 

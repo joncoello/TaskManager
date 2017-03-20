@@ -1,15 +1,15 @@
-﻿import { Injectable } from '@angular/core';
+﻿import { Inject, Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class GridService {
 
-    // private baseUrl = 'http://jctaskmanagerapi.azurewebsites.net/';
-    private baseUrl = 'http://localhost:42992/';
-    private gridUrl = this.baseUrl + '/api/grid';  // url to web API
+    private gridUrl: string; 
 
-    constructor(private http: Http) { }
+    constructor(private http: Http, @Inject('API_URL') private apiURL: string) {
+        this.gridUrl = apiURL + '/api/grid';  // url to web API
+    }
     
     saveGrid(task: any): Observable<Response> {
         return this.http.post(this.gridUrl, task);

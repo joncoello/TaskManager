@@ -5,6 +5,7 @@ import { Http, ConnectionBackend, BaseRequestOptions, Response, ResponseOptions 
 import { FormBuilder } from '@angular/forms';
 
 import { TaskListComponent } from './task-list.component';
+import { TaskService } from './task.service';
 
 ////////  SPECS  /////////////
 
@@ -23,7 +24,9 @@ describe('TaskListComponent', function () {
                         return new Http(backend, defaultOptions);
                     }, deps: [MockBackend, BaseRequestOptions]
                 },
-                FormBuilder
+                FormBuilder,
+                TaskService,
+                { provide: 'API_URL', useValue: 'http://jctaskmanagerapi.azurewebsites.net' }
             ]
         });
     });

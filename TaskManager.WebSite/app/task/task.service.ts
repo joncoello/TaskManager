@@ -1,15 +1,15 @@
-﻿import { Injectable } from '@angular/core';
+﻿import { Inject, Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class TaskService {
 
-    private baseUrl = 'http://jctaskmanagerapi.azurewebsites.net/';
-    // private baseUrl = 'http://localhost:42992/';
-    private tasksUrl = this.baseUrl + '/api/task';  // url to web API
-
-    constructor(private http: Http) { }
+    private tasksUrl: string;
+    
+    constructor(private http: Http, @Inject('API_URL') private apiURL: string) {
+        this.tasksUrl = this.apiURL + '/api/task';
+    }
 
     getTasks(): Observable<Response> {
         return this.http.get(this.tasksUrl)
