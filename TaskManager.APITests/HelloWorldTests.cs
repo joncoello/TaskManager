@@ -20,6 +20,8 @@ namespace TaskManager.APITests
         public async Task HelloWorld_Get()
         {
 
+            throw new Exception("aaahhhhhhh!");
+
             using (var serverAndClient = new HttpServerAndClient<Startup>())
             {
 
