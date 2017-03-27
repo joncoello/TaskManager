@@ -1,0 +1,15 @@
+﻿<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>TaskManager.Web</id>
+    <title>Task Manager Web</title>
+    <version>1.0.0</version>
+    <authors>Jon Coello</authors>
+    <owners>Access Group</owners>
+    <licenseUrl>http://www.theaccessgroup.com</licenseUrl>
+    <projectUrl>http://www.theaccessgroup.com/</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>An Application to manage tasks</description>
+    <releaseNotes>This is the first release of the App...</releaseNotes>
+  </metadata>
+</package>
