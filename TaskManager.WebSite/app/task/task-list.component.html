@@ -15,12 +15,17 @@
         </div>
 
     </form>
-    <div class="list-group">
-        <a *ngFor='let item of data' class="list-group-item" [routerLink]="['task', item.id]">
-            <h4 class="list-group-item-heading">{{item.name}}</h4>
-            <p class="list-group-item-text">{{item.body}}</p>
-        </a>
-    </div>
+    <table>
+        <tr *ngFor='let item of data' [routerLink]="['task', item.id]">
+            <td>
+                <h4 class="list-group-item-heading">{{item.name}}</h4>
+                <p class="list-group-item-text">{{item.body}}</p>
+            </td>
+            <td>
+                delete
+            </td>
+        </tr>
+    </table>
 </div>
 <div *ngIf='isLoading || isAdding' class="table-loader">
     <img src="/img/table-loading.gif" />
