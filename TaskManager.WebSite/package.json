@@ -61,6 +61,7 @@
     "karma-htmlfile-reporter": "^0.2.2",
     "karma-jasmine-html-reporter": "^0.2.2",
     "karma-jasmine": "^0.3.8",
+    "karma-teamcity-reporter": "1.0.0",
     "protractor": "^3.3.0",
     "rimraf": "^2.5.2",
 
