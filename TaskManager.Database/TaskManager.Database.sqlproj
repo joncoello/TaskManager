@@ -69,4 +69,9 @@
     <Build Include="Task\Stored Procedures\Tasks_GetAll.sql" />
     <Build Include="Security\Task.sql" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include=".nuspec" />
+  </ItemGroup>
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Import Project="$(SolutionDir)\.octopack\OctoPack.targets" />
 </Project>
