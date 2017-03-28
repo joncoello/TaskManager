@@ -16,7 +16,7 @@ namespace TaskManager.API.Controllers
         {
             return new
             {
-                Message = "hello worldX"
+                Message = "hello world"
             };
         }
     }
