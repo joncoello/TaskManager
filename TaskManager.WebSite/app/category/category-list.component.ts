@@ -47,7 +47,7 @@ export class CategoryListComponent {
 
     constructor(private http: Http, private fb: FormBuilder, @Inject('API_URL') private apiURL: string) {
         this.tasksUrl = apiURL + '/api/category';  // url to web API
-        this.pageTitle = 'categories';
+        this.pageTitle = 'categoriesX';
     }
 
     public ngOnInit() {
