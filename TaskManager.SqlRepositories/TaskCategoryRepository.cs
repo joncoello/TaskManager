@@ -9,9 +9,9 @@ namespace TaskManager.SqlRepositories
 {
     public class TaskCategoryRepository
     {
-        public Task Create(TaskCategory newTaskCategory)
+        public async Task Create(TaskCategory newTaskCategory)
         {
-            throw new NotImplementedException();
+            
         }
     }
 }
