@@ -8,5 +8,8 @@ namespace TaskManager.DomainModel.Entities
 {
     public class TaskCategory
     {
+        public Guid TaskCategoryID { get; set; }
+        public string TaskCategoryName { get; set; }
     }
 }
+    

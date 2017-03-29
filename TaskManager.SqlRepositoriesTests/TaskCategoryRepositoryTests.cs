@@ -13,13 +13,31 @@ namespace TaskManager.SqlRepositoriesTests
     {
 
         [Fact]
-        public async Task TaskCategoryRepository_Create() {
+        public async Task<TaskCategory> TaskCategoryRepository_Create()
+        {
 
-            var newTaskCategory = new TaskCategory();
+            var newTaskCategory = new TaskCategory() {
+                TaskCategoryName = "Urgent"
+            };
 
             var sut = new TaskCategoryRepository();
 
             await sut.Create(newTaskCategory);
+
+            return newTaskCategory;
+
+        }
+
+        [Fact]
+        public async Task TaskCategoryRepository_Get()
+        {
+            var newTaskCategory = await TaskCategoryRepository_Create();
+
+            var sut = new TaskCategoryRepository();
+
+            var taskCategory = await sut.Get(newTaskCategory.TaskCategoryID);
+
+            Assert.Equal(newTaskCategory.TaskCategoryName, taskCategory.TaskCategoryName);
 
         }
 
