@@ -2,7 +2,11 @@
 	drop procedure Task.Tasks_GetAll
 go
 
-Create Procedure Task.Tasks_GetAll
+if exists(select * from sys.objects where name = 'TaskCategory_GetAll')
+	drop procedure Task.TaskCategory_GetAll
+go
+
+Create Procedure Task.TaskCategory_GetAll
 
 as
 
