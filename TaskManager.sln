@@ -32,6 +32,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentatio
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{5DB8F849-382F-4068-AADE-0D4051B2D51C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskManager.CreateScripts", "TaskManager.CreateScripts\TaskManager.CreateScripts.csproj", "{DB07EA2C-F6E8-49EE-BFDF-BD0B4168B262}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -68,6 +70,10 @@ Global
 		{7623E2AD-FA2C-4DFD-8781-AB1741088CB8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7623E2AD-FA2C-4DFD-8781-AB1741088CB8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7623E2AD-FA2C-4DFD-8781-AB1741088CB8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DB07EA2C-F6E8-49EE-BFDF-BD0B4168B262}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB07EA2C-F6E8-49EE-BFDF-BD0B4168B262}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB07EA2C-F6E8-49EE-BFDF-BD0B4168B262}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB07EA2C-F6E8-49EE-BFDF-BD0B4168B262}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -80,5 +86,6 @@ Global
 		{AF29C210-2235-438F-9CF7-7FC268610C3A} = {89FB4AE2-E087-4A54-B275-BDDEFD7B2A6E}
 		{DA373751-9A88-4F17-94C7-BAC1FFFAFBA5} = {79F7E849-7E82-40C8-92DB-9556120EFEFB}
 		{7623E2AD-FA2C-4DFD-8781-AB1741088CB8} = {89FB4AE2-E087-4A54-B275-BDDEFD7B2A6E}
+		{DB07EA2C-F6E8-49EE-BFDF-BD0B4168B262} = {5DB8F849-382F-4068-AADE-0D4051B2D51C}
 	EndGlobalSection
 EndGlobal
