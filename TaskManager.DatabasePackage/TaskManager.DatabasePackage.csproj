@@ -51,7 +51,9 @@
   <ItemGroup>
     <None Include=".nuspec" />
     <None Include="App.config" />
-    <None Include="Deploy.ps1" />
+    <None Include="Deploy.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
