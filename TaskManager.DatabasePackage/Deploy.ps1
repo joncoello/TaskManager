@@ -19,5 +19,5 @@ Write-Host $databasePackagePath
 
 & $databasePackagePath
 
-& sqlcmd -S $server -d $dbName -U $user -P $pwd -i "scripts.sql"
+& sqlcmd -S $server -d $dbName -U $user -P $pwd -i "scripts.sql" -b
 
