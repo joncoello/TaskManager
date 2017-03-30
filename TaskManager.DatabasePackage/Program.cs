@@ -32,8 +32,6 @@ namespace TaskManager.DatabasePackage
                 Console.WriteLine("Script failed");
                 Console.WriteLine(ex.ToString());
             }
-
-            Console.ReadKey();
             
         }
     }
