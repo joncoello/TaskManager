@@ -8,5 +8,16 @@ namespace TaskManager.SqlRepositories
 {
     public class SQLClient
     {
+        private string connectionString;
+
+        public SQLClient(string connectionString)
+        {
+            this.connectionString = connectionString;
+        }
+
+        public object GetSingle<T>(string storedProcedureName, object parameters)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
