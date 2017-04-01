@@ -12,4 +12,7 @@
     <description>An Application to manage tasks</description>
     <releaseNotes>This is the first release of the App...</releaseNotes>
   </metadata>
+  <files>
+    <file src="dist\**" target="" />
+  </files>
 </package>
