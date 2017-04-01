@@ -75,7 +75,7 @@
     <Content Include="tsconfig.json" />
     <Content Include="typings.json" />
     <Content Include="tslint.json" />
-    <Content Include=".nuspec" />
+    <Content Include="TaskManager.WebSite.nuspec" />
     <Content Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
