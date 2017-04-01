@@ -12,7 +12,7 @@
     <description>An Application to manage tasks</description>
     <releaseNotes>This is the first release of the App...</releaseNotes>
   </metadata>
-  <contentFiles>
-    <files src="dist\**" copyToOutput="true" />
-  </contentFiles>
+  <files>
+    <file src="dist\**" />
+  </files>
 </package>
