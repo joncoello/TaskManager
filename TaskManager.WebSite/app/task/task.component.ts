@@ -53,9 +53,6 @@ export class TaskComponent implements OnInit {
     public nameField: FormControl;
     public bodyField: FormControl;
 
-    private baseUrl = 'http://jctaskmanagerapi.azurewebsites.net';
-    // private baseUrl = 'http://localhost:42992';
-    private tasksUrl = this.baseUrl + '/api/task';  // url to web API
     private taskID: string;
 
     constructor(private taskService: TaskService, private route: ActivatedRoute, private fb: FormBuilder) {
