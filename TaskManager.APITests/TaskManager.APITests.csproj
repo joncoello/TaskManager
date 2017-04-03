@@ -117,6 +117,10 @@
       <Project>{afdae20c-1b01-417a-9d94-c6418f450002}</Project>
       <Name>TaskManager.API</Name>
     </ProjectReference>
+    <ProjectReference Include="..\TaskManager.DomainModel\TaskManager.DomainModel.csproj">
+      <Project>{da373751-9a88-4f17-94c7-bac1fffafba5}</Project>
+      <Name>TaskManager.DomainModel</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

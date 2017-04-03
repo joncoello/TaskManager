@@ -15,9 +15,9 @@ import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
                 <input  class="form-control"
                         placeholder="new task"
                         type="text"
-                        id="name"
+                        id="categoryName"
                         autocomplete="off"
-                        [formControl]="addTaskForm.controls['name']">
+                        [formControl]="addTaskForm.controls['categoryName']">
                 <span class="input-group-btn">
                     <button class="btn btn-default" type="submit">add</button>
                 </span>
@@ -53,7 +53,7 @@ export class CategoryListComponent {
     public ngOnInit() {
         this.addTaskNameField = new FormControl('');
         this.addTaskForm = this.fb.group({
-            'name': this.addTaskNameField
+            'categoryName': this.addTaskNameField
         });
 
         this.isLoading = true;

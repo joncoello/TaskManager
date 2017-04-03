@@ -31,5 +31,13 @@ namespace TaskManager.API.Controllers
             var result = await _categoryRepository.GetAll();
             return Ok<IEnumerable<TaskCategory>>(result);
         }
+
+        [Route("")]
+        public async Task<IHttpActionResult> Post(TaskCategory newCateogry)
+        {
+            await _categoryRepository.Create(newCateogry);
+            return Created<TaskCategory>("", newCateogry);
+        }
+
     }
 }
