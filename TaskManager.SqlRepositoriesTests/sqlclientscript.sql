@@ -59,6 +59,14 @@ as
 
 go
 
+create procedure spGetTestSimpleEntityList
+
+as
+
+	select * from testsimpleentity
+
+go
+
 
 create procedure spGetTestComplexEntities
 
