@@ -8,7 +8,7 @@ namespace TaskManager.SqlRepositoriesTests
 {
     internal class TestComplexEntity
     {
-        public int ID { get; set; }
+        public int TestComplexEntityID { get; set; }
         public string TestComplexEntityName { get; set; }
 
         public TestSimpleEntity Parent { get; set; }

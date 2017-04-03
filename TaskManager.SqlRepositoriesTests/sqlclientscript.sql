@@ -50,7 +50,7 @@ create procedure spGetTestSimpleEntity
 as
 
 	select 
-		TestSimpleEntityID as ID, 
+		TestSimpleEntityID, 
 		TestSimpleEntityName
 	from 
 		TestSimpleEntity 
@@ -65,10 +65,10 @@ create procedure spGetTestComplexEntities
 as
 
 	select 
-		ce.TestComplexEntityID as ID,
+		ce.TestComplexEntityID,
 		ce.TestComplexEntityName,
-		ce.TestSimpleEntityID as ParentID,
-		se.TestSimpleEntityID as ID,
+		ce.TestSimpleEntityID,
+		se.TestSimpleEntityID,
 		se.TestSimpleEntityName
 		
 	from 

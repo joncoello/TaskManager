@@ -26,13 +26,13 @@ namespace TaskManager.SqlRepositories
             }
         }
 
-        public async Task<IEnumerable<TReturn>> GetComplex<T1, T2, TReturn>(string storedProcedureName, Func<T1, T2, TReturn> map)
+        public async Task<IEnumerable<TReturn>> GetComplex<T1, T2, TReturn>(string storedProcedureName, Func<T1, T2, TReturn> map, string splitOn)
         {
             using (var conn = new SqlConnection(_connectionString))
             {
                 await conn.OpenAsync();
 
-                var data = conn.Query<T1, T2, TReturn>(storedProcedureName, map);
+                var data = conn.Query<T1, T2, TReturn>(storedProcedureName, map, splitOn: splitOn);
 
                 return data;
 

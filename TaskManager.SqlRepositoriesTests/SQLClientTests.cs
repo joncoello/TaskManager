@@ -36,7 +36,7 @@ namespace TaskManager.SqlRepositoriesTests
             });
 
             Assert.NotNull(entity);
-            Assert.Equal(1, entity.ID);
+            Assert.Equal(1, entity.TestSimpleEntityID);
             Assert.Equal("bob", entity.TestSimpleEntityName);
 
         }
@@ -53,12 +53,8 @@ namespace TaskManager.SqlRepositoriesTests
 
             var entity = 
                 await sut.GetComplex<TestComplexEntity, TestSimpleEntity, TestComplexEntity>("spGetTestComplexEntities",
-                    (complex, simple)=> { complex.Parent = simple; return complex; });
+                    (complex, simple)=> { complex.Parent = simple; return complex; }, "TestSimpleEntityID");
 
-
-            Assert.NotNull(entity);
-            Assert.Equal(6, entity.Count());
-            Assert.NotNull(entity.ToList()[0].Parent);
 
 
         }
