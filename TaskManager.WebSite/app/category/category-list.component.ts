@@ -26,7 +26,7 @@ import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
         </form>
         <ul class="list-group">
            <li *ngFor='let item of data' class="list-group-item">
-              <a [routerLink]="['task', item.id]">{{item.name}}</a>
+              <a [routerLink]="['task', item.taskCategoryID]">{{item.categoryName}}</a>
            </li>
         </ul>
     </div>
