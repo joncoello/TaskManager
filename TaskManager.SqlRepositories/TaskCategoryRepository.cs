@@ -14,6 +14,7 @@ namespace TaskManager.SqlRepositories
 
         public async Task Create(TaskCategory newTaskCategory)
         {
+            newTaskCategory.TaskCategoryID = Guid.NewGuid();
             _categories.Add(newTaskCategory);
         }
 
@@ -33,6 +34,15 @@ namespace TaskManager.SqlRepositories
             if (taskCatgoryToUpdate != null)
             {
                 taskCatgoryToUpdate.TaskCategoryName = taskCategory.TaskCategoryName;
+            }
+        }
+
+        public void Delete(Guid taskCategoryID)
+        {
+            var taskCategoryToRemove = _categories.FirstOrDefault(tc => tc.TaskCategoryID == taskCategoryID);
+            if (taskCategoryToRemove != null)
+            {
+                _categories.Remove(taskCategoryToRemove);
             }
         }
     }

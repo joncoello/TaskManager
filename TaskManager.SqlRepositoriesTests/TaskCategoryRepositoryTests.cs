@@ -71,5 +71,24 @@ namespace TaskManager.SqlRepositoriesTests
 
         }
 
+        [Fact]
+        public async Task TaskCategoryRepository_Delete()
+        {
+            var newTaskCategory = await TaskCategoryRepository_Create();
+
+            var sut = new TaskCategoryRepository();
+
+            var taskCategories = await sut.GetAll(newTaskCategory.TaskCategoryID);
+
+            sut.Delete(newTaskCategory.TaskCategoryID);
+
+            taskCategories = await sut.GetAll(newTaskCategory.TaskCategoryID);
+
+            Assert.False(taskCategories.Any(tc => tc.TaskCategoryID == newTaskCategory.TaskCategoryID));
+
+        }
+
+
+
     }
 }
