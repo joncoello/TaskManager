@@ -21,5 +21,19 @@ namespace TaskManager.SqlRepositories
         {
             return _categories.FirstOrDefault(c => c.TaskCategoryID == taskCategoryID);
         }
+
+        public async Task<List<TaskCategory>> GetAll(Guid taskCategoryID)
+        {
+            return _categories;
+        }
+
+        public void Update(TaskCategory taskCategory)
+        {
+            var taskCatgoryToUpdate = _categories.FirstOrDefault(tc => tc.TaskCategoryID == taskCategory.TaskCategoryID);
+            if (taskCatgoryToUpdate != null)
+            {
+                taskCatgoryToUpdate.TaskCategoryName = taskCategory.TaskCategoryName;
+            }
+        }
     }
 }

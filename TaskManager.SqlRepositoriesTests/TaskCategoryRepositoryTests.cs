@@ -41,5 +41,35 @@ namespace TaskManager.SqlRepositoriesTests
 
         }
 
+        [Fact]
+        public async Task TaskCategoryRepository_GetAll()
+        {
+            var newTaskCategory = await TaskCategoryRepository_Create();
+
+            var sut = new TaskCategoryRepository();
+
+            List<TaskCategory> taskCategories = await sut.GetAll(newTaskCategory.TaskCategoryID);
+
+            Assert.True(taskCategories.Any(tc=>tc.TaskCategoryID==newTaskCategory.TaskCategoryID));
+
+        }
+
+        [Fact]
+        public async Task TaskCategoryRepository_Update()
+        {
+            var newTaskCategory = await TaskCategoryRepository_Create();
+
+            var sut = new TaskCategoryRepository();
+
+            var taskCategory = await sut.Get(newTaskCategory.TaskCategoryID);
+            taskCategory.TaskCategoryName = "test123";
+            sut.Update(taskCategory);
+
+            var updateTaskCategory = await sut.Get(newTaskCategory.TaskCategoryID);
+
+            Assert.Equal(taskCategory.TaskCategoryName, updateTaskCategory.TaskCategoryName);
+
+        }
+
     }
 }
