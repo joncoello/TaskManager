@@ -122,15 +122,22 @@
     <Compile Include="Controllers\HelloController.cs" />
     <Compile Include="Controllers\TaskController.cs" />
     <Compile Include="Infrastructure\NoCacheHeaderFilter.cs" />
-    <Compile Include="Models\CategoryItem.cs" />
     <Compile Include="Models\GridItem.cs" />
     <Compile Include="Models\TaskItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repositories\CategoryRepository.cs" />
     <Compile Include="Repositories\TaskRespository.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\TaskManager.DomainModel\TaskManager.DomainModel.csproj">
+      <Project>{da373751-9a88-4f17-94c7-bac1fffafba5}</Project>
+      <Name>TaskManager.DomainModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TaskManager.SqlRepositories\TaskManager.SqlRepositories.csproj">
+      <Project>{7623e2ad-fa2c-4dfd-8781-ab1741088cb8}</Project>
+      <Name>TaskManager.SqlRepositories</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

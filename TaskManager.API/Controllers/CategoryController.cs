@@ -1,11 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web.Http;
 using TaskManager.API.Models;
 using TaskManager.API.Repositories;
+using TaskManager.DomainModel.Entities;
+using TaskManager.SqlRepositories;
 
 namespace TaskManager.API.Controllers
 {
@@ -13,17 +17,19 @@ namespace TaskManager.API.Controllers
     public class CategoryController : ApiController
     {
 
-        private CategoryRepository _categoryRepository;
+        private TaskCategoryRepository _categoryRepository;
 
         public CategoryController()
         {
-            _categoryRepository = new CategoryRepository();
+            var connectionString = ConfigurationManager.ConnectionStrings["TaskManager"].ConnectionString;
+            var sqlClient = new SQLClient(connectionString);
+            _categoryRepository = new TaskCategoryRepository(sqlClient);
         }
 
         [Route("")]
-        public IHttpActionResult Get() {
-            var result = _categoryRepository.All();
-            return Ok<IEnumerable<CategoryItem>>(result);
+        public async Task<IHttpActionResult> Get() {
+            var result = await _categoryRepository.GetAll();
+            return Ok<IEnumerable<TaskCategory>>(result);
         }
     }
 }

@@ -15,12 +15,10 @@ namespace TaskManager.API.Controllers
     {
 
         private TaskRespository _taskRepository;
-        private CategoryRepository _categoryRepository;
-
+        
         public TaskController()
         {
             _taskRepository = new TaskRespository();
-            _categoryRepository = new CategoryRepository();
         }
         
         [Route("")]
@@ -40,8 +38,7 @@ namespace TaskManager.API.Controllers
             }
             var result = new
             {
-                task = task,
-                categories = _categoryRepository.All()
+                task = task
             };
             return Ok(result);
         }

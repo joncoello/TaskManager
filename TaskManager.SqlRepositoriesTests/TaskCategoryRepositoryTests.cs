@@ -49,7 +49,7 @@ namespace TaskManager.SqlRepositoriesTests
 
             var sut = CreateSUT();
 
-            var taskCategories = await sut.GetAll(newTaskCategory.TaskCategoryID);
+            var taskCategories = await sut.GetAll();
 
             Assert.True(taskCategories.Any(tc=>tc.TaskCategoryID==newTaskCategory.TaskCategoryID));
 
@@ -79,11 +79,11 @@ namespace TaskManager.SqlRepositoriesTests
 
             var sut = CreateSUT();
 
-            var taskCategories = await sut.GetAll(newTaskCategory.TaskCategoryID);
+            var taskCategories = await sut.GetAll();
 
-            sut.Delete(newTaskCategory.TaskCategoryID);
+            await sut.Delete(newTaskCategory.TaskCategoryID);
 
-            taskCategories = await sut.GetAll(newTaskCategory.TaskCategoryID);
+            taskCategories = await sut.GetAll();
 
             Assert.False(taskCategories.Any(tc => tc.TaskCategoryID == newTaskCategory.TaskCategoryID));
 

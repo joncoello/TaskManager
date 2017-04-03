@@ -32,7 +32,7 @@ namespace TaskManager.SqlRepositories
             });
         }
 
-        public async Task<IEnumerable<TaskCategory>> GetAll(Guid taskCategoryID)
+        public async Task<IEnumerable<TaskCategory>> GetAll()
         {
             return await _sqlClient.GetList<TaskCategory>("Task.TaskCategory_GetAll");
         }
