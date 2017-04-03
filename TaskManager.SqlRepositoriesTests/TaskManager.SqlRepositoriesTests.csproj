@@ -67,6 +67,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SQLClientTests.cs" />
     <Compile Include="TaskCategoryRepositoryTests.cs" />
+    <Compile Include="TestComplexEntity.cs" />
     <Compile Include="TestSimpleEntity.cs" />
     <Compile Include="UseDatabaseAttribute.cs" />
   </ItemGroup>
@@ -86,6 +87,9 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="sqlclientscript.sql" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

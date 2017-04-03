@@ -36,10 +36,33 @@ namespace TaskManager.SqlRepositoriesTests
             });
 
             Assert.NotNull(entity);
-            Assert.Equal(1, entity.TestSimpleEntityID);
+            Assert.Equal(1, entity.ID);
             Assert.Equal("bob", entity.TestSimpleEntityName);
 
         }
+
+        [Fact]
+        public async Task SQLClient_GetComplex()
+        {
+            var connectionString = ConfigurationManager.ConnectionStrings["TaskManager"].ConnectionString;
+            var csb = new DbConnectionStringBuilder();
+            csb.ConnectionString = connectionString;
+            csb["database"] = "SQLClientTest";
+
+            var sut = new SQLClient(csb.ConnectionString);
+
+            var entity = 
+                await sut.GetComplex<TestComplexEntity, TestSimpleEntity, TestComplexEntity>("spGetTestComplexEntities",
+                    (complex, simple)=> { complex.Parent = simple; return complex; });
+
+
+            Assert.NotNull(entity);
+            Assert.Equal(6, entity.Count());
+            Assert.NotNull(entity.ToList()[0].Parent);
+
+
+        }
+
 
     }
 }
