@@ -50,7 +50,7 @@ create procedure spGetTestSimpleEntity
 as
 
 	select 
-		TestSimpleEntityID, 
+		TestSimpleEntityID as ID, 
 		TestSimpleEntityName
 	from 
 		TestSimpleEntity 
