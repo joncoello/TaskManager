@@ -16,3 +16,4 @@ as
 	from
 		Task.TaskCategory
 
+go

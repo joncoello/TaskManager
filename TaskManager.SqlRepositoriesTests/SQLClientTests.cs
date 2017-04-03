@@ -77,5 +77,7 @@ namespace TaskManager.SqlRepositoriesTests
         }
 
 
+        //TODO error when proc doesn't exist
+
     }
 }

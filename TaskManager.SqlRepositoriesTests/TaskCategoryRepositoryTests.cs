@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,11 +18,11 @@ namespace TaskManager.SqlRepositoriesTests
         {
 
             var newTaskCategory = new TaskCategory() {
-                TaskCategoryName = "Urgent"
+                CategoryName = "Urgent"
             };
 
-            var sut = new TaskCategoryRepository();
-
+            var sut = CreateSUT();
+            
             await sut.Create(newTaskCategory);
 
             return newTaskCategory;
@@ -33,11 +34,11 @@ namespace TaskManager.SqlRepositoriesTests
         {
             var newTaskCategory = await TaskCategoryRepository_Create();
 
-            var sut = new TaskCategoryRepository();
+            var sut = CreateSUT();
 
             var taskCategory = await sut.Get(newTaskCategory.TaskCategoryID);
 
-            Assert.Equal(newTaskCategory.TaskCategoryName, taskCategory.TaskCategoryName);
+            Assert.Equal(newTaskCategory.CategoryName, taskCategory.CategoryName);
 
         }
 
@@ -46,9 +47,9 @@ namespace TaskManager.SqlRepositoriesTests
         {
             var newTaskCategory = await TaskCategoryRepository_Create();
 
-            var sut = new TaskCategoryRepository();
+            var sut = CreateSUT();
 
-            List<TaskCategory> taskCategories = await sut.GetAll(newTaskCategory.TaskCategoryID);
+            var taskCategories = await sut.GetAll(newTaskCategory.TaskCategoryID);
 
             Assert.True(taskCategories.Any(tc=>tc.TaskCategoryID==newTaskCategory.TaskCategoryID));
 
@@ -59,15 +60,15 @@ namespace TaskManager.SqlRepositoriesTests
         {
             var newTaskCategory = await TaskCategoryRepository_Create();
 
-            var sut = new TaskCategoryRepository();
+            var sut = CreateSUT();
 
             var taskCategory = await sut.Get(newTaskCategory.TaskCategoryID);
-            taskCategory.TaskCategoryName = "test123";
-            sut.Update(taskCategory);
+            taskCategory.CategoryName = "test123";
+            await sut.Update(taskCategory);
 
             var updateTaskCategory = await sut.Get(newTaskCategory.TaskCategoryID);
 
-            Assert.Equal(taskCategory.TaskCategoryName, updateTaskCategory.TaskCategoryName);
+            Assert.Equal(taskCategory.CategoryName, updateTaskCategory.CategoryName);
 
         }
 
@@ -76,7 +77,7 @@ namespace TaskManager.SqlRepositoriesTests
         {
             var newTaskCategory = await TaskCategoryRepository_Create();
 
-            var sut = new TaskCategoryRepository();
+            var sut = CreateSUT();
 
             var taskCategories = await sut.GetAll(newTaskCategory.TaskCategoryID);
 
@@ -86,6 +87,13 @@ namespace TaskManager.SqlRepositoriesTests
 
             Assert.False(taskCategories.Any(tc => tc.TaskCategoryID == newTaskCategory.TaskCategoryID));
 
+        }
+
+        private TaskCategoryRepository CreateSUT() {
+            var connectionString = ConfigurationManager.ConnectionStrings["TaskManager"].ConnectionString;
+            var sqlClient = new SQLClient(connectionString);
+            var sut = new TaskCategoryRepository(sqlClient);
+            return sut;
         }
 
 

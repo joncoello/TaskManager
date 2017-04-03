@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace TaskManager.SqlRepositories
 {
-    public class SQLClient
+    public class SQLClient : ISQLClient
     {
         private string _connectionString;
 
@@ -45,10 +45,19 @@ namespace TaskManager.SqlRepositories
             {
                 await conn.OpenAsync();
 
-                var data = conn.Query<T>(storedProcedureName);
+                var data = await conn.QueryAsync<T>(storedProcedureName);
 
                 return data;
 
+            }
+        }
+
+        public async Task RunSp(string storedProcedureName, object parameters)
+        {
+            using (var conn = new SqlConnection(_connectionString))
+            {
+                await conn.OpenAsync();
+                await conn.ExecuteAsync(storedProcedureName, commandType: System.Data.CommandType.StoredProcedure, param: parameters);
             }
         }
     }

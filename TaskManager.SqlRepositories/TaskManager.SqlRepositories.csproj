@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ISQLClient.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SQLClient.cs" />
     <Compile Include="TaskCategoryRepository.cs" />

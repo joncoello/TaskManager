@@ -9,41 +9,49 @@ namespace TaskManager.SqlRepositories
 {
     public class TaskCategoryRepository
     {
+        private readonly ISQLClient _sqlClient;
 
-        private static List<TaskCategory> _categories = new List<TaskCategory>();
-
+        public TaskCategoryRepository(ISQLClient sqlClient)
+        {
+            _sqlClient = sqlClient;
+        }
+        
         public async Task Create(TaskCategory newTaskCategory)
         {
             newTaskCategory.TaskCategoryID = Guid.NewGuid();
-            _categories.Add(newTaskCategory);
+            await _sqlClient.RunSp("Task.TaskCategory_Insert", new {
+                TaskCategoryID = newTaskCategory.TaskCategoryID,
+                CategoryName = newTaskCategory.CategoryName
+            });
         }
 
         public async Task<TaskCategory> Get(Guid taskCategoryID)
         {
-            return _categories.FirstOrDefault(c => c.TaskCategoryID == taskCategoryID);
+            return await _sqlClient.GetSingle<TaskCategory>("Task.TaskCategory_Get", new {
+                TaskCategoryID = taskCategoryID
+            });
         }
 
-        public async Task<List<TaskCategory>> GetAll(Guid taskCategoryID)
+        public async Task<IEnumerable<TaskCategory>> GetAll(Guid taskCategoryID)
         {
-            return _categories;
+            return await _sqlClient.GetList<TaskCategory>("Task.TaskCategory_GetAll");
         }
 
-        public void Update(TaskCategory taskCategory)
+        public async Task Update(TaskCategory taskCategory)
         {
-            var taskCatgoryToUpdate = _categories.FirstOrDefault(tc => tc.TaskCategoryID == taskCategory.TaskCategoryID);
-            if (taskCatgoryToUpdate != null)
+            await _sqlClient.RunSp("Task.TaskCategory_Update", new
             {
-                taskCatgoryToUpdate.TaskCategoryName = taskCategory.TaskCategoryName;
-            }
+                TaskCategoryID = taskCategory.TaskCategoryID,
+                CategoryName = taskCategory.CategoryName
+            });
         }
 
-        public void Delete(Guid taskCategoryID)
+        public async Task Delete(Guid taskCategoryID)
         {
-            var taskCategoryToRemove = _categories.FirstOrDefault(tc => tc.TaskCategoryID == taskCategoryID);
-            if (taskCategoryToRemove != null)
+            await _sqlClient.RunSp("Task.TaskCategory_Delete", new
             {
-                _categories.Remove(taskCategoryToRemove);
-            }
+                TaskCategoryID = taskCategoryID
+            });
         }
     }
 }
