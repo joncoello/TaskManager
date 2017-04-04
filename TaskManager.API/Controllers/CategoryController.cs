@@ -39,5 +39,12 @@ namespace TaskManager.API.Controllers
             return Created<TaskCategory>("", newCateogry);
         }
 
+        [Route("{newCategoryID}")]
+        public async Task<IHttpActionResult> Delete(Guid newCategoryID)
+        {
+            await _categoryRepository.Delete(newCategoryID);
+            return Ok();
+        }
+
     }
 }
