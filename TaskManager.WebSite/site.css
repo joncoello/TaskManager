@@ -2,12 +2,16 @@
     text-align: center;
 }
 
-td{
+td {
     padding: 5px;
 }
 
-.amount-cell{
+.amount-cell {
     text-align: right;
+}
+
+.delete-button {
+    float: right;
 }
 
 /*.input-group{

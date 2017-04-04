@@ -136,7 +136,14 @@ gulp.task('vendor:20:copy', function () {
       [
           'node_modules/bootstrap/dist/fonts/*.*'
       ])
-      .pipe(gulp.dest('fonts'))
+      .pipe(gulp.dest('fonts'));
+
+    gulp.src(
+      [
+          'node_modules/font-awesome/fonts/*.*'
+      ])
+      .pipe(gulp.dest('fonts'));
+
 
     return gulp.src(
       [
@@ -147,6 +154,7 @@ gulp.task('vendor:20:copy', function () {
           'node_modules/bootstrap/dist/css/bootstrap.min.css',
           'node_modules/bootstrap/dist/js/bootstrap.min.js',
           'node_modules/chart.js/dist/chart.js',
+          'node_modules/font-awesome/css/font-awesome.min.css',
           'site.css'
       ])
       .pipe(gulp.dest('lib'))

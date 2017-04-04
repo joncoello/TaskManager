@@ -27,6 +27,7 @@ import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
         <ul class="list-group">
            <li *ngFor='let item of data' class="list-group-item">
               <a [routerLink]="['task', item.taskCategoryID]">{{item.categoryName}}</a>
+              <a class="btn btn-danger btn-xs delete-button" href="#"><i class="fa fa-trash-o fa-sm"></i> Delete</a>
            </li>
         </ul>
     </div>
