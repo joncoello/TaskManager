@@ -27,7 +27,9 @@ import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
         <ul class="list-group">
            <li *ngFor='let item of data' class="list-group-item">
               <a [routerLink]="['task', item.taskCategoryID]">{{item.categoryName}}</a>
-              <a class="btn btn-danger btn-xs delete-button" href="#"><i class="fa fa-trash-o fa-sm"></i> Delete</a>
+              <a    class="btn btn-danger btn-xs delete-button" 
+                    (click)="deleteCategory(item.taskCategoryID)">
+                <i class="fa fa-trash-o fa-sm"></i> Delete</a>
            </li>
         </ul>
     </div>
@@ -78,6 +80,14 @@ export class CategoryListComponent {
             .subscribe((res: Response) => {
                 this.data = res.json();
                 this.isLoading = false;
+            });
+    }
+
+    public deleteCategory(categoryToDeleteID: any) {
+        this.http.delete(this.tasksUrl + '/' + categoryToDeleteID)
+            .subscribe((res: Response) => {
+                console.log(res.statusText);
+                this.loadTasks();
             });
     }
 
