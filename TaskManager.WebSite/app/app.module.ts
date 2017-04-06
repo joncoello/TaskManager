@@ -5,7 +5,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule }      from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
 import {APP_BASE_HREF} from '@angular/common';
-import { FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AgGridModule } from "ag-grid-angular/main";
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/app.homeComponent';
@@ -16,6 +17,7 @@ import { CategoryListComponent } from './category/category-list.component';
 import { AboutComponent } from './about/about.component';
 import { GridComponent } from './grid/grid.component';
 import { GridService } from './grid/grid.service';
+import { RedComponentComponent } from "./grid/red-component.component";
 
 import { ChartsModule } from 'ng2-charts';
 
@@ -38,7 +40,10 @@ const routes: Routes = [
         RouterModule.forRoot(routes),
         FormsModule,
         ReactiveFormsModule,
-        ChartsModule
+        ChartsModule,
+        AgGridModule.withComponents(
+            [RedComponentComponent]
+        )
     ],
     declarations: [
         AppComponent,
@@ -47,7 +52,8 @@ const routes: Routes = [
         HomeComponent,
         CategoryListComponent,
         AboutComponent,
-        GridComponent
+        GridComponent,
+        RedComponentComponent
     ],
     bootstrap: [AppComponent],
     providers: [

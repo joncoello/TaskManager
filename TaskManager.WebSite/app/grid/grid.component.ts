@@ -2,7 +2,11 @@
 
 import { GridService } from './grid.service';
 
+import { RedComponentComponent } from './red-component.component';
+
 import { Http, Response } from '@angular/http';
+
+import { GridOptions } from "ag-grid";
 
 @Component({
     selector: 'grid',
@@ -22,7 +26,17 @@ import { Http, Response } from '@angular/http';
                 </table>
                 <button class="btn btn-primary" type="submit">Submit</button>
             </form>
+            <ag-grid-angular #agGrid style="width: 100%; height: 200px;" class="ag-fresh"
+                [gridOptions]="gridOptions">
+            </ag-grid-angular>
             `
+
+    /*
+    <ag-grid-angular #agGrid style="width: 100%; height: 200px;" class="ag-fresh"
+                [gridOptions]="gridOptions">
+            </ag-grid-angular>
+    */
+
 })
 export class GridComponent {
     pageTitle: string = 'Transactions';
@@ -32,7 +46,29 @@ export class GridComponent {
         { description: 'Rent', amount: '500' }
     ];
 
+    private gridOptions: GridOptions;
+
     constructor(private gridService: GridService) {
+        this.gridOptions = {};
+        this.gridOptions.columnDefs = [
+            {
+                headerName: "ID",
+                field: "id",
+                width: 100
+            },
+            {
+                headerName: "Value",
+                field: "value",
+                //cellRendererFramework: RedComponentComponent,
+                width: 100
+            },
+
+        ];
+        this.gridOptions.rowData = [
+            { id: 5, value: 10 },
+            { id: 10, value: 15 },
+            { id: 15, value: 20 }
+        ]
     }
 
     public onSubmit(): void {

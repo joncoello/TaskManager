@@ -155,6 +155,8 @@ gulp.task('vendor:20:copy', function () {
           'node_modules/bootstrap/dist/js/bootstrap.min.js',
           'node_modules/chart.js/dist/chart.js',
           'node_modules/font-awesome/css/font-awesome.min.css',
+          'node_modules/ag-grid/dist/styles/ag-grid.css',
+          'node_modules/ag-grid/dist/styles/theme-fresh.css',
           'site.css'
       ])
       .pipe(gulp.dest('lib'))
