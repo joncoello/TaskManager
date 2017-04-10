@@ -10,6 +10,7 @@ using Xunit;
 
 namespace TaskManager.SqlRepositoriesTests
 {
+    [Trait("Category", "Repo")]
     public class TaskCategoryRepositoryTests
     {
 

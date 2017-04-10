@@ -11,6 +11,7 @@ using Xunit;
 namespace TaskManager.SqlRepositoriesTests
 {
 
+    [Trait("Category", "SQLClient")]
     public class SQLClientTests
     {
 
