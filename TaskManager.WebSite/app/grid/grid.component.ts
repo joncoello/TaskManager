@@ -55,13 +55,6 @@ export class GridComponent {
 
     }
 
-    public onSubmit(): void {
-        this.gridService.saveGrid(this.data)
-            .subscribe((res: Response) => {
-                console.log(res);
-            });
-    }
-
     private createRowData() {
         var rowData: any[] = [];
 
