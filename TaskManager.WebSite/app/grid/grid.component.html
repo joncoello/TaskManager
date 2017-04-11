@@ -1,0 +1,31 @@
+﻿<h2>{{pageTitle}}</h2>
+<form id="taskEdit"
+      (ngSubmit)="onSubmit()">
+    <table>
+        <tr *ngFor='let item of data'>
+            <td>
+                <label>{{item.description}}</label>
+            </td>
+            <td class="amount-cell">
+                <label>{{item.amount}}</label>
+            </td>
+        </tr>
+    </table>
+    <button class="btn btn-primary" type="submit">Submit</button>
+</form>
+<ag-grid-angular #agGrid style="width: 100%; height: 200px;" class="ag-fresh"
+                 [gridOptions]="gridOptions"
+                 [columnDefs]="columnDefs"
+                 [showToolPanel]="showToolPanel"
+                 [rowData]="rowData"
+                 enableColResize
+                 enableSorting
+                 enableFilter
+                 groupHeaders
+                 suppressRowClickSelection
+                 toolPanelSuppressGroups
+                 toolPanelSuppressValues
+                 debug
+                 rowHeight="22"
+                 rowSelection="multiple">
+</ag-grid-angular>
