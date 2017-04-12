@@ -54,7 +54,7 @@ export class GridComponent {
         //}
 
     }
-
+   
     private createRowData() {
         var rowData: any[] = [];
 
@@ -142,7 +142,6 @@ export class GridComponent {
         ];
     }
 
-    //Utility function used to pad the date formatting.
     private pad(num: any, totalStringSize: any) {
         let asString = num + "";
         while (asString.length < totalStringSize) asString = "0" + asString;

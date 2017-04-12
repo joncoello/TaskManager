@@ -2,7 +2,7 @@
 <div *ngIf='!isLoading'>
     <form [formGroup]="addTaskForm"
           (ngSubmit)="onSubmit(addTaskForm.value)">
-        <div class="input-group">
+        <!--<div class="input-group">
             <input class="form-control"
                    placeholder="new task"
                    type="text"
@@ -12,10 +12,26 @@
             <span class="input-group-btn">
                 <button class="btn btn-default" type="submit">add</button>
             </span>
+        </div>-->
+
+        <div class="form-group">
+            <label class="control-label">Create new</label>
+            <div class="input-group">
+
+                <input 
+                       type="text" 
+                       class="form-control"
+                       id="name"
+                       [formControl]="addTaskForm.controls['name']">
+                       
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit">add</button>
+                </span>
+            </div>
         </div>
 
     </form>
-    <table>
+    <table class="table table-striped table-hover">
         <tr *ngFor='let item of data' [routerLink]="['task', item.id]">
             <td>
                 <h4 class="list-group-item-heading">{{item.name}}</h4>

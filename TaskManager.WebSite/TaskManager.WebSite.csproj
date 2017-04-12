@@ -64,8 +64,10 @@
   <ItemGroup>
     <Content Include="app\grid\grid.component.html" />
     <Content Include="app\task\task-list.component.html" />
+    <Content Include="bootstrap.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="gulpfile.js" />
+    <Content Include="img\gears.gif" />
     <Content Include="img\loading.gif" />
     <Content Include="img\loading2.gif" />
     <Content Include="img\table-loading.gif" />
