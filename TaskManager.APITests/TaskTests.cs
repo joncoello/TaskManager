@@ -98,7 +98,34 @@ namespace TaskManager.APITests
             }
 
         }
-        
+
+        [Fact]
+        public async Task Task_Delete()
+        {
+
+            var newTaskID = await Task_Post();
+
+            using (var serverAndClient = new HttpServerAndClient<Startup>())
+            {
+
+                var response = await serverAndClient.Client.DeleteAsync("api/task/" + newTaskID);
+
+                response.EnsureSuccessStatusCode();
+
+                response = await serverAndClient.Client.GetAsync("api/category");
+
+                response.EnsureSuccessStatusCode();
+
+                var content = await response.Content.ReadAsStringAsync();
+
+                var categories = JsonConvert.DeserializeObject<List<TaskItem>>(content);
+
+                Assert.False(categories.Any(t => t.ID == newTaskID));
+
+            }
+
+        }
+
     }
 
     public static class Extensons
