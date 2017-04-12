@@ -13,12 +13,7 @@ import { TaskService } from './task.service';
         <form   id="taskEdit"
                 [formGroup]="myForm"
                 (ngSubmit)="onSubmit(myForm.value)">
-            <div class="form-group">
-                <label>ID</label>
-                <label class="form-control">
-                    {{ idField.value }}
-                </label>
-            </div>
+            
             <div class="form-group">
                 <label for="nameInput">Name</label>
                 <input  class="form-control"
@@ -27,15 +22,33 @@ import { TaskService } from './task.service';
                         placeholder="Name"
                         [formControl]="myForm.controls['name']">
             </div>
-                <div *ngIf="myForm.controls['name'].hasError('required')" class="alert alert-danger" role="alert">
-                  <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-                  <span class="sr-only">Error:</span>
-                  Name is a required field
-                </div>
+            <div *ngIf="myForm.controls['name'].hasError('required')" class="alert alert-danger" role="alert">
+                <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                <span class="sr-only">Error:</span>
+                Name is a required field
+            </div>
+
+            <div class="form-group">
+                <label for="nameInput">Category</label>
+                <select class="form-control"
+                        id="cateogryInput"
+                        [formControl]="myForm.controls['category']">
+                    <option [value]="1">  
+                        High
+                    </option>
+                    <option [value]="2">  
+                        Medium
+                    </option>
+                    <option [value]="3">  
+                        Low
+                    </option>
+                </select>
+            </div>
+
             <div class="form-group">       
                 <label for="body">Body</label>
                 <textarea   id="body" 
-                            style="height: 200px;"
+                            style="height: 100px;"
                             class="form-control" 
                             placeholder="Description" 
                             required
@@ -51,6 +64,7 @@ export class TaskComponent implements OnInit {
     public myForm: FormGroup;
     public idField: FormControl;
     public nameField: FormControl;
+    public categoryField: FormControl;
     public bodyField: FormControl;
 
     private taskID: string;
@@ -58,10 +72,12 @@ export class TaskComponent implements OnInit {
     constructor(private taskService: TaskService, private route: ActivatedRoute, private fb: FormBuilder) {
         this.idField = new FormControl('', Validators.required);
         this.nameField = new FormControl('', Validators.required);
+        this.categoryField = new FormControl('');
         this.bodyField = new FormControl('');
         this.myForm = this.fb.group({
             'id': this.idField,
             'name': this.nameField,
+            'category': this.categoryField,
             'body': this.bodyField
         });
     }
