@@ -27,4 +27,8 @@ export class TaskService {
         return this.http.patch(this.tasksUrl + '/' + task.id, task);
     }
 
+    deleteTask(taskID: string): Observable<Response> {
+        return this.http.delete(this.tasksUrl + '/' + taskID);
+    }
+
 }

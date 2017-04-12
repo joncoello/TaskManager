@@ -53,4 +53,13 @@ export class TaskListComponent implements OnInit {
             });
     }
 
+    public deleteTask(taskID: string) {
+        this.isAdding = true;
+        this.taskService.deleteTask(taskID)
+            .subscribe((res: Response) => {
+                this.isAdding = false;
+                this.loadTasks();
+            });
+    }
+
 }
