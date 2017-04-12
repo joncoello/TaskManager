@@ -33,14 +33,8 @@ import { TaskService } from './task.service';
                 <select class="form-control"
                         id="cateogryInput"
                         [formControl]="myForm.controls['category']">
-                    <option [value]="1">  
-                        High
-                    </option>
-                    <option [value]="2">  
-                        Medium
-                    </option>
-                    <option [value]="3">  
-                        Low
+                    <option *ngFor='let item of categories'>
+                        {{item.categoryName}}
                     </option>
                 </select>
             </div>
@@ -66,6 +60,7 @@ export class TaskComponent implements OnInit {
     public nameField: FormControl;
     public categoryField: FormControl;
     public bodyField: FormControl;
+    public categories: any;
 
     private taskID: string;
 
@@ -96,6 +91,8 @@ export class TaskComponent implements OnInit {
                     this.nameField.patchValue(res.json().task.name);
                     this.bodyField.patchValue(res.json().task.body);
                     console.log('updated');
+
+                    this.categories = res.json().categories;
                 });
 
         });
