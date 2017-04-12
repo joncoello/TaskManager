@@ -38,11 +38,14 @@
                 <p class="list-group-item-text">{{item.body}}</p>
             </td>
             <td>
-                delete
+                <a class="btn btn-danger btn-xs delete-button"
+                   (click)="deleteCategory(item.taskCategoryID)">
+                    <i class="fa fa-trash-o fa-sm"></i>
+                </a>
             </td>
         </tr>
     </table>
 </div>
 <div *ngIf='isLoading || isAdding' class="table-loader">
-    <img src="/img/table-loading.gif" />
+    <img src="/img/gears.gif" />
 </div>

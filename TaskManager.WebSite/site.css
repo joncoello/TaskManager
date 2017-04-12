@@ -27,3 +27,7 @@ td {
     margin-left: 2px;
     min-width: 100%;
 }*/
+
+.table a {
+    text-decoration: none !important;
+}

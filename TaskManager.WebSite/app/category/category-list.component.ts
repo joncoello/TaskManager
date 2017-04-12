@@ -11,30 +11,38 @@ import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
         <div *ngIf='!isLoading' >
         <form   [formGroup]="addTaskForm"
                 (ngSubmit)="onSubmit(addTaskForm.value)">
-            <div class="input-group">
-                <input  class="form-control"
-                        placeholder="new task"
-                        type="text"
-                        id="categoryName"
-                        autocomplete="off"
-                        [formControl]="addTaskForm.controls['categoryName']">
-                <span class="input-group-btn">
-                    <button class="btn btn-default" type="submit">add</button>
-                </span>
-            </div>
 
+            <div class="form-group">
+                <label class="control-label">Create new</label>
+                <div class="input-group">
+
+                    <input  class="form-control"
+                            placeholder="new task"
+                            type="text"
+                            id="categoryName"
+                            autocomplete="off"
+                            [formControl]="addTaskForm.controls['categoryName']">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="submit">add</button>
+                    </span>
+                </div>
+            </div>
         </form>
-        <ul class="list-group">
-           <li *ngFor='let item of data' class="list-group-item">
-              <a [routerLink]="['task', item.taskCategoryID]">{{item.categoryName}}</a>
-              <a    class="btn btn-danger btn-xs delete-button" 
-                    (click)="deleteCategory(item.taskCategoryID)">
-                <i class="fa fa-trash-o fa-sm"></i> Delete</a>
-           </li>
-        </ul>
+        <table class="table table-striped table-hover">
+            <tr *ngFor='let item of data'>
+                <td>
+                    <a [routerLink]="['task', item.taskCategoryID]">{{item.categoryName}}</a>
+                </td>
+                <td>
+                  <a    class="btn btn-danger btn-xs delete-button" 
+                        (click)="deleteCategory(item.taskCategoryID)">
+                    <i class="fa fa-trash-o fa-sm"></i></a>
+                </td>
+           </tr>
+        </table>
     </div>
     <div *ngIf='isLoading || isAdding' class="table-loader">
-        <img src="/img/table-loading.gif" />
+        <img src="/img/gears.gif" />
     </div>
         `
 })
