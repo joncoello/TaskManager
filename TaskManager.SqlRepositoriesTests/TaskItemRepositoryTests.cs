@@ -51,5 +51,18 @@ namespace TaskManager.SqlRepositoriesTests
             return sut;
         }
 
+        [Fact]
+        public async Task TaskItemRepository_GetAll()
+        {
+            var newTaskItem = await TaskItemRepository_Create();
+
+            var sut = CreateSUT();
+
+            var taskItems = await sut.GetAll();
+
+            Assert.True(taskItems.Any(ti => ti.TaskItemID == newTaskItem.TaskItemID));
+
+        }
+
     }
 }

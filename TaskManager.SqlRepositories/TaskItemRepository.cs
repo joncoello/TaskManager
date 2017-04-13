@@ -33,5 +33,10 @@ namespace TaskManager.SqlRepositories
                 TaskItemID = taskItemID
             });
         }
+
+        public async Task<IEnumerable<TaskItem>> GetAll()
+        {
+            return await _sqlClient.GetList<TaskItem>("Task.TaskItem_GetAll");
+        }
     }
 }
