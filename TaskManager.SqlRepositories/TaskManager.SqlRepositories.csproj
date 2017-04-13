@@ -48,6 +48,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SQLClient.cs" />
     <Compile Include="TaskCategoryRepository.cs" />
+    <Compile Include="TaskItemRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TaskManager.DomainModel\TaskManager.DomainModel.csproj">

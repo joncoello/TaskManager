@@ -1,4 +1,4 @@
-﻿namespace TaskManager.SqlRepositoriesTests
+﻿namespace TaskManager.SqlRepositoriesTests.Mocks
 {
     internal class TestSimpleEntity
     {

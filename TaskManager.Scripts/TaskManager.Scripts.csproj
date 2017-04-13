@@ -52,6 +52,9 @@
     <Content Include="Task\Stored Procedures\TaskCategory_Get.sql">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Task\Stored Procedures\TaskItem_Insert.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Task\Stored Procedures\TaskCategory_Update.sql">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

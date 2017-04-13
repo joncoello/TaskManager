@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TaskManager.SqlRepositories;
+using TaskManager.SqlRepositoriesTests.Mocks;
 using Xunit;
 
 namespace TaskManager.SqlRepositoriesTests
