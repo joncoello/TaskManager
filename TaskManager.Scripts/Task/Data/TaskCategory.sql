@@ -1,4 +1,8 @@
-﻿if not exists (select * from Task.TaskCategory where CategoryName = 'Urgent')
+﻿if not exists (select * from Task.TaskCategory where CategoryName = '(none)')
+	insert into Task.TaskCategory(TaskCategoryID, CategoryName)
+	values(newid(), '(none)')
+
+if not exists (select * from Task.TaskCategory where CategoryName = 'Urgent')
 	insert into Task.TaskCategory(TaskCategoryID, CategoryName)
 	values(newid(), 'Urgent')
 
