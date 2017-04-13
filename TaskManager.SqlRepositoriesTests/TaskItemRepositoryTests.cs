@@ -14,7 +14,7 @@ namespace TaskManager.SqlRepositoriesTests
     public class TaskItemRepositoryTests
     {
         [Fact]
-        public async Task<TaskItem> TaskCategoryRepository_Create()
+        public async Task<TaskItem> TaskItemRepository_Create()
         {
 
             var newTaskItem = new TaskItem()
@@ -27,6 +27,19 @@ namespace TaskManager.SqlRepositoriesTests
             await sut.Create(newTaskItem);
 
             return newTaskItem;
+
+        }
+
+        [Fact]
+        public async Task TaskItemRepository_Get()
+        {
+            var newTaskItem = await TaskItemRepository_Create();
+
+            var sut = CreateSUT();
+
+            TaskItem taskItem = await sut.Get(newTaskItem.TaskItemID);
+
+            Assert.Equal(newTaskItem.TaskName, taskItem.TaskName);
 
         }
 

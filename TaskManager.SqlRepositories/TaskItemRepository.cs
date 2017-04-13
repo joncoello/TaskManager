@@ -25,5 +25,13 @@ namespace TaskManager.SqlRepositories
                 TaskName = newTaskItem.TaskName
             });
         }
+
+        public async Task<TaskItem> Get(Guid taskItemID)
+        {
+            return await _sqlClient.GetSingle<TaskItem>("Task.TaskItem_Get", new
+            {
+                TaskItemID = taskItemID
+            });
+        }
     }
 }
