@@ -89,6 +89,7 @@ export class TaskComponent implements OnInit {
                     console.log(res);
                     this.idField.patchValue(res.json().task.taskItemID);
                     this.nameField.patchValue(res.json().task.taskName);
+                    this.categoryField.patchValue(res.json().task.taskCategoryID);
                     this.bodyField.patchValue(res.json().task.body);
                     console.log('updated');
 
