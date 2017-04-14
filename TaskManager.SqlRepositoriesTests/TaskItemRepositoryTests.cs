@@ -43,14 +43,6 @@ namespace TaskManager.SqlRepositoriesTests
 
         }
 
-        private TaskItemRepository CreateSUT()
-        {
-            var connectionString = ConfigurationManager.ConnectionStrings["TaskManager"].ConnectionString;
-            var sqlClient = new SQLClient(connectionString);
-            var sut = new TaskItemRepository(sqlClient);
-            return sut;
-        }
-
         [Fact]
         public async Task TaskItemRepository_GetAll()
         {
@@ -79,6 +71,31 @@ namespace TaskManager.SqlRepositoriesTests
 
             Assert.Equal(taskCategory.TaskName, updateTaskItem.TaskName);
 
+        }
+
+        [Fact]
+        public async Task TaskItemRepository_Delete()
+        {
+            var newTaskItem = await TaskItemRepository_Create();
+
+            var sut = CreateSUT();
+
+            var taskItems = await sut.GetAll();
+
+            await sut.Delete(newTaskItem.TaskItemID);
+
+            taskItems = await sut.GetAll();
+
+            Assert.False(taskItems.Any(ti => ti.TaskItemID == newTaskItem.TaskItemID));
+
+        }
+
+        private TaskItemRepository CreateSUT()
+        {
+            var connectionString = ConfigurationManager.ConnectionStrings["TaskManager"].ConnectionString;
+            var sqlClient = new SQLClient(connectionString);
+            var sut = new TaskItemRepository(sqlClient);
+            return sut;
         }
 
     }

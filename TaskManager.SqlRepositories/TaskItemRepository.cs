@@ -47,5 +47,14 @@ namespace TaskManager.SqlRepositories
                 TaskName = taskItem.TaskName
             });
         }
+
+        public async Task Delete(Guid taskItemID)
+        {
+            await _sqlClient.RunSp("Task.TaskItem_Delete", new
+            {
+                TaskItemID = taskItemID
+            });
+        }
+
     }
 }
