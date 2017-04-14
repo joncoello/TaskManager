@@ -1,6 +1,6 @@
 ﻿/* tslint:disable:no-string-literal */
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { Http, Response } from '@angular/http';
 
@@ -64,7 +64,7 @@ export class TaskComponent implements OnInit {
 
     private taskID: string;
 
-    constructor(private taskService: TaskService, private route: ActivatedRoute, private fb: FormBuilder) {
+    constructor(private taskService: TaskService, private route: ActivatedRoute, private fb: FormBuilder, private router: Router) {
         this.idField = new FormControl('', Validators.required);
         this.nameField = new FormControl('', Validators.required);
         this.categoryField = new FormControl('');
@@ -104,6 +104,7 @@ export class TaskComponent implements OnInit {
         this.taskService.updateTask(form)
             .subscribe((res: Response) => {
                 console.log(res);
+                this.router.navigateByUrl('/tasks');
             });
 
     }
