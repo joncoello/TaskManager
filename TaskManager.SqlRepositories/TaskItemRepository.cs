@@ -38,5 +38,14 @@ namespace TaskManager.SqlRepositories
         {
             return await _sqlClient.GetList<TaskItem>("Task.TaskItem_GetAll");
         }
+
+        public async Task Update(TaskItem taskItem)
+        {
+            await _sqlClient.RunSp("Task.TaskItem_Update", new
+            {
+                TaskItemID = taskItem.TaskItemID,
+                TaskName = taskItem.TaskName
+            });
+        }
     }
 }

@@ -64,5 +64,22 @@ namespace TaskManager.SqlRepositoriesTests
 
         }
 
+        [Fact]
+        public async Task TaskItemRepository_Update()
+        {
+            var newTaskItem = await TaskItemRepository_Create();
+
+            var sut = CreateSUT();
+
+            var taskCategory = await sut.Get(newTaskItem.TaskItemID);
+            taskCategory.TaskName = "test123";
+            await sut.Update(taskCategory);
+
+            var updateTaskItem = await sut.Get(newTaskItem.TaskItemID);
+
+            Assert.Equal(taskCategory.TaskName, updateTaskItem.TaskName);
+
+        }
+
     }
 }
