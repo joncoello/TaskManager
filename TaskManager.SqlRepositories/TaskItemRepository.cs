@@ -16,10 +16,10 @@ namespace TaskManager.SqlRepositories
             this._sqlClient = sqlClient;
         }
 
-        public async Task Create(TaskItem newTaskItem)
+        public async Task<TaskItem> Create(TaskItem newTaskItem)
         {
             newTaskItem.TaskItemID = Guid.NewGuid();
-            await _sqlClient.RunSp("Task.TaskItem_Insert", new
+            return await _sqlClient.GetSingle<TaskItem>("Task.TaskItem_Insert", new
             {
                 TaskItemID = newTaskItem.TaskItemID,
                 TaskName = newTaskItem.TaskName
@@ -44,7 +44,7 @@ namespace TaskManager.SqlRepositories
             await _sqlClient.RunSp("Task.TaskItem_Update", new
             {
                 TaskItemID = taskItem.TaskItemID,
-                TaskCategoryID = taskItem.TaskCategoryID,
+                TaskCategoryID = taskItem.TaskCategoryID == Guid.Empty ? DBNull.Value : (object)taskItem.TaskCategoryID,
                 TaskName = taskItem.TaskName
             });
         }

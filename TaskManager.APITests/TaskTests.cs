@@ -35,7 +35,7 @@ namespace TaskManager.APITests
         }
 
         [Fact]
-        public async Task<Guid> Task_Post()
+        public async Task<TaskItem> Task_Post()
         {
 
             using (var serverAndClient = new HttpServerAndClient<Startup>())
@@ -52,7 +52,7 @@ namespace TaskManager.APITests
 
                 var task = await response.Content.ReadAsAsync<TaskItem>();
 
-                return task.TaskItemID;
+                return task;
 
             }
 
@@ -62,18 +62,14 @@ namespace TaskManager.APITests
         public async Task Task_Patch()
         {
 
-            var id = await Task_Post();
+            var task = await Task_Post();
+            task.TaskName = "Task 1";
 
             using (var serverAndClient = new HttpServerAndClient<Startup>())
             {
                 
                 var response = await serverAndClient.Client.PatchAsJsonAsync(
-                    "api/task/" + id,
-                    new TaskItem()
-                    {
-                        TaskItemID = id,
-                        TaskName = "Task 1"
-                    });
+                    "api/task/" + task.TaskItemID, task);
 
                 response.EnsureSuccessStatusCode();
                 
@@ -85,12 +81,12 @@ namespace TaskManager.APITests
         public async Task Task_GetSingle()
         {
 
-            var id = await Task_Post();
+            var task = await Task_Post();
 
             using (var serverAndClient = new HttpServerAndClient<Startup>())
             {
 
-                var response = await serverAndClient.Client.GetAsync("api/task/" + id);
+                var response = await serverAndClient.Client.GetAsync("api/task/" + task.TaskItemID);
 
                 response.EnsureSuccessStatusCode();
 
@@ -104,12 +100,12 @@ namespace TaskManager.APITests
         public async Task Task_Delete()
         {
 
-            var newTaskID = await Task_Post();
+            var newTask = await Task_Post();
 
             using (var serverAndClient = new HttpServerAndClient<Startup>())
             {
 
-                var response = await serverAndClient.Client.DeleteAsync("api/task/" + newTaskID);
+                var response = await serverAndClient.Client.DeleteAsync("api/task/" + newTask.TaskItemID);
 
                 response.EnsureSuccessStatusCode();
 
@@ -121,7 +117,7 @@ namespace TaskManager.APITests
 
                 var categories = JsonConvert.DeserializeObject<List<TaskItem>>(content);
 
-                Assert.False(categories.Any(t => t.TaskItemID == newTaskID));
+                Assert.False(categories.Any(t => t.TaskItemID == newTask.TaskItemID));
 
             }
 

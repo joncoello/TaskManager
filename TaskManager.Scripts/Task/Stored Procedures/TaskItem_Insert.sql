@@ -16,4 +16,6 @@ as
 	insert into Task.TaskItem(TaskItemID, TaskCategoryID, TaskName)
 	values(@TaskItemID, @TaskCategoryID, @TaskName)
 
+	select * from Task.TaskItem where TaskItemID = @TaskItemID
+
 go

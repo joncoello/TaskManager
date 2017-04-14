@@ -69,8 +69,7 @@ namespace TaskManager.API.Controllers
         [Route("")]
         public async Task<object> Post(TaskItem task)
         {
-            await _taskRepository.Create(task);
-            return task;
+            return await _taskRepository.Create(task);
         }
 
     }
