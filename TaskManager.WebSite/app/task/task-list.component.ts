@@ -26,7 +26,7 @@ export class TaskListComponent implements OnInit {
     public ngOnInit() {
         this.addTaskNameField = new FormControl('');
         this.addTaskForm = this.fb.group({
-            'name': this.addTaskNameField
+            'taskName': this.addTaskNameField
         });
 
         this.isLoading = true;
