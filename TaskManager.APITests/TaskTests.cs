@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TaskManager.API;
 using TaskManager.API.Models;
+using TaskManager.DomainModel.Entities;
 using Xunit;
 
 namespace TaskManager.APITests
@@ -44,14 +45,14 @@ namespace TaskManager.APITests
                     "api/task",
                     new TaskItem()
                     {
-                        Name = "Task 1"
+                        TaskName = "Task 1"
                     });
 
                 response.EnsureSuccessStatusCode();
 
                 var task = await response.Content.ReadAsAsync<TaskItem>();
 
-                return task.ID;
+                return task.TaskItemID;
 
             }
 
@@ -70,8 +71,8 @@ namespace TaskManager.APITests
                     "api/task/" + id,
                     new TaskItem()
                     {
-                        ID = id,
-                        Name = "Task 1"
+                        TaskItemID = id,
+                        TaskName = "Task 1"
                     });
 
                 response.EnsureSuccessStatusCode();
@@ -120,7 +121,7 @@ namespace TaskManager.APITests
 
                 var categories = JsonConvert.DeserializeObject<List<TaskItem>>(content);
 
-                Assert.False(categories.Any(t => t.ID == newTaskID));
+                Assert.False(categories.Any(t => t.TaskItemID == newTaskID));
 
             }
 

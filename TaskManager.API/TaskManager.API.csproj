@@ -123,10 +123,8 @@
     <Compile Include="Controllers\TaskController.cs" />
     <Compile Include="Infrastructure\NoCacheHeaderFilter.cs" />
     <Compile Include="Models\GridItem.cs" />
-    <Compile Include="Models\TaskItem.cs" />
     <Compile Include="Models\TaskItemResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repositories\TaskRespository.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>

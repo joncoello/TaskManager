@@ -7,7 +7,6 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 using TaskManager.API.Models;
-using TaskManager.API.Repositories;
 using TaskManager.DomainModel.Entities;
 using TaskManager.SqlRepositories;
 

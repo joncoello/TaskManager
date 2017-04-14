@@ -7,7 +7,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 using TaskManager.API.Models;
-using TaskManager.API.Repositories;
+using TaskManager.DomainModel.Entities;
 using TaskManager.SqlRepositories;
 
 namespace TaskManager.API.Controllers
@@ -16,21 +16,21 @@ namespace TaskManager.API.Controllers
     public class TaskController : ApiController
     {
 
-        private TaskRespository _taskRepository;
+        private TaskItemRepository _taskRepository;
         private TaskCategoryRepository _taskCategoryRepository;
 
         public TaskController()
         {
-            _taskRepository = new TaskRespository();
             var connectionString = ConfigurationManager.ConnectionStrings["TaskManager"].ConnectionString;
             var sqlClient = new SQLClient(connectionString);
+            _taskRepository = new TaskItemRepository(sqlClient);
             _taskCategoryRepository = new TaskCategoryRepository(sqlClient);
         }
         
         [Route("")]
         public async Task<IHttpActionResult> Get()
         {
-            var result = _taskRepository.All();
+            var result = await _taskRepository.GetAll();
             return Ok(result);
         }
 
@@ -39,7 +39,7 @@ namespace TaskManager.API.Controllers
         {
             var categories = await _taskCategoryRepository.GetAll();
             var categoryList = categories.ToList();
-            var task = _taskRepository.Find(id);
+            var task = await _taskRepository.Get(id);
             if (task == null)
             {
                 return NotFound();
@@ -55,21 +55,21 @@ namespace TaskManager.API.Controllers
         [Route("{id}")]
         public async Task<IHttpActionResult> Delete(Guid id)
         {
-            _taskRepository.Delete(id);
+            await _taskRepository.Delete(id);
             return Ok();
         }
 
         [Route("{id}")]
         public async Task<IHttpActionResult> Patch(Guid id, TaskItem task)
         {
-            _taskRepository.Update(task);
+            await _taskRepository.Update(task);
             return Ok();
         }
 
         [Route("")]
         public async Task<object> Post(TaskItem task)
         {
-            _taskRepository.Create(task);
+            await _taskRepository.Create(task);
             return task;
         }
 
