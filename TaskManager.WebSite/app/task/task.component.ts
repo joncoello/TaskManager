@@ -32,8 +32,8 @@ import { TaskService } from './task.service';
                 <label for="nameInput">Category</label>
                 <select class="form-control"
                         id="cateogryInput"
-                        [formControl]="myForm.controls['category']">
-                    <option *ngFor='let item of categories'>
+                        [formControl]="myForm.controls['taskCategoryID']">
+                    <option *ngFor='let item of categories' value='{{item.taskCategoryID}}'>
                         {{item.categoryName}}
                     </option>
                 </select>
@@ -72,7 +72,7 @@ export class TaskComponent implements OnInit {
         this.myForm = this.fb.group({
             'taskItemID': this.idField,
             'taskName': this.nameField,
-            'category': this.categoryField,
+            'taskCategoryID': this.categoryField,
             'body': this.bodyField
         });
     }

@@ -44,6 +44,7 @@ namespace TaskManager.SqlRepositories
             await _sqlClient.RunSp("Task.TaskItem_Update", new
             {
                 TaskItemID = taskItem.TaskItemID,
+                TaskCategoryID = taskItem.TaskCategoryID,
                 TaskName = taskItem.TaskName
             });
         }

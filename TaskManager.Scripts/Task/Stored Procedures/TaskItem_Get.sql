@@ -10,6 +10,7 @@ as
 
 	select
 		TaskItemID,
+		TaskCategoryID,
 		TaskName
 	from
 		Task.TaskItem
