@@ -20,9 +20,9 @@ import { TaskService } from './task.service';
                         type="text"
                         id="nameInput"
                         placeholder="Name"
-                        [formControl]="myForm.controls['name']">
+                        [formControl]="myForm.controls['taskName']">
             </div>
-            <div *ngIf="myForm.controls['name'].hasError('required')" class="alert alert-danger" role="alert">
+            <div *ngIf="myForm.controls['taskName'].hasError('required')" class="alert alert-danger" role="alert">
                 <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
                 <span class="sr-only">Error:</span>
                 Name is a required field
@@ -70,8 +70,8 @@ export class TaskComponent implements OnInit {
         this.categoryField = new FormControl('');
         this.bodyField = new FormControl('');
         this.myForm = this.fb.group({
-            'id': this.idField,
-            'name': this.nameField,
+            'taskItemID': this.idField,
+            'taskName': this.nameField,
             'category': this.categoryField,
             'body': this.bodyField
         });
@@ -87,8 +87,8 @@ export class TaskComponent implements OnInit {
             this.taskService.getTask(this.taskID)
                 .subscribe((res: Response) => {
                     console.log(res);
-                    this.idField.patchValue(res.json().task.id);
-                    this.nameField.patchValue(res.json().task.name);
+                    this.idField.patchValue(res.json().task.taskItemID);
+                    this.nameField.patchValue(res.json().task.taskName);
                     this.bodyField.patchValue(res.json().task.body);
                     console.log('updated');
 

@@ -24,7 +24,7 @@ export class TaskService {
     }
 
     updateTask(task: any): Observable<Response> {
-        return this.http.patch(this.tasksUrl + '/' + task.id, task);
+        return this.http.patch(this.tasksUrl + '/' + task.taskItemID, task);
     }
 
     deleteTask(taskID: string): Observable<Response> {
