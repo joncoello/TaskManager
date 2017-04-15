@@ -7,9 +7,12 @@ Create Procedure Task.TaskItem_GetAll
 as
 
 	select
-		TaskItemID,
-		TaskName
+		ti.TaskItemID,
+		ti.TaskName,
+		tc.TaskCategoryID,
+		tc.CategoryName
 	from
-		Task.TaskItem
+		Task.TaskItem ti
+		inner join Task.TaskCategory tc on tc.TaskCategoryID = ti.TaskCategoryID
 
 go

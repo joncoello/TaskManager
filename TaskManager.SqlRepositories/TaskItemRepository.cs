@@ -36,7 +36,8 @@ namespace TaskManager.SqlRepositories
 
         public async Task<IEnumerable<TaskItem>> GetAll()
         {
-            return await _sqlClient.GetList<TaskItem>("Task.TaskItem_GetAll");
+            return await _sqlClient.GetComplex<TaskItem, TaskCategory, TaskItem>("Task.TaskItem_GetAll",
+                (task, category)=> { task.Category = category; return task; }, "TaskCategoryID");
         }
 
         public async Task Update(TaskItem taskItem)
