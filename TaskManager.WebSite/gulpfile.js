@@ -67,6 +67,9 @@ gulp.task('deployment:30:compile:ts', function () {
 
     return gulp
       .src(["app/**/*.ts", "typings/**/*.d.ts"])
+      .pipe(tslint({
+          configuration: 'tslint.json'
+      }))
       .pipe(plumber({
           errorHandler: function (err) {
               console.error('>>> [tsc] Typescript compilation failed'.bold.green);
