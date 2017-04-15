@@ -74,7 +74,7 @@
 
           // Paths for debugging with source maps in dev tools
           { pattern: appSrcBase + '**/*.ts', included: false, watched: false },
-          { pattern: appBase + '**/*.js.map', included: false, watched: false },
+          { pattern: appBase + '**/*.js.map', included: false, watched: false }
           //{ pattern: testingSrcBase + '**/*.ts', included: false, watched: false },
           //{ pattern: testingBase + '**/*.js.map', included: false, watched: false }
         ],
@@ -95,5 +95,5 @@
         autoWatch: true,
         browsers: ['Chrome'],
         singleRun: false
-    })
-}
+    });
+};

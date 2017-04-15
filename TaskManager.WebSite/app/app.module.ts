@@ -6,7 +6,7 @@ import { HttpModule }      from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
 import {APP_BASE_HREF} from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { AgGridModule } from "ag-grid-angular/main";
+import { AgGridModule } from 'ag-grid-angular/main';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/app.homeComponent';
@@ -17,7 +17,7 @@ import { CategoryListComponent } from './category/category-list.component';
 import { AboutComponent } from './about/about.component';
 import { GridComponent } from './grid/grid.component';
 import { GridService } from './grid/grid.service';
-import { RedComponentComponent } from "./grid/red-component.component";
+import { RedComponentComponent } from './grid/red-component.component';
 
 import { ChartsModule } from 'ng2-charts';
 
@@ -60,7 +60,7 @@ const routes: Routes = [
         { provide: APP_BASE_HREF, useValue: '/' },
         TaskService,
         GridService,
-        { provide: 'API_URL', useValue: 'http://jctmapi.azurewebsites.net'}
+        { provide: 'API_URL', useValue: 'http://localhost:42992' } // jctmapi.azurewebsites.net
     ]
 })
 export class AppModule { }

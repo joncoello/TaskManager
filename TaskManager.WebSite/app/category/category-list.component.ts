@@ -54,7 +54,7 @@ export class CategoryListComponent {
     public isLoading: boolean = false;
     public isAdding: boolean = false;
 
-    private tasksUrl: string;   
+    private tasksUrl: string;
 
     constructor(private http: Http, private fb: FormBuilder, @Inject('API_URL') private apiURL: string) {
         this.tasksUrl = apiURL + '/api/category';  // url to web API

@@ -1,6 +1,6 @@
 ﻿    import { Component, OnInit } from '@angular/core';
 
-import { Http, Response } from '@angular/http';
+import { Response } from '@angular/http';
 
 import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 
@@ -18,7 +18,7 @@ export class TaskListComponent implements OnInit {
     public addTaskNameField: FormControl;
     public isLoading: boolean = false;
     public isAdding: boolean = false;
-    
+
     constructor(private fb: FormBuilder, private taskService: TaskService) {
         this.title = 'tasks';
     }

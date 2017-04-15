@@ -1,10 +1,8 @@
 ﻿import { Component } from '@angular/core';
-import { Http, Response } from '@angular/http';
 
-import { GridOptions, ColDef, ColGroupDef } from "ag-grid";
+import { GridOptions, ColDef, ColGroupDef } from 'ag-grid';
 
 import { GridService } from './grid.service';
-import { RedComponentComponent } from './red-component.component';
 import RefData from './ref-data';
 
 @Component({
@@ -12,19 +10,19 @@ import RefData from './ref-data';
     templateUrl: './app/grid/grid.component.html'
 })
 export class GridComponent {
-    pageTitle: string = 'Transactions';
+    public pageTitle: string = 'Transactions';
 
     private rowData: any[];
     private columnDefs: (ColDef | ColGroupDef)[];
     private gridOptions: GridOptions;
 
     constructor(private gridService: GridService) {
-        
+
         // we pass an empty gridOptions in, so we can grab the api out
         this.gridOptions = <GridOptions>{};
         this.createRowData();
         this.createColumnDefs();
-        
+
     }
 
     private createRowData() {
@@ -63,33 +61,35 @@ export class GridComponent {
                 suppressMenu: true, pinned: true
             },
             {
-                headerName: "Name", field: "name",
+                headerName: 'Name', field: 'name',
                 width: 150, pinned: true, editable: true
             },
             {
-                headerName: "DOB", field: "dob", width: 120, pinned: true, cellRenderer: (params: any) => {
+                headerName: 'DOB', field: 'dob', width: 120, pinned: true, cellRenderer: (params: any) => {
                     return this.pad(params.value.getDate(), 2) + '/' +
                         this.pad(params.value.getMonth() + 1, 2) + '/' +
                         params.value.getFullYear();
                 }, filter: 'date', columnGroupShow: 'open'
             },
             {
-                headerName: "Country", field: "country", width: 150, filter: 'text',
+                headerName: 'Country', field: 'country', width: 150, filter: 'text',
                 editable: true,
                 cellEditor: 'select',
                 cellEditorParams: {
                     values: ['English', 'Spanish', 'French', 'Portuguese', '(other)']
                 }
             },
-            { headerName: "Mobile", field: "mobile", width: 150, filter: 'text' },
-            { headerName: "Land-line", field: "landline", width: 150, filter: 'text' },
-            { headerName: "Address", field: "address", width: 500, filter: 'text' }
+            { headerName: 'Mobile', field: 'mobile', width: 150, filter: 'text' },
+            { headerName: 'Land-line', field: 'landline', width: 150, filter: 'text' },
+            { headerName: 'Address', field: 'address', width: 500, filter: 'text' }
         ];
     }
 
     private pad(num: any, totalStringSize: any) {
-        let asString = num + "";
-        while (asString.length < totalStringSize) asString = "0" + asString;
+        let asString = num + '';
+        while (asString.length < totalStringSize) {
+            asString = '0' + asString;
+        }
         return asString;
     }
 
@@ -103,5 +103,5 @@ export class GridComponent {
         }
         return result;
     }
-    
+
 }

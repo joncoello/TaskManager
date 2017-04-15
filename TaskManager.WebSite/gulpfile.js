@@ -44,11 +44,11 @@ gulp.task('deployment:10:clean', function () {
 // Copy static assets
 gulp.task('deployment:20:copy:assets', function () {
     gulp.src(['lib/*.*'])
-      .pipe(gulp.dest('dist/lib'))
+      .pipe(gulp.dest('dist/lib'));
     gulp.src(['img/*.*'])
-      .pipe(gulp.dest('dist/img'))
+      .pipe(gulp.dest('dist/img'));
     gulp.src(['fonts/*.*'])
-      .pipe(gulp.dest('dist/fonts'))
+      .pipe(gulp.dest('dist/fonts'));
     return gulp.src(
       [
         'index.html',
@@ -57,13 +57,13 @@ gulp.task('deployment:20:copy:assets', function () {
         'jquery.min.js',
         'favicon.ico'
       ])
-      .pipe(gulp.dest('dist'))
+      .pipe(gulp.dest('dist'));
 });
 
 // Compile TypeScript to JS
 gulp.task('deployment:30:compile:ts', function () {
     gulp.src(['app/**/*.html'])
-     .pipe(gulp.dest('dist/app'))
+     .pipe(gulp.dest('dist/app'));
 
     return gulp
       .src(["app/**/*.ts", "typings/**/*.d.ts"])
@@ -160,7 +160,7 @@ gulp.task('vendor:20:copy', function () {
           'node_modules/ag-grid/dist/styles/theme-fresh.css',
           'site.css'
       ])
-      .pipe(gulp.dest('lib'))
+      .pipe(gulp.dest('lib'));
 });
 
 // bundle and minify js
@@ -192,7 +192,7 @@ gulp.task('vendor:50:copypollyfill', function () {
           'node_modules/core-js/client/shim.min.js',
           'node_modules/chart.js/dist/chart.js'
       ])
-      .pipe(gulp.dest(''))
+      .pipe(gulp.dest(''));
 });
 
 // #endregion

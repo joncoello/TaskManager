@@ -25,14 +25,21 @@ export class HomeComponent {
         this.pageTitle = 'Home';
     }
 
-    // Doughnut
+    // doughnut
     public doughnutChartLabels: string[] = ['Urgent', 'High', 'Medium', 'Low', 'Info'];
     public doughnutChartData: number[] = [18, 12, 18, 12, 13];
     public doughnutChartType: string = 'doughnut';
-    
+
     public colours: Array<any> = [
         { // grey
-            backgroundColor: ['rgba(240,125,136,0.7)', 'rgba(255,140,0,0.7)', 'rgba(254,203,111,0.7)', 'rgba(255,241,0,0.7)', 'rgba(86,168,89,0.7)'],
+            backgroundColor:
+            [
+                'rgba(240,125,136,0.7)',
+                'rgba(255,140,0,0.7)',
+                'rgba(254,203,111,0.7)',
+                'rgba(255,241,0,0.7)',
+                'rgba(86,168,89,0.7)'
+            ],
             borderColor: '#fff',
             pointBackgroundColor: 'rgba(148,159,177,1)',
             pointBorderColor: '#fff',

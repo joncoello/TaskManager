@@ -6,28 +6,28 @@ import { Observable } from 'rxjs/Observable';
 export class TaskService {
 
     private tasksUrl: string;
-    
+
     constructor(private http: Http, @Inject('API_URL') private apiURL: string) {
         this.tasksUrl = this.apiURL + '/api/task';
     }
 
-    getTasks(): Observable<Response> {
-        return this.http.get(this.tasksUrl)
+    public getTasks(): Observable<Response> {
+        return this.http.get(this.tasksUrl);
     }
 
-    getTask(taskID: string): Observable<Response> {
-        return this.http.get(this.tasksUrl + '/' + taskID)
+    public getTask(taskID: string): Observable<Response> {
+        return this.http.get(this.tasksUrl + '/' + taskID);
     }
 
-    createTask(task: any): Observable<Response> {
+    public createTask(task: any): Observable<Response> {
         return this.http.post(this.tasksUrl, task);
     }
 
-    updateTask(task: any): Observable<Response> {
+    public updateTask(task: any): Observable<Response> {
         return this.http.patch(this.tasksUrl + '/' + task.taskItemID, task);
     }
 
-    deleteTask(taskID: string): Observable<Response> {
+    public deleteTask(taskID: string): Observable<Response> {
         return this.http.delete(this.tasksUrl + '/' + taskID);
     }
 

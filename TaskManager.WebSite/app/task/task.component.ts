@@ -2,7 +2,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
-import { Http, Response } from '@angular/http';
+import { Response } from '@angular/http';
+import 'rxjs/add/operator/map';
 
 import { TaskService } from './task.service';
 
@@ -77,24 +78,28 @@ export class TaskComponent implements OnInit {
         });
     }
 
+
     public ngOnInit() {
 
-        this.route.params.subscribe((params: { [key: string]: any }) => {
+        this.route.params.subscribe((params: { [key: string]: any  }) => {
             this.taskID = params['id'];
 
             this.pageTitle = this.taskID;
 
             this.taskService.getTask(this.taskID)
-                .subscribe((res: Response) => {
-                    console.log(res);
-                    this.idField.patchValue(res.json().task.taskItemID);
-                    this.nameField.patchValue(res.json().task.taskName);
-                    this.categoryField.patchValue(res.json().task.taskCategoryID);
-                    this.bodyField.patchValue(res.json().task.body);
-                    console.log('updated');
-
-                    this.categories = res.json().categories;
+                .map((response: Response) => {
+                    return (<any>response.json);
                 });
+                // .subscribe((res: Response) => {
+                //    console.log(res);
+                //    this.idField.patchValue(res.json().task.taskItemID);
+                //    this.nameField.patchValue(res.json().task.taskName);
+                //    this.categoryField.patchValue(res.json().task.taskCategoryID);
+                //    this.bodyField.patchValue(res.json().task.body);
+                //    console.log('updated');
+
+                //    this.categories = res.json().categories;
+                // });
 
         });
     }

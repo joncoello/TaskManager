@@ -8,12 +8,19 @@
             <div class='container-fluid'>
                 <!-- Brand and toggle get grouped for better mobile display -->
                 <div class="navbar-header">
-                  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse" aria-expanded="false">
+                  <button 
+                        type="button" 
+                        class="navbar-toggle collapsed" 
+                        data-toggle="collapse" 
+                        data-target=".navbar-collapse" 
+                        aria-expanded="false">
+                    
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
-                  </button>
+                  
+                    </button>
                   <a class="navbar-brand" href="/">{{pageTitle}}</a>
                 </div>
                 <div class="collapse navbar-collapse">
@@ -34,13 +41,13 @@
     `
 })
 export class AppComponent {
-    pageTitle: string = 'Task Manager';
+    public pageTitle: string = 'Task Manager';
 
     // collapse nav bar on navigate
     public beforeNav() {
         console.log('before nav');
-        var navBar: any = $(".navbar-collapse");
+        var navBar: any = $('.navbar-collapse');
         navBar.collapse('hide');
     }
-    
+
 }
