@@ -60,7 +60,7 @@ const routes: Routes = [
         { provide: APP_BASE_HREF, useValue: '/' },
         TaskService,
         GridService,
-        { provide: 'API_URL', useValue: 'http://localhost:42992' } // jctmapi.azurewebsites.net
+        { provide: 'API_URL', useValue: 'http://jctmapi.azurewebsites.net' } // localhost:42992
     ]
 })
 export class AppModule { }

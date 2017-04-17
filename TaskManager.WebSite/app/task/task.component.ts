@@ -1,4 +1,5 @@
-﻿/* tslint:disable:no-string-literal */
+﻿/* tslint:disable:no-string-literal no-any */
+
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
@@ -6,6 +7,7 @@ import { Response } from '@angular/http';
 import 'rxjs/add/operator/map';
 
 import { TaskService } from './task.service';
+import { TaskViewModel } from './task.model';
 
 @Component({
     selector: 'task',
@@ -88,18 +90,18 @@ export class TaskComponent implements OnInit {
 
             this.taskService.getTask(this.taskID)
                 .map((response: Response) => {
-                    return (<any>response.json);
-                });
-                // .subscribe((res: Response) => {
-                //    console.log(res);
-                //    this.idField.patchValue(res.json().task.taskItemID);
-                //    this.nameField.patchValue(res.json().task.taskName);
-                //    this.categoryField.patchValue(res.json().task.taskCategoryID);
-                //    this.bodyField.patchValue(res.json().task.body);
-                //    console.log('updated');
+                    return <TaskViewModel>response.json();
+                })
+                .subscribe((taskVM: TaskViewModel) => {
+                    console.log(taskVM);
+                    this.idField.patchValue(taskVM.task.taskItemID);
+                    this.nameField.patchValue(taskVM.task.taskName);
+                    this.categoryField.patchValue(taskVM.task.taskCategoryID);
+                    // this.bodyField.patchValue(task.body);
+                    console.log('updated');
 
-                //    this.categories = res.json().categories;
-                // });
+                    this.categories = taskVM.categories;
+                });
 
         });
     }

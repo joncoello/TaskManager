@@ -1,4 +1,6 @@
-﻿import { Component } from '@angular/core';
+﻿/* tslint:disable:no-any */
+
+import { Component } from '@angular/core';
 
 import { GridOptions, ColDef, ColGroupDef } from 'ag-grid';
 

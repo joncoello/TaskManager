@@ -1,4 +1,6 @@
-﻿import { Component } from '@angular/core';
+﻿/* tslint:disable:no-any */
+
+import { Component } from '@angular/core';
 
 @Component({
     selector: 'main-app',

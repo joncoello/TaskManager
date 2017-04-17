@@ -1,4 +1,6 @@
-﻿    import { Component, OnInit } from '@angular/core';
+﻿/* tslint:disable:no-any */
+
+import { Component, OnInit } from '@angular/core';
 
 import { Response } from '@angular/http';
 

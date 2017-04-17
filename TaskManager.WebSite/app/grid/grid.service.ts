@@ -1,4 +1,6 @@
-﻿import { Inject, Injectable } from '@angular/core';
+﻿/* tslint:disable:no-any */
+
+import { Inject, Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 

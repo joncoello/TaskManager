@@ -1,4 +1,6 @@
-﻿import { Inject, Component } from '@angular/core';
+﻿/* tslint:disable:no-any */
+
+import { Inject, Component } from '@angular/core';
 
 import { Http, Response } from '@angular/http';
 
