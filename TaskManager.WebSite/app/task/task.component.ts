@@ -4,10 +4,9 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { Response } from '@angular/http';
-import 'rxjs/add/operator/map';
 
 import { TaskService } from './task.service';
-import { TaskViewModel } from './task.model';
+import { TaskViewModel, TaskItem, TaskCategory } from './task.model';
 
 @Component({
     selector: 'task',
@@ -63,7 +62,7 @@ export class TaskComponent implements OnInit {
     public nameField: FormControl;
     public categoryField: FormControl;
     public bodyField: FormControl;
-    public categories: any;
+    public categories: TaskCategory[];
 
     private taskID: string;
 
@@ -89,9 +88,6 @@ export class TaskComponent implements OnInit {
             this.pageTitle = this.taskID;
 
             this.taskService.getTask(this.taskID)
-                .map((response: Response) => {
-                    return <TaskViewModel>response.json();
-                })
                 .subscribe((taskVM: TaskViewModel) => {
                     console.log(taskVM);
                     this.idField.patchValue(taskVM.task.taskItemID);
@@ -106,7 +102,7 @@ export class TaskComponent implements OnInit {
         });
     }
 
-    public onSubmit(form: any): void {
+    public onSubmit(form: TaskItem): void {
         console.log('you submitted value:', form);
 
         this.taskService.updateTask(form)

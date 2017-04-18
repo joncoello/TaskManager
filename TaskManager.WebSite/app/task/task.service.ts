@@ -3,6 +3,8 @@
 import { Inject, Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
+import { TaskViewModel } from './task.model';
+import 'rxjs/add/operator/map';
 
 @Injectable()
 export class TaskService {
@@ -17,8 +19,11 @@ export class TaskService {
         return this.http.get(this.tasksUrl);
     }
 
-    public getTask(taskID: string): Observable<Response> {
-        return this.http.get(this.tasksUrl + '/' + taskID);
+    public getTask(taskID: string): Observable<TaskViewModel> {
+        return this.http.get(this.tasksUrl + '/' + taskID)
+            .map((response: Response) => {
+                return <TaskViewModel>response.json();
+            });
     }
 
     public createTask(task: any): Observable<Response> {
