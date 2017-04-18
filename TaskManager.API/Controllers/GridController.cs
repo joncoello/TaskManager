@@ -13,7 +13,7 @@ namespace TaskManager.API.Controllers
     {
 
         [Route("")]
-        public async Task<object> Post(List<GridItem> gridItems)
+        public object Post(List<GridItem> gridItems)
         {
             
             return this.Ok();
