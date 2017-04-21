@@ -11,7 +11,7 @@ Create Procedure Task.TaskItem_Insert
 as
 
 	if @TaskCategoryID is null
-		select @TaskCategoryID = TaskCategoryID from Task.TaskCategory where CategoryName = '(none)'
+		select @TaskCategoryID = TaskCategoryID from Task.TaskCategory where CategoryName = '00 - (none)'
 
 	insert into Task.TaskItem(TaskItemID, TaskCategoryID, TaskName)
 	values(@TaskItemID, @TaskCategoryID, @TaskName)
