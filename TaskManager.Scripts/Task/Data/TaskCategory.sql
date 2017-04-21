@@ -1,22 +1,22 @@
-﻿if not exists (select * from Task.TaskCategory where CategoryName = '(none)')
+﻿if not exists (select * from Task.TaskCategory where CategoryName = '00 - (none)')
 	insert into Task.TaskCategory(TaskCategoryID, CategoryName)
-	values(newid(), '(none)')
+	values(newid(), '00 - (none)')
 
-if not exists (select * from Task.TaskCategory where CategoryName = 'Urgent')
+if not exists (select * from Task.TaskCategory where CategoryName = '10 - Urgent')
 	insert into Task.TaskCategory(TaskCategoryID, CategoryName)
-	values(newid(), 'Urgent')
+	values(newid(), '10 - Urgent')
 
-if not exists (select * from Task.TaskCategory where CategoryName = 'High')
+if not exists (select * from Task.TaskCategory where CategoryName = '20 - High')
 	insert into Task.TaskCategory(TaskCategoryID, CategoryName)
-	values(newid(), 'High')
+	values(newid(), '20 - High')
 
-if not exists (select * from Task.TaskCategory where CategoryName = 'Medium')
+if not exists (select * from Task.TaskCategory where CategoryName = '30 - Medium')
 	insert into Task.TaskCategory(TaskCategoryID, CategoryName)
-	values(newid(), 'Medium')
+	values(newid(), '30 - Medium')
 
-if not exists (select * from Task.TaskCategory where CategoryName = 'Low')
+if not exists (select * from Task.TaskCategory where CategoryName = '40 - Low')
 	insert into Task.TaskCategory(TaskCategoryID, CategoryName)
-	values(newid(), 'Low')
+	values(newid(), '40 - Low')
 
 go
 
