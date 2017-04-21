@@ -18,12 +18,11 @@
             <label class="control-label">Create new</label>
             <div class="input-group">
 
-                <input 
-                       type="text" 
+                <input type="text"
                        class="form-control"
                        id="taskName"
                        [formControl]="addTaskForm.controls['taskName']">
-                       
+
                 <span class="input-group-btn">
                     <button class="btn btn-default" type="submit">add</button>
                 </span>
@@ -31,29 +30,34 @@
         </div>
 
     </form>
-    <div *ngFor='let group of data'>
-        <h2>{{group.categoryName}}</h2>
-        <table class="table table-striped table-hover">
-            <!--<thead>
-                <tr>
-                    <th>
-                        This is a title
-                    </th>
-                </tr>
-            </thead>-->
-            <tr *ngFor='let item of group.tasks'>
-                <td [routerLink]="['task', item.taskItemID]">
-                    <h4 class="list-group-item-heading">{{item.taskName}}</h4>
-                    <p class="list-group-item-text">{{item.body}}</p>
-                </td>
-                <td>
-                    <a class="btn btn-danger btn-xs delete-button"
-                       (click)="deleteTask(item.taskItemID)">
-                        <i class="fa fa-trash-o fa-sm"></i>
+    <div class="panel-group" id="accordion">
+        <div *ngFor='let group of data' class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse{{group.categoryID}}">
+                        {{group.categoryName}}
                     </a>
-                </td>
-            </tr>
-        </table>
+                </h4>
+            </div>
+            <div id="collapse{{group.categoryID}}" class="panel-collapse collapse">
+                <div class="panel-body">
+                    <table class="table table-striped table-hover">
+                        <tr *ngFor='let item of group.tasks'>
+                            <td [routerLink]="['task', item.taskItemID]">
+                                <h4 class="list-group-item-heading">{{item.taskName}}</h4>
+                                <p class="list-group-item-text">{{item.body}}</p>
+                            </td>
+                            <td>
+                                <a class="btn btn-danger btn-xs delete-button"
+                                   (click)="deleteTask(item.taskItemID)">
+                                    <i class="fa fa-trash-o fa-sm"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 <div *ngIf='isLoading || isAdding' class="table-loader">
