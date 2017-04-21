@@ -30,9 +30,12 @@
         </div>
 
     </form>
-    <div class="panel-group" id="accordion">
-        <div *ngFor='let group of data' class="panel panel-default">
+    <div *ngFor='let group of data' class="panel-group" id="accordion">
+        <div class="panel panel-default">
             <div class="panel-heading">
+                <span style="border: 1px solid black; width: 20px; height: 20px; float: right; background-color: lightblue;">
+                    
+                </span>
                 <h4 class="panel-title">
                     <a data-toggle="collapse" data-parent="#accordion" href="#collapse{{group.categoryID}}">
                         {{group.categoryName}}
