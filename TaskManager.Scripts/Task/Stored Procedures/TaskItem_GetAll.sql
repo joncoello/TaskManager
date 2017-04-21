@@ -14,5 +14,7 @@ as
 	from
 		Task.TaskItem ti
 		inner join Task.TaskCategory tc on tc.TaskCategoryID = ti.TaskCategoryID
+	order by
+		tc.CategoryName
 
 go
