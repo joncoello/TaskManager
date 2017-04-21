@@ -1,4 +1,5 @@
-﻿/* tslint:disable:no-string-literal no-any */
+﻿// to support route paramters
+/* tslint:disable:no-string-literal no-any */
 
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';

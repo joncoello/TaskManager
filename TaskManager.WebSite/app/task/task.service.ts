@@ -1,9 +1,7 @@
-﻿/* tslint:disable:no-any */
-
-import { Inject, Injectable } from '@angular/core';
+﻿import { Inject, Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
-import { TaskViewModel } from './task.model';
+import { TaskViewModel, TaskItem, TaskListViewModel, TaskCategory } from './task.model';
 import 'rxjs/add/operator/map';
 
 @Injectable()
@@ -15,8 +13,26 @@ export class TaskService {
         this.tasksUrl = this.apiURL + '/api/task';
     }
 
-    public getTasks(): Observable<Response> {
-        return this.http.get(this.tasksUrl);
+    public getTasks(): Observable<TaskListViewModel[]> {
+        return this.http.get(this.tasksUrl)
+            .map((response: Response) => {
+                var taskListVM = new Array<TaskListViewModel>();
+                var tasks = <TaskItem[]>response.json();
+
+                for (let task of tasks) {
+
+                    var taskGroup = taskListVM.find((t: TaskListViewModel) => t.categoryID === task.category.taskCategoryID);
+                    if (taskGroup === undefined) {
+                        taskGroup = new TaskListViewModel();
+                        taskGroup.categoryID = task.category.taskCategoryID;
+                        taskGroup.categoryName = task.category.categoryName;
+                        taskListVM.push(taskGroup);
+                    }
+                    taskGroup.tasks.push(task);
+                }
+
+                return taskListVM;
+            });
     }
 
     public getTask(taskID: string): Observable<TaskViewModel> {
@@ -26,11 +42,11 @@ export class TaskService {
             });
     }
 
-    public createTask(task: any): Observable<Response> {
+    public createTask(task: TaskItem): Observable<Response> {
         return this.http.post(this.tasksUrl, task);
     }
 
-    public updateTask(task: any): Observable<Response> {
+    public updateTask(task: TaskItem): Observable<Response> {
         return this.http.patch(this.tasksUrl + '/' + task.taskItemID, task);
     }
 

@@ -1,12 +1,12 @@
-﻿/* tslint:disable:no-any */
-
-import { Component, OnInit } from '@angular/core';
+﻿import { Component, OnInit } from '@angular/core';
 
 import { Response } from '@angular/http';
 
 import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 
 import { TaskService } from './task.service';
+
+import { TaskItem, TaskListViewModel } from './task.model';
 
 @Component({
     selector: 'tasks',
@@ -15,7 +15,7 @@ import { TaskService } from './task.service';
 
 export class TaskListComponent implements OnInit {
     public title: string;
-    public data: Object[];
+    public data: TaskListViewModel[];
     public addTaskForm: FormGroup;
     public addTaskNameField: FormControl;
     public isLoading: boolean = false;
@@ -35,11 +35,11 @@ export class TaskListComponent implements OnInit {
         this.loadTasks();
     }
 
-    public onSubmit(form: any): void {
+    public onSubmit(task: TaskItem): void {
         this.addTaskNameField.setValue('');
-        console.log('you submitted value:', form);
+        console.log('you submitted value:', task);
         this.isAdding = true;
-        this.taskService.createTask(form)
+        this.taskService.createTask(task)
             .subscribe((res: Response) => {
                 console.log(res.statusText);
                 this.isAdding = false;
@@ -49,8 +49,8 @@ export class TaskListComponent implements OnInit {
 
     public loadTasks() {
         this.taskService.getTasks()
-            .subscribe((res: Response) => {
-                this.data = res.json();
+            .subscribe((tasks: TaskListViewModel[]) => {
+                this.data = tasks;
                 this.isLoading = false;
             });
     }
