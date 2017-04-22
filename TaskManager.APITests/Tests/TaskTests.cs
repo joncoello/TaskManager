@@ -13,11 +13,16 @@ using TaskManager.API.Models;
 using TaskManager.DomainModel.Entities;
 using Xunit;
 
-namespace TaskManager.APITests
+namespace TaskManager.APITests.Tests
 {
     [Trait("Category", "API")]
     public class TaskTests
     {
+
+        public TaskTests()
+        {
+
+        }
 
         [Fact]
         public async Task Task_Get()

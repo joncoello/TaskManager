@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 using TaskManager.API;
 using Xunit;
 
-namespace TaskManager.APITests
+namespace TaskManager.APITests.Tests
 {
     [Trait("Category", "API")]
     public class HelloWorldTests

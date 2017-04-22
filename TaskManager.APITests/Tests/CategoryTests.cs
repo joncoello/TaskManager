@@ -11,7 +11,7 @@ using TaskManager.API;
 using TaskManager.DomainModel.Entities;
 using Xunit;
 
-namespace TaskManager.APITests
+namespace TaskManager.APITests.Tests
 {
     [Trait("Category", "API")]
     public class CategoryTests

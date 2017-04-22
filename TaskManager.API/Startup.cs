@@ -10,7 +10,7 @@ using System.Web.Http.Cors;
 
 namespace TaskManager.API
 {
-    public class Startup
+    public partial class Startup
     {
         public void Configuration(IAppBuilder app)
         {
@@ -29,6 +29,8 @@ namespace TaskManager.API
             config.MapHttpAttributeRoutes();
 
             config.Filters.Add(new Infrastructure.NoCacheHeaderFilter());
+
+            ConfigureAuth(app);
 
             app.UseWebApi(config);
         }
