@@ -17,6 +17,7 @@ import { CategoryListComponent } from './category/category-list.component';
 import { AboutComponent } from './about/about.component';
 import { GridComponent } from './grid/grid.component';
 import { LoginComponent } from './login/login.component';
+import { LoginService } from './login/login.service';
 import { GridService } from './grid/grid.service';
 import { RedComponentComponent } from './grid/red-component.component';
 
@@ -63,6 +64,7 @@ const routes: Routes = [
         { provide: APP_BASE_HREF, useValue: '/' },
         TaskService,
         GridService,
+        LoginService,
         { provide: 'API_URL', useValue: 'http://localhost:42992' } // localhost:42992
     ]
 })

@@ -1,4 +1,6 @@
 ﻿import { Component } from '@angular/core';
+import { LoginService } from './login.service';
+import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
     selector: 'login',
@@ -31,5 +33,24 @@
 `
 })
 export class LoginComponent {
+
+    public myForm: FormGroup;
+    public userNameField: FormControl;
+    public passwordField: FormControl;
+
     public pageTitle: string = 'Login';
+
+    constructor(private loginService: LoginService, private fb: FormBuilder) {
+        this.userNameField = new FormControl('', Validators.required);
+        this.passwordField = new FormControl('', Validators.required);
+        this.myForm = this.fb.group({
+            'userName': this.userNameField,
+            'password': this.passwordField
+        });
+    }
+
+    public onSubmit(loginModel: any) {
+        console.log(loginModel);
+    }
+
 }
