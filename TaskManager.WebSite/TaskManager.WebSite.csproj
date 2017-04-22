@@ -110,6 +110,7 @@
     <TypeScriptCompile Include="app\home\app.homeComponent.ts" />
     <TypeScriptCompile Include="app\app.component.ts" />
     <TypeScriptCompile Include="app\app.module.ts" />
+    <TypeScriptCompile Include="app\login\login.component.ts" />
     <TypeScriptCompile Include="app\task\task-list.component.spec.ts" />
     <TypeScriptCompile Include="app\task\task-list.component.ts" />
     <TypeScriptCompile Include="app\main.ts" />

@@ -16,6 +16,7 @@ import { TaskService } from './task/task.service';
 import { CategoryListComponent } from './category/category-list.component';
 import { AboutComponent } from './about/about.component';
 import { GridComponent } from './grid/grid.component';
+import { LoginComponent } from './login/login.component';
 import { GridService } from './grid/grid.service';
 import { RedComponentComponent } from './grid/red-component.component';
 
@@ -24,13 +25,14 @@ import { ChartsModule } from 'ng2-charts';
 // need to move this to its own module
 // clarify lazy loading approach
 const routes: Routes = [
-    { path: '', redirectTo: 'home', pathMatch: 'full' },
+    { path: '', redirectTo: 'login', pathMatch: 'full' },
     { path: 'home', component: HomeComponent },
     { path: 'tasks', component: TaskListComponent },
     { path: 'tasks/task/:id', component: TaskComponent },
     { path: 'categories', component: CategoryListComponent },
     { path: 'about', component: AboutComponent },
-    { path: 'grid', component: GridComponent }
+    { path: 'grid', component: GridComponent },
+    { path: 'login', component: LoginComponent }
 ];
 
 @NgModule({
@@ -53,6 +55,7 @@ const routes: Routes = [
         CategoryListComponent,
         AboutComponent,
         GridComponent,
+        LoginComponent,
         RedComponentComponent
     ],
     bootstrap: [AppComponent],
@@ -60,7 +63,7 @@ const routes: Routes = [
         { provide: APP_BASE_HREF, useValue: '/' },
         TaskService,
         GridService,
-        { provide: 'API_URL', useValue: 'http://jctmapi.azurewebsites.net' } // localhost:42992
+        { provide: 'API_URL', useValue: 'http://localhost:42992' } // localhost:42992
     ]
 })
 export class AppModule { }
