@@ -23,8 +23,13 @@ namespace TaskManager.API.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+
+        static ApplicationDbContext() {
+            System.Data.Entity.Database.SetInitializer<ApplicationDbContext>(null);
+        }
+
         public ApplicationDbContext()
-            : base("TaskManagerAccount", throwIfV1Schema: false)
+            : base("TaskManager", throwIfV1Schema: false)
         {
         }
 

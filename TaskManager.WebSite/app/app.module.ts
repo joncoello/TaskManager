@@ -65,7 +65,7 @@ const routes: Routes = [
         TaskService,
         GridService,
         LoginService,
-        { provide: 'API_URL', useValue: 'http://jctmapi.azurewebsites.net' } // localhost:42992
+        { provide: 'API_URL', useValue: 'http://localhost:42992' } // localhost:42992
     ]
 })
 export class AppModule { }
