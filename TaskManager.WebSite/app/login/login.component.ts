@@ -29,10 +29,10 @@ import { Response } from '@angular/http';
                         [formControl]="myForm.controls['password']">
             </div>
             
-            <div *ngIf="isOK" class="alert alert-success" role="alert">OK</div>
-            <div *ngIf="isError" class="alert alert-danger" role="alert">Error</div>
+            <div *ngIf="isOK" class="alert alert-success" role="alert">{{responseText}}</div>
+            <div *ngIf="isError" class="alert alert-danger" role="alert">{{responseText}}</div>
             
-            <button class="btn btn-primary" type="submit">Login</button>
+            <button [disabled]="loginButtonDisabled" class="btn btn-primary" type="submit">Login</button>
         </form>
 `
 })
@@ -46,6 +46,8 @@ export class LoginComponent {
     public pageTitle: string = 'Login';
     public isOK: boolean;
     public isError: boolean;
+    public loginButtonDisabled: boolean;
+    public responseText: string;
 
     constructor(private loginService: LoginService, private fb: FormBuilder) {
         this.userNameField = new FormControl('', Validators.required);
@@ -59,18 +61,26 @@ export class LoginComponent {
     }
 
     public onSubmit(loginModel: LoginModel) {
+        this.responseText = '';
+        this.loginButtonDisabled = true;
+        this.isOK = false;
+        this.isError = false;
         console.log(loginModel);
         var formUrl = 'username=' + loginModel.userName + '&password=' + loginModel.password + '&grant_type=password';
         this.loginService.login(formUrl).subscribe(
             (response: Response) => {
+                this.loginButtonDisabled = false;
                 this.isOK = true;
                 this.isError = false;
                 console.log(response);
+                this.responseText = response.text();
             },
             (response: Response) => {
+                this.loginButtonDisabled = false;
                 this.isOK = false;
                 this.isError = true;
                 console.log(response);
+                this.responseText = response.text();
             }
         );
     }
