@@ -6,6 +6,10 @@ import { FormBuilder } from '@angular/forms';
 
 import { CategoryListComponent } from './category-list.component';
 
+import { HttpClient } from '../shared/httpclient';
+
+import { LoginService } from '../login/login.service';
+
 ////////  SPECS  /////////////
 
 describe('CategoryListComponent', function () {
@@ -17,6 +21,8 @@ describe('CategoryListComponent', function () {
                 BaseRequestOptions,
                 MockBackend,
                 CategoryListComponent,
+                HttpClient,
+                LoginService,
                 {
                     provide: Http, useFactory: (backend: ConnectionBackend,
                         defaultOptions: BaseRequestOptions) => {

@@ -7,6 +7,10 @@ import { FormBuilder } from '@angular/forms';
 import { TaskListComponent } from './task-list.component';
 import { TaskService } from './task.service';
 
+import { HttpClient } from '../shared/httpclient';
+
+import { LoginService } from '../login/login.service';
+
 ////////  SPECS  /////////////
 
 describe('TaskListComponent', function () {
@@ -18,6 +22,8 @@ describe('TaskListComponent', function () {
                 BaseRequestOptions,
                 MockBackend,
                 TaskListComponent,
+                HttpClient,
+                LoginService,
                 {
                     provide: Http, useFactory: (backend: ConnectionBackend,
                         defaultOptions: BaseRequestOptions) => {

@@ -1,12 +1,16 @@
 ﻿using Microsoft.Owin.Hosting;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
+using TaskManager.APITests.Tests;
 
 namespace TaskManager.APITests
 {
@@ -37,6 +41,24 @@ namespace TaskManager.APITests
 
             _client = new HttpClient();
             _client.BaseAddress = new Uri(address);
+
+            var content = new FormUrlEncodedContent(new[]{
+                   new KeyValuePair<string,string>("userName", "bob@mail.com"),
+                   new KeyValuePair<string,string>("password", "Password@123456"),
+                   new KeyValuePair<string,string>("grant_type", "password")
+                });
+
+            var response = _client.PostAsync("token", content).Result;
+
+            var responseContent = response.Content.ReadAsStringAsync().Result;
+
+            response.EnsureSuccessStatusCode();
+
+            var json = (JObject)JsonConvert.DeserializeObject(responseContent);
+
+            var token = json["access_token"].Value<string>();
+
+            _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
 
         }
 
