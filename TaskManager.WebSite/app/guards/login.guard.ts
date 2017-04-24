@@ -8,7 +8,7 @@ export class LoggedInGuard implements CanActivate {
     constructor(private loginService: LoginService, private router: Router) {
     }
 
-    canActivate(): boolean {
+    public canActivate(): boolean {
         if (!this.loginService.isLoggedIn) {
             this.router.navigate(['']);
         }

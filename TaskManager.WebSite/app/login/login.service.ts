@@ -1,6 +1,5 @@
 ﻿import { Inject, Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
-import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import { TokenModel } from './login.model';
 
@@ -13,7 +12,7 @@ export class LoginService {
     constructor(private http: Http, @Inject('API_URL') private apiURL: string) {
     }
 
-    public login(loginModel: any, callback: (ok: boolean) => void): void {
+    public login(loginModel: string, callback: (ok: boolean) => void): void {
         this.http.post(this.apiURL + '/token', loginModel)
             .subscribe(
             (response: Response) => {

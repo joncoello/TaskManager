@@ -2,7 +2,6 @@
 import { LoginService } from './login.service';
 import { LoginModel } from './login.model';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
-import { Response } from '@angular/http';
 import { Router } from '@angular/router';
 
 @Component({

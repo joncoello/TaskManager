@@ -1,7 +1,7 @@
 ﻿import { Inject, Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
-import { TaskViewModel, TaskItem, TaskListViewModel, TaskCategory } from './task.model';
+import { TaskViewModel, TaskItem, TaskListViewModel } from './task.model';
 import 'rxjs/add/operator/map';
 
 @Injectable()
