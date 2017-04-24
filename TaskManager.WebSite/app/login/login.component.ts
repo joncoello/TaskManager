@@ -75,7 +75,7 @@ export class LoginComponent {
                 console.log(this.loginService.tokenData);
                 if (ok) {
                     this.responseText = this.loginService.tokenData.access_token;
-                    this.router.navigate(['/about']);
+                    this.router.navigate(['/home']);
                 } else {
                     this.responseText = 'login failed';
                 }

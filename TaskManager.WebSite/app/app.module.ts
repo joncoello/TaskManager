@@ -29,12 +29,12 @@ import { ChartsModule } from 'ng2-charts';
 // clarify lazy loading approach
 const routes: Routes = [
     { path: '', redirectTo: 'login', pathMatch: 'full' },
-    { path: 'home', component: HomeComponent },
-    { path: 'tasks', component: TaskListComponent },
-    { path: 'tasks/task/:id', component: TaskComponent },
-    { path: 'categories', component: CategoryListComponent },
+    { path: 'home', component: HomeComponent, canActivate: [LoggedInGuard] },
+    { path: 'tasks', component: TaskListComponent, canActivate: [LoggedInGuard] },
+    { path: 'tasks/task/:id', component: TaskComponent, canActivate: [LoggedInGuard] },
+    { path: 'categories', component: CategoryListComponent, canActivate: [LoggedInGuard] },
     { path: 'about', component: AboutComponent, canActivate: [LoggedInGuard]  },
-    { path: 'grid', component: GridComponent },
+    { path: 'grid', component: GridComponent, canActivate: [LoggedInGuard] },
     { path: 'login', component: LoginComponent }
 ];
 
