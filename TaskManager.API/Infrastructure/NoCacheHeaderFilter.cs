@@ -9,6 +9,7 @@ namespace TaskManager.API.Infrastructure {
         public override void OnActionExecuted(HttpActionExecutedContext actionExecutedContext) {
             actionExecutedContext.Response.Headers.Add("Cache-Control", "no-store, must-revalidate, no-cache, max-age=0");
             actionExecutedContext.Response.Headers.Add("Pragma", "no-cache");
+            actionExecutedContext.Response.Headers.Add("Access-Control-Allow-Headers", "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
             if (actionExecutedContext.Response.Content != null)
             {
                 actionExecutedContext.Response.Content.Headers.Expires = DateTimeOffset.Now.AddDays(-1);

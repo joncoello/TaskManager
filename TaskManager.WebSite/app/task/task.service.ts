@@ -3,13 +3,14 @@ import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { TaskViewModel, TaskItem, TaskListViewModel } from './task.model';
 import 'rxjs/add/operator/map';
+import { HttpClient } from '../shared/httpclient';
 
 @Injectable()
 export class TaskService {
 
     private tasksUrl: string;
 
-    constructor(private http: Http, @Inject('API_URL') private apiURL: string) {
+    constructor(private http: HttpClient, @Inject('API_URL') private apiURL: string) {
         this.tasksUrl = this.apiURL + '/api/task';
     }
 
@@ -30,7 +31,7 @@ export class TaskService {
                     }
                     taskGroup.tasks.push(task);
                 }
-
+                
                 return taskListVM;
             });
     }

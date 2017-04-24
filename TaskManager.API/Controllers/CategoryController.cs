@@ -25,6 +25,7 @@ namespace TaskManager.API.Controllers
             _categoryRepository = new TaskCategoryRepository(sqlClient);
         }
 
+        [Authorize]
         [Route("")]
         public async Task<IHttpActionResult> Get() {
             var result = await _categoryRepository.GetAll();
@@ -43,6 +44,11 @@ namespace TaskManager.API.Controllers
         {
             await _categoryRepository.Delete(newCategoryID);
             return Ok();
+        }
+
+        [Route("")]
+        public void Options() {
+
         }
 
     }

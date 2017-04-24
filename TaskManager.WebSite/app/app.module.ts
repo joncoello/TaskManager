@@ -25,6 +25,8 @@ import { LoggedInGuard } from './guards/login.guard';
 
 import { ChartsModule } from 'ng2-charts';
 
+import { HttpClient } from './shared/httpclient';
+
 // need to move this to its own module
 // clarify lazy loading approach
 const routes: Routes = [
@@ -68,6 +70,7 @@ const routes: Routes = [
         GridService,
         LoginService,
         LoggedInGuard,
+        HttpClient,
         { provide: 'API_URL', useValue: 'http://jctmapi.azurewebsites.net' } // localhost:42992
     ]
 })

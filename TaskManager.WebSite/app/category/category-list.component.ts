@@ -6,6 +6,8 @@ import { Http, Response } from '@angular/http';
 
 import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 
+import { HttpClient } from '../shared/httpclient';
+
 @Component({
     selector: 'category',
     template: `
@@ -58,7 +60,7 @@ export class CategoryListComponent {
 
     private tasksUrl: string;
 
-    constructor(private http: Http, private fb: FormBuilder, @Inject('API_URL') private apiURL: string) {
+    constructor(private http: HttpClient, private fb: FormBuilder, @Inject('API_URL') private apiURL: string) {
         this.tasksUrl = apiURL + '/api/category';  // url to web API
         this.pageTitle = 'categories';
     }
