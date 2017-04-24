@@ -3,6 +3,7 @@ import { LoginService } from './login.service';
 import { LoginModel } from './login.model';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { Response } from '@angular/http';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'login',
@@ -49,7 +50,7 @@ export class LoginComponent {
     public loginButtonDisabled: boolean;
     public responseText: string;
 
-    constructor(private loginService: LoginService, private fb: FormBuilder) {
+    constructor(private loginService: LoginService, private fb: FormBuilder, private router: Router) {
         this.userNameField = new FormControl('', Validators.required);
         this.passwordField = new FormControl('', Validators.required);
         this.grantTypeField = new FormControl('password', Validators.required);
@@ -67,20 +68,18 @@ export class LoginComponent {
         this.isError = false;
         console.log(loginModel);
         var formUrl = 'username=' + loginModel.userName + '&password=' + loginModel.password + '&grant_type=password';
-        this.loginService.login(formUrl).subscribe(
-            (response: Response) => {
+        this.loginService.login(formUrl,
+            (ok: boolean) => {
                 this.loginButtonDisabled = false;
-                this.isOK = true;
-                this.isError = false;
-                console.log(response);
-                this.responseText = response.text();
-            },
-            (response: Response) => {
-                this.loginButtonDisabled = false;
-                this.isOK = false;
-                this.isError = true;
-                console.log(response);
-                this.responseText = response.text();
+                this.isOK = ok;
+                this.isError = !ok;
+                console.log(this.loginService.tokenData);
+                if (ok) {
+                    this.responseText = this.loginService.tokenData.access_token;
+                    this.router.navigate(['/about']);
+                } else {
+                    this.responseText = 'login failed';
+                }
             }
         );
     }

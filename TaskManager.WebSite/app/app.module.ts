@@ -21,6 +21,8 @@ import { LoginService } from './login/login.service';
 import { GridService } from './grid/grid.service';
 import { RedComponentComponent } from './grid/red-component.component';
 
+import { LoggedInGuard } from './guards/login.guard';
+
 import { ChartsModule } from 'ng2-charts';
 
 // need to move this to its own module
@@ -31,7 +33,7 @@ const routes: Routes = [
     { path: 'tasks', component: TaskListComponent },
     { path: 'tasks/task/:id', component: TaskComponent },
     { path: 'categories', component: CategoryListComponent },
-    { path: 'about', component: AboutComponent },
+    { path: 'about', component: AboutComponent, canActivate: [LoggedInGuard]  },
     { path: 'grid', component: GridComponent },
     { path: 'login', component: LoginComponent }
 ];
@@ -65,6 +67,7 @@ const routes: Routes = [
         TaskService,
         GridService,
         LoginService,
+        LoggedInGuard,
         { provide: 'API_URL', useValue: 'http://jctmapi.azurewebsites.net' } // localhost:42992
     ]
 })
