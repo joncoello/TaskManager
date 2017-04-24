@@ -72,5 +72,11 @@ namespace TaskManager.API.Controllers
             return await _taskRepository.Create(task);
         }
 
+        [Route("")]
+        public void Options()
+        {
+
+        }
+
     }
 }
