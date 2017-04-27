@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using TaskManager.API.Models;
 using TaskManager.DomainModel.Entities;
+using TaskManager.DomainModel.Repositories;
 using TaskManager.SqlRepositories;
 
 namespace TaskManager.API.Controllers
@@ -16,15 +17,13 @@ namespace TaskManager.API.Controllers
     public class TaskController : ApiController
     {
 
-        private TaskItemRepository _taskRepository;
-        private TaskCategoryRepository _taskCategoryRepository;
+        private ITaskItemRepository _taskRepository;
+        private ITaskCategoryRepository _taskCategoryRepository;
 
-        public TaskController()
+        public TaskController(ITaskCategoryRepository taskCategoryRepository, ITaskItemRepository taskRepository)
         {
-            var connectionString = ConfigurationManager.ConnectionStrings["TaskManager"].ConnectionString;
-            var sqlClient = new SQLClient(connectionString);
-            _taskRepository = new TaskItemRepository(sqlClient);
-            _taskCategoryRepository = new TaskCategoryRepository(sqlClient);
+            _taskCategoryRepository = taskCategoryRepository;
+            _taskRepository = taskRepository;
         }
         
         [Route("")]
@@ -72,8 +71,8 @@ namespace TaskManager.API.Controllers
             return await _taskRepository.Create(task);
         }
 
-        [Route("")]
-        public void Options()
+        [Route("{id?}")]
+        public void Options(Guid? id = null)
         {
 
         }

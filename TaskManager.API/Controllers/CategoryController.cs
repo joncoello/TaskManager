@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using TaskManager.API.Models;
 using TaskManager.DomainModel.Entities;
+using TaskManager.DomainModel.Repositories;
 using TaskManager.SqlRepositories;
 
 namespace TaskManager.API.Controllers
@@ -16,13 +17,11 @@ namespace TaskManager.API.Controllers
     public class CategoryController : ApiController
     {
 
-        private TaskCategoryRepository _categoryRepository;
+        private ITaskCategoryRepository _categoryRepository;
 
-        public CategoryController()
+        public CategoryController(ITaskCategoryRepository categoryRepository)
         {
-            var connectionString = ConfigurationManager.ConnectionStrings["TaskManager"].ConnectionString;
-            var sqlClient = new SQLClient(connectionString);
-            _categoryRepository = new TaskCategoryRepository(sqlClient);
+            _categoryRepository = categoryRepository;
         }
 
         [Authorize]
@@ -46,8 +45,8 @@ namespace TaskManager.API.Controllers
             return Ok();
         }
 
-        [Route("")]
-        public void Options() {
+        [Route("{id?}")]
+        public void Options(Guid? id = null) {
 
         }
 

@@ -166,6 +166,10 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\TaskManager.Bcl\TaskManager.Bcl.csproj">
+      <Project>{fce2c407-5d1f-404a-bae1-f1c824c538dc}</Project>
+      <Name>TaskManager.Bcl</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TaskManager.DomainModel\TaskManager.DomainModel.csproj">
       <Project>{da373751-9a88-4f17-94c7-bac1fffafba5}</Project>
       <Name>TaskManager.DomainModel</Name>

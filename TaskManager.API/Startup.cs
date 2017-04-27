@@ -2,11 +2,15 @@
 using Owin;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Net.Http.Headers;
 using System.Web;
 using System.Web.Http;
 using System.Web.Http.Cors;
+using TaskManager.Bcl.DI;
+using TaskManager.DomainModel.Repositories;
+using TaskManager.SqlRepositories;
 
 namespace TaskManager.API
 {
@@ -28,9 +32,19 @@ namespace TaskManager.API
             // routes
             config.MapHttpAttributeRoutes();
 
+            //filters
             config.Filters.Add(new Infrastructure.NoCacheHeaderFilter());
 
+            //auth
             ConfigureAuth(app);
+
+            //ioc
+            var iocContainer = new IocContainerFactory().Create();
+            var connectionString = ConfigurationManager.ConnectionStrings["TaskManager"].ConnectionString;
+            iocContainer.RegisterType<ISQLClient, SQLClient>(connectionString);
+            iocContainer.RegisterType<ITaskItemRepository, TaskItemRepository>();
+            iocContainer.RegisterType<ITaskCategoryRepository, TaskCategoryRepository>();
+            config.DependencyResolver = iocContainer.GetResolver();
 
             app.UseWebApi(config);
         }

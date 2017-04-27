@@ -4,10 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TaskManager.DomainModel.Entities;
+using TaskManager.DomainModel.Repositories;
+using TaskManager.SqlRepositories;
 
 namespace TaskManager.SqlRepositories
 {
-    public class TaskCategoryRepository
+    public class TaskCategoryRepository : ITaskCategoryRepository
     {
         private readonly ISQLClient _sqlClient;
 
