@@ -268,3 +268,4 @@ _temp
 /TaskManager.WebSite/lib
 /TaskManager.WebSite/fonts
 /TaskManager.API/dist
+/TaskManager.WebSite/app/environments/environment.ts

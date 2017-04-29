@@ -90,8 +90,11 @@
     "gulp-gzip": "1.4.0",
     "gulp-minify": "0.0.14",
     "gulp-order": "1.1.1",
+    "gulp-util": "3.0.8",
+    "gulp-rename": "1.2.2" ,
 
-    "del": "2.2.2"
+    "del": "2.2.2",
+    "yargs": "7.1.0"
 
   }, 
   "-vs-binding":{"ProjectOpened":["install"]}

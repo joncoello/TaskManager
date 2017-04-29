@@ -27,6 +27,8 @@ import { ChartsModule } from 'ng2-charts';
 
 import { HttpClient } from './shared/httpclient';
 
+import { AppSettings } from './environments/environment';
+
 // need to move this to its own module
 // clarify lazy loading approach
 const routes: Routes = [
@@ -71,7 +73,7 @@ const routes: Routes = [
         LoginService,
         LoggedInGuard,
         HttpClient,
-        { provide: 'API_URL', useValue: 'http://jctmapi.azurewebsites.net' } // localhost:42992
+        { provide: 'API_URL', useValue: AppSettings.baseUrl } 
     ]
 })
 export class AppModule { }

@@ -103,6 +103,9 @@
     <TypeScriptCompile Include="app\app.component.spec.ts" />
     <TypeScriptCompile Include="app\category\category-list.component.spec.ts" />
     <TypeScriptCompile Include="app\category\category-list.component.ts" />
+    <TypeScriptCompile Include="app\environments\environment.interface.ts" />
+    <TypeScriptCompile Include="app\environments\environment.prod.ts" />
+    <TypeScriptCompile Include="app\environments\environment.debug.ts" />
     <TypeScriptCompile Include="app\grid\grid.component.ts" />
     <TypeScriptCompile Include="app\grid\grid.service.ts" />
     <TypeScriptCompile Include="app\grid\red-component.component.ts" />

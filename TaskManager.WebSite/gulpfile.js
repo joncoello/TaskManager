@@ -14,8 +14,11 @@ const uglify = require('gulp-uglify');
 const clean = require('gulp-clean');
 const deleteEmpty = require('delete-empty');
 const gzip = require('gulp-gzip');
+const gutil = require('gulp-util');
 const concat = require('gulp-concat');
 const minify = require('gulp-minify');
+const rename = require('gulp-rename');
+const argv = require('yargs').argv;
 
 const tscConfig = require('./tsconfig.json');
 
@@ -119,13 +122,24 @@ gulp.task('deployment:70:compress:js', function () {
 // #region vendor
 
 gulp.task('vendor', function (callback) {
+
     runSequence(
+        'vendor:05:environment',
         'vendor:10:clean',
         'vendor:20:copy',
         ['vendor:30:js:bundle', 'vendor:30:css:bundle'],
         'vendor:40:deletesource',
         'vendor:50:copypollyfill',
         callback);
+});
+
+gulp.task('vendor:05:environment', function () {
+    var env = argv.prod ? 'prod' : 'debug';
+    var fileName = 'environment.' + env + '.ts';
+    gulp
+        .src('app/environments/' + fileName)
+        .pipe(rename('environment.ts'))
+        .pipe(gulp.dest('app/environments/'));
 });
 
 // empty distribution directory
@@ -135,6 +149,7 @@ gulp.task('vendor:10:clean', function () {
 
 // Copy vendor files to lib
 gulp.task('vendor:20:copy', function () {
+
     gulp.src(
       [
           'node_modules/bootstrap/dist/fonts/*.*'
