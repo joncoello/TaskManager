@@ -94,7 +94,10 @@
     "gulp-rename": "1.2.2" ,
 
     "del": "2.2.2",
-    "yargs": "7.1.0"
+    "yargs": "7.1.0",
+
+    "@types/node": "^6.0.46",
+    "@types/jasmine": "2.5.36"
 
   }, 
   "-vs-binding":{"ProjectOpened":["install"]}

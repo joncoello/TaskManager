@@ -76,7 +76,6 @@
     <Content Include="package.json" />
     <Content Include="site.css" />
     <Content Include="tsconfig.json" />
-    <Content Include="typings.json" />
     <Content Include="tslint.json" />
     <Content Include="TaskManager.WebSite.nuspec" />
     <Content Include="packages.config" />
