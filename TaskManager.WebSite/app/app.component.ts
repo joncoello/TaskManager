@@ -47,9 +47,9 @@ export class AppComponent {
 
     // collapse nav bar on navigate
     public beforeNav() {
-        //console.log('before nav');
-        //var navBar: any = $('.navbar-collapse');
-        //navBar.collapse('hide');
+        console.log('before nav');
+        var navBar: any = $('.navbar-collapse');
+        navBar.collapse('hide');
     }
 
 }

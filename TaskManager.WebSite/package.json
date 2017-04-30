@@ -97,7 +97,8 @@
     "yargs": "7.1.0",
 
     "@types/node": "^6.0.46",
-    "@types/jasmine": "2.5.36"
+    "@types/jasmine": "2.5.36",
+    "@types/jquery": "2.0.41"
 
   }, 
   "-vs-binding":{"ProjectOpened":["install"]}
