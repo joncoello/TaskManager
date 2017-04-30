@@ -73,7 +73,7 @@ const routes: Routes = [
         LoginService,
         LoggedInGuard,
         HttpClient,
-        { provide: 'API_URL', useValue: AppSettings.baseUrl } 
+        { provide: 'API_URL', useValue: AppSettings.baseUrl }
     ]
 })
 export class AppModule { }

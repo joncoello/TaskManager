@@ -1,4 +1,6 @@
-﻿import { Injectable } from '@angular/core';
+﻿/* tslint:disable:no-any */
+
+import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
 
 import { LoginService } from '../login/login.service';

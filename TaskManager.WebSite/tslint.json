@@ -21,7 +21,6 @@
     "interface-name": true,
     "jsdoc-format": true,
     "label-position": true,
-    "label-undefined": true,
     "max-line-length": [ true, 140 ],
     "no-arg": true,
     "no-bitwise": true,
@@ -35,7 +34,6 @@
     ],
     "no-construct": true,
     "no-debugger": true,
-    "no-duplicate-key": true,
     "no-duplicate-variable": true,
     "no-empty": true,
     "no-eval": true,
@@ -43,7 +41,6 @@
     "no-trailing-whitespace": true,
     "no-unused-expression": true,
     "no-unused-variable": true,
-    "no-unreachable": true,
     "no-use-before-declare": true,
     "one-line": [
       true,
@@ -69,11 +66,6 @@
       [ "callSignature", "noSpace" ],
       [ "catchClause", "noSpace" ],
       [ "indexSignature", "space" ]
-    ],
-    "use-strict": [
-      true,
-      "check-module",
-      "check-function"
     ],
     "variable-name": false,
     "whitespace": [

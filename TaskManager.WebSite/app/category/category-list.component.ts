@@ -2,7 +2,7 @@
 
 import { Inject, Component } from '@angular/core';
 
-import { Http, Response } from '@angular/http';
+import { Response } from '@angular/http';
 
 import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 

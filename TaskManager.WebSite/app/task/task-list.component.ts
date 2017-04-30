@@ -60,13 +60,12 @@ export class TaskListComponent implements OnInit {
         this.taskService.deleteTask(taskID)
             .subscribe((res: Response) => {
                 this.isAdding = false;
-                this.data.forEach((tlvm) => {
-                    var taskToDelete = tlvm.tasks.find((t) => t.taskItemID == taskID)
-                    if (taskToDelete != undefined) {
+                this.data.forEach((tlvm: TaskListViewModel) => {
+                    var taskToDelete = tlvm.tasks.find((t: TaskItem) => t.taskItemID === taskID);
+                    if (taskToDelete !== undefined) {
                         tlvm.tasks.splice(tlvm.tasks.indexOf(taskToDelete), 1);
                     }
                 });
-                //this.loadTasks();
             });
     }
 
