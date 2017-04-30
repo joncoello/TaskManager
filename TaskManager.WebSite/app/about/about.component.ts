@@ -6,11 +6,18 @@
                 <h2>{{pageTitle}}</h2>
 
                 <h3>transclusion example</h3>
-                <wrapper-example>
+                <button (click)='onClick()'>click me</button>
+                parent {{loading}}
+                <wrapper-example [isLoading]='loading'>
                     this is a test
                 </wrapper-example>
                 `
 })
 export class AboutComponent {
     public pageTitle: string = 'Examples';
+    public loading: boolean = true;
+
+    public onClick(): void {
+        this.loading = !this.loading;
+    }
 }
