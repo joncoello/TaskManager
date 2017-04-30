@@ -13,6 +13,7 @@ using TaskManager.SqlRepositories;
 
 namespace TaskManager.API.Controllers
 {
+    [Authorize]
     [RoutePrefix("api/category")]
     public class CategoryController : ApiController
     {
@@ -24,7 +25,6 @@ namespace TaskManager.API.Controllers
             _categoryRepository = categoryRepository;
         }
 
-        [Authorize]
         [Route("")]
         public async Task<IHttpActionResult> Get() {
             var result = await _categoryRepository.GetAll();

@@ -13,6 +13,7 @@ using TaskManager.SqlRepositories;
 
 namespace TaskManager.API.Controllers
 {
+    [Authorize]
     [RoutePrefix("api/task")]
     public class TaskController : ApiController
     {
