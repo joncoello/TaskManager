@@ -117,6 +117,7 @@
     <TypeScriptCompile Include="app\login\login.model.ts" />
     <TypeScriptCompile Include="app\login\login.service.ts" />
     <TypeScriptCompile Include="app\shared\httpclient.ts" />
+    <TypeScriptCompile Include="app\shared\wrapper.example.ts" />
     <TypeScriptCompile Include="app\task\task-list.component.spec.ts" />
     <TypeScriptCompile Include="app\task\task-list.component.ts" />
     <TypeScriptCompile Include="app\main.ts" />

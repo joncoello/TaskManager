@@ -25,7 +25,9 @@ import { LoggedInGuard } from './guards/login.guard';
 
 import { ChartsModule } from 'ng2-charts';
 
+// shared
 import { HttpClient } from './shared/httpclient';
+import { WrapperExampleComponent } from './shared/wrapper.example';
 
 import { AppSettings } from './environments/environment';
 
@@ -63,7 +65,8 @@ const routes: Routes = [
         AboutComponent,
         GridComponent,
         LoginComponent,
-        RedComponentComponent
+        RedComponentComponent,
+        WrapperExampleComponent
     ],
     bootstrap: [AppComponent],
     providers: [

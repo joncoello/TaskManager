@@ -30,7 +30,7 @@ import { Component } from '@angular/core';
                         <li><a (click)="beforeNav()" [routerLink]="['home']">Home</a></li>
                         <li><a (click)="beforeNav()" [routerLink]="['tasks']">Tasks</a></li>
                         <li><a (click)="beforeNav()" [routerLink]="['categories']">Categories</a></li>
-                        <li><a (click)="beforeNav()" [routerLink]="['about']">About</a></li>
+                        <li><a (click)="beforeNav()" [routerLink]="['about']">Examples</a></li>
                         <li><a (click)="beforeNav()" [routerLink]="['grid']">Grid</a></li>
                     </ul>
                 </div>
