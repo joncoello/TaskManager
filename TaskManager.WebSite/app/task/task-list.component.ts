@@ -19,7 +19,6 @@ export class TaskListComponent implements OnInit {
     public addTaskForm: FormGroup;
     public addTaskNameField: FormControl;
     public isLoading: boolean = false;
-    public isAdding: boolean = false;
 
     constructor(private fb: FormBuilder, private taskService: TaskService) {
         this.title = 'tasks';
@@ -38,11 +37,9 @@ export class TaskListComponent implements OnInit {
     public onSubmit(task: TaskItem): void {
         this.addTaskNameField.setValue('');
         console.log('you submitted value:', task);
-        this.isAdding = true;
         this.taskService.createTask(task)
             .subscribe((res: Response) => {
                 console.log(res.statusText);
-                this.isAdding = false;
                 this.loadTasks();
             });
     }
@@ -56,10 +53,8 @@ export class TaskListComponent implements OnInit {
     }
 
     public deleteTask(taskID: string) {
-        this.isAdding = true;
         this.taskService.deleteTask(taskID)
             .subscribe((res: Response) => {
-                this.isAdding = false;
                 this.data.forEach((tlvm: TaskListViewModel) => {
                     var taskToDelete = tlvm.tasks.find((t: TaskItem) => t.taskItemID === taskID);
                     if (taskToDelete !== undefined) {

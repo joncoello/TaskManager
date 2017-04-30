@@ -72,6 +72,7 @@ namespace TaskManager.API.Controllers
             return await _taskRepository.Create(task);
         }
 
+        [AllowAnonymous]
         [Route("{id?}")]
         public void Options(Guid? id = null)
         {

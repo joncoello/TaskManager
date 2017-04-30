@@ -45,6 +45,7 @@ namespace TaskManager.API.Controllers
             return Ok();
         }
 
+        [AllowAnonymous]
         [Route("{id?}")]
         public void Options(Guid? id = null) {
 

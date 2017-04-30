@@ -1,5 +1,7 @@
 <h1>{{title}}</h1>
-<div *ngIf='!isLoading'>
+<wrapper-example [isLoading]='isLoading'>
+
+    <!-- add new -->
     <form [formGroup]="addTaskForm"
           (ngSubmit)="onSubmit(addTaskForm.value)">
         <!--<div class="input-group">
@@ -30,11 +32,13 @@
         </div>
 
     </form>
+
+    <!-- list -->
     <div *ngFor='let group of data' class="panel-group" id="accordion">
         <div class="panel panel-default">
             <div class="panel-heading">
                 <span style="border: 1px solid black; width: 20px; height: 20px; float: right; background-color: lightblue;">
-                    
+
                 </span>
                 <h4 class="panel-title">
                     <a data-toggle="collapse" data-parent="#accordion" href="#collapse{{group.categoryID}}">
@@ -62,7 +66,5 @@
             </div>
         </div>
     </div>
-</div>
-<div *ngIf='isLoading || isAdding' class="table-loader">
-    <img src="/img/gears.gif" />
-</div>
+
+</wrapper-example>
