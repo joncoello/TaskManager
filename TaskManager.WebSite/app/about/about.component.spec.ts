@@ -16,6 +16,6 @@ describe('AboutComponent', function () {
     });
 
     it('should start with the correct title', () => {
-        expect(sut.pageTitle).toEqual('About');
+        expect(sut.pageTitle).toEqual('Examples');
     });
 });
