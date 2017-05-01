@@ -1,21 +1,21 @@
-﻿/* tslint:disable:no-unused-variable */
-import { HomeComponent } from './home.component';
+﻿///* tslint:disable:no-unused-variable */
+//import { HomeComponent } from './home.component';
 
-////////  SPECS  /////////////
+//////////  SPECS  /////////////
 
-describe('HomeComponent', function () {
+//describe('HomeComponent', function () {
 
-    var sut: HomeComponent;
+//    var sut: HomeComponent;
 
-    beforeEach(() => {
-        sut = new HomeComponent();
-    });
+//    beforeEach(() => {
+//        sut = new HomeComponent();
+//    });
 
-    it('should create', () => {
-        expect(sut instanceof HomeComponent).toBe(true, 'should create AppComponent');
-    });
+//    it('should create', () => {
+//        expect(sut instanceof HomeComponent).toBe(true, 'should create AppComponent');
+//    });
 
-    it('should start with the correct title', () => {
-        expect(sut.pageTitle).toEqual('Home');
-    });
-});
+//    it('should start with the correct title', () => {
+//        expect(sut.pageTitle).toEqual('Home');
+//    });
+//});

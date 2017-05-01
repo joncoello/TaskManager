@@ -1,6 +1,13 @@
 ﻿/* tslint:disable:no-any */
 
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
+import { Response } from '@angular/http';
+import 'rxjs/add/operator/map';
+
+import { HttpClient } from '../shared/httpclient';
+import { TaskWidgetItem } from './home.models';
+
+import { BaseChartDirective } from 'ng2-charts';
 
 @Component({
     selector: 'home',
@@ -21,15 +28,19 @@ import { Component } from '@angular/core';
 })
 export class HomeComponent {
 
+    private homeUrl: string;
+    private data: any;
+
     public pageTitle: string;
 
-    constructor() {
+    constructor(private http: HttpClient, @Inject('API_URL') private apiURL: string) {
+        this.homeUrl = apiURL + '/api/home';  // url to web API
         this.pageTitle = 'Home';
     }
 
     // doughnut
-    public doughnutChartLabels: string[] = ['Urgent', 'High', 'Medium', 'Low', 'Info'];
-    public doughnutChartData: number[] = [18, 12, 18, 12, 13];
+    public doughnutChartLabels: string[] = []; //['Urgent', 'High', 'Medium', 'Low', 'Info'];
+    public doughnutChartData: number[] = []; //[18, 12, 18, 12, 13];
     public doughnutChartType: string = 'doughnut';
 
     public colours: Array<any> = [
@@ -53,10 +64,34 @@ export class HomeComponent {
     public options: any = {
         legend: {
             position: 'right'
-        }
+        },
+        responsive: true
     };
 
     // events
+    public ngOnInit() {
+        this.http.get(this.homeUrl)
+            .map((response: Response) => {
+                return <Array<TaskWidgetItem>>response.json()
+            })
+            .subscribe((items: Array<TaskWidgetItem>) => {
+                
+                let data: Array<number> = new Array<number>();
+                let labels: Array<string> = new Array<string>();
+
+                items.forEach((wi: TaskWidgetItem) => {
+                    labels.push(wi.categoryName);
+                    data.push(wi.count);
+                });
+
+                this.doughnutChartLabels = labels;
+                setTimeout(() => {
+                    this.doughnutChartData = data;
+                }, 10);
+                
+            });
+    }
+
     public chartClicked(e: any): void {
         console.log(e);
     }
@@ -64,5 +99,5 @@ export class HomeComponent {
     public chartHovered(e: any): void {
         console.log(e);
     }
-
+    
 }
