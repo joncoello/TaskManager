@@ -49,6 +49,7 @@
     <Compile Include="SQLClient.cs" />
     <Compile Include="TaskCategoryRepository.cs" />
     <Compile Include="TaskItemRepository.cs" />
+    <Compile Include="TaskWidgetRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TaskManager.DomainModel\TaskManager.DomainModel.csproj">

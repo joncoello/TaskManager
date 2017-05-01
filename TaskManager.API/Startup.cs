@@ -44,6 +44,7 @@ namespace TaskManager.API
             iocContainer.RegisterType<ISQLClient, SQLClient>(connectionString);
             iocContainer.RegisterType<ITaskItemRepository, TaskItemRepository>();
             iocContainer.RegisterType<ITaskCategoryRepository, TaskCategoryRepository>();
+            iocContainer.RegisterType<ITaskWidgetRepository, TaskWidgetRepository>();
             config.DependencyResolver = iocContainer.GetResolver();
 
             app.UseWebApi(config);
