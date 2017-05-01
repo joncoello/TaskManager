@@ -9,7 +9,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AgGridModule } from 'ag-grid-angular/main';
 
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/app.homeComponent';
+import { HomeComponent } from './home/home.component';
 import { TaskListComponent }  from './task/task-list.component';
 import { TaskComponent } from './task/task.component';
 import { TaskService } from './task/task.service';

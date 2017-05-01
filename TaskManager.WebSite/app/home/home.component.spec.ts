@@ -1,5 +1,5 @@
 ﻿/* tslint:disable:no-unused-variable */
-import { HomeComponent } from './app.homeComponent';
+import { HomeComponent } from './home.component';
 
 ////////  SPECS  /////////////
 
