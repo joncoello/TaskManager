@@ -4,6 +4,8 @@ go
 
 Create Procedure Task.TaskItem_GetAll
 
+	@category varchar(100) = null
+
 as
 
 	select
@@ -14,6 +16,9 @@ as
 	from
 		Task.TaskItem ti
 		inner join Task.TaskCategory tc on tc.TaskCategoryID = ti.TaskCategoryID
+	where
+		@category is null
+		or (@category is not null and tc.CategoryName = @category)
 	order by
 		tc.CategoryName
 

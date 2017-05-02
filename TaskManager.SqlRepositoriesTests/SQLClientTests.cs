@@ -71,7 +71,7 @@ namespace TaskManager.SqlRepositoriesTests
             var sut = new SQLClient(csb.ConnectionString);
 
             var entity = 
-                await sut.GetComplex<TestComplexEntity, TestSimpleEntity, TestComplexEntity>("spGetTestComplexEntities",
+                await sut.GetComplex<TestComplexEntity, TestSimpleEntity, TestComplexEntity>("spGetTestComplexEntities", null,
                     (complex, simple)=> { complex.Parent = simple; return complex; }, "TestSimpleEntityID");
 
 

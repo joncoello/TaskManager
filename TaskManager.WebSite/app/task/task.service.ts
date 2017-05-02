@@ -14,8 +14,8 @@ export class TaskService {
         this.tasksUrl = this.apiURL + '/api/task';
     }
 
-    public getTasks(): Observable<TaskListViewModel[]> {
-        return this.http.get(this.tasksUrl)
+    public getTasks(categoryName: string): Observable<TaskListViewModel[]> {
+        return this.http.get(this.tasksUrl + (categoryName ? '?categoryName=' + categoryName : ''))
             .map((response: Response) => {
                 var taskListVM = new Array<TaskListViewModel>();
                 var tasks = <TaskItem[]>response.json();

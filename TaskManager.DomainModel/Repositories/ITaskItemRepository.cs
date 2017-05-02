@@ -10,7 +10,7 @@ namespace TaskManager.DomainModel.Repositories
         Task<TaskItem> Create(TaskItem newTaskItem);
         Task Delete(Guid taskItemID);
         Task<TaskItem> Get(Guid taskItemID);
-        Task<IEnumerable<TaskItem>> GetAll();
+        Task<IEnumerable<TaskItem>> GetAll(string categoryName);
         Task Update(TaskItem taskItem);
     }
 }

@@ -1,11 +1,9 @@
 ﻿import { Component, OnInit } from '@angular/core';
-
 import { Response } from '@angular/http';
-
 import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { TaskService } from './task.service';
-
 import { TaskItem, TaskListViewModel } from './task.model';
 
 @Component({
@@ -19,8 +17,9 @@ export class TaskListComponent implements OnInit {
     public addTaskForm: FormGroup;
     public addTaskNameField: FormControl;
     public isLoading: boolean = false;
+    private categoryToFilter: string;
 
-    constructor(private fb: FormBuilder, private taskService: TaskService) {
+    constructor(private fb: FormBuilder, private taskService: TaskService, private route: ActivatedRoute) {
         this.title = 'tasks';
     }
 
@@ -30,8 +29,12 @@ export class TaskListComponent implements OnInit {
             'taskName': this.addTaskNameField
         });
 
-        this.isLoading = true;
-        this.loadTasks();
+        this.route.params.subscribe((params: { [key: string]: any }) => {
+            this.categoryToFilter = params['category'];
+            
+            this.isLoading = true;
+            this.loadTasks();
+        });
     }
 
     public onSubmit(task: TaskItem): void {
@@ -45,7 +48,7 @@ export class TaskListComponent implements OnInit {
     }
 
     public loadTasks() {
-        this.taskService.getTasks()
+        this.taskService.getTasks(this.categoryToFilter)
             .subscribe((tasks: TaskListViewModel[]) => {
                 this.data = tasks;
                 this.isLoading = false;

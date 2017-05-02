@@ -50,7 +50,7 @@ namespace TaskManager.SqlRepositoriesTests
 
             var sut = CreateSUT();
 
-            var taskItems = await sut.GetAll();
+            var taskItems = await sut.GetAll(null);
 
             Assert.True(taskItems.Any(ti => ti.TaskItemID == newTaskItem.TaskItemID));
 
@@ -80,11 +80,11 @@ namespace TaskManager.SqlRepositoriesTests
 
             var sut = CreateSUT();
 
-            var taskItems = await sut.GetAll();
+            var taskItems = await sut.GetAll(null);
 
             await sut.Delete(newTaskItem.TaskItemID);
 
-            taskItems = await sut.GetAll();
+            taskItems = await sut.GetAll(null);
 
             Assert.False(taskItems.Any(ti => ti.TaskItemID == newTaskItem.TaskItemID));
 

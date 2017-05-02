@@ -46,7 +46,7 @@
                     </a>
                 </h4>
             </div>
-            <div id="collapse{{group.categoryID}}" class="panel-collapse collapse">
+            <div id="collapse{{group.categoryID}}" [ngClass]="{'panel-collapse': true, 'collapse': data.length!==1, 'collapse.in': data.length===1}">
                 <div class="panel-body">
                     <table class="table table-striped table-hover">
                         <tr *ngFor='let item of group.tasks'>

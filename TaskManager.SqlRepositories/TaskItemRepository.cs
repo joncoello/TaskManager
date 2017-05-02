@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -35,9 +36,9 @@ namespace TaskManager.SqlRepositories
             });
         }
 
-        public async Task<IEnumerable<TaskItem>> GetAll()
+        public async Task<IEnumerable<TaskItem>> GetAll(string categoryName)
         {
-            return await _sqlClient.GetComplex<TaskItem, TaskCategory, TaskItem>("Task.TaskItem_GetAll",
+            return await _sqlClient.GetComplex<TaskItem, TaskCategory, TaskItem>("Task.TaskItem_GetAll", new { Category = categoryName },
                 (task, category)=> { task.Category = category; return task; }, "TaskCategoryID");
         }
 

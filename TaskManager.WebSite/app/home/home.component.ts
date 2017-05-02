@@ -3,6 +3,7 @@
 import { Component, Inject } from '@angular/core';
 import { Response } from '@angular/http';
 import 'rxjs/add/operator/map';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { HttpClient } from '../shared/httpclient';
 import { TaskWidgetItem } from './home.models';
@@ -30,7 +31,7 @@ export class HomeComponent {
 
     public pageTitle: string;
 
-    constructor(private http: HttpClient, @Inject('API_URL') private apiURL: string) {
+    constructor(private http: HttpClient, @Inject('API_URL') private apiURL: string, private router: Router) {
         this.homeUrl = apiURL + '/api/home';  // url to web API
         this.pageTitle = 'Home';
     }
@@ -94,7 +95,8 @@ export class HomeComponent {
 
         if (e !== null && e.active != null && e.active.length === 1) {
             var index = e.active[0]._index;
-            alert(this.doughnutChartLabels[index]);
+            var categoryName = this.doughnutChartLabels[index];
+            this.router.navigate(['tasks', categoryName]);
         }
 
     }
