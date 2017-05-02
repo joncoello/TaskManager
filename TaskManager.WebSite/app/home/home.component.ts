@@ -7,8 +7,6 @@ import 'rxjs/add/operator/map';
 import { HttpClient } from '../shared/httpclient';
 import { TaskWidgetItem } from './home.models';
 
-import { BaseChartDirective } from 'ng2-charts';
-
 @Component({
     selector: 'home',
     template: `
@@ -29,7 +27,6 @@ import { BaseChartDirective } from 'ng2-charts';
 export class HomeComponent {
 
     private homeUrl: string;
-    private data: any;
 
     public pageTitle: string;
 
@@ -39,8 +36,8 @@ export class HomeComponent {
     }
 
     // doughnut
-    public doughnutChartLabels: string[] = []; //['Urgent', 'High', 'Medium', 'Low', 'Info'];
-    public doughnutChartData: number[] = []; //[18, 12, 18, 12, 13];
+    public doughnutChartLabels: string[] = [];
+    public doughnutChartData: number[] = [];
     public doughnutChartType: string = 'doughnut';
 
     public colours: Array<any> = [
@@ -72,10 +69,10 @@ export class HomeComponent {
     public ngOnInit() {
         this.http.get(this.homeUrl)
             .map((response: Response) => {
-                return <Array<TaskWidgetItem>>response.json()
+                return <Array<TaskWidgetItem>>response.json();
             })
             .subscribe((items: Array<TaskWidgetItem>) => {
-                
+
                 let data: Array<number> = new Array<number>();
                 let labels: Array<string> = new Array<string>();
 
@@ -88,16 +85,22 @@ export class HomeComponent {
                 setTimeout(() => {
                     this.doughnutChartData = data;
                 }, 10);
-                
+
             });
     }
 
     public chartClicked(e: any): void {
         console.log(e);
+
+        if (e !== null && e.active != null && e.active.length === 1) {
+            var index = e.active[0]._index;
+            alert(this.doughnutChartLabels[index]);
+        }
+
     }
 
     public chartHovered(e: any): void {
-        console.log(e);
+        // console.log(e);
     }
-    
+
 }
