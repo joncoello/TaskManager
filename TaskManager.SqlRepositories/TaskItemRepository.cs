@@ -9,6 +9,9 @@ using TaskManager.DomainModel.Repositories;
 
 namespace TaskManager.SqlRepositories
 {
+    /// <summary>
+    /// Repository for tasks
+    /// </summary>
     public class TaskItemRepository : ITaskItemRepository
     {
         private (ISQLClient _sqlClient;

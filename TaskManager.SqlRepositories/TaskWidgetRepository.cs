@@ -8,6 +8,9 @@ using TaskManager.DomainModel.Repositories;
 
 namespace TaskManager.SqlRepositories
 {
+    /// <summary>
+    /// Repository for task home page
+    /// </summary>
     public class TaskWidgetRepository : ITaskWidgetRepository
     {
         private SQLClient _sqlClient;

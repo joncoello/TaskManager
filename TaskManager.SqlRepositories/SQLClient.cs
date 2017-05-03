@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 
 namespace TaskManager.SqlRepositories
 {
+    /// <summary>
+    /// Class to act as generic ORM implementation using dapper
+    /// </summary>
     public class SQLClient : ISQLClient
     {
         private string _connectionString;

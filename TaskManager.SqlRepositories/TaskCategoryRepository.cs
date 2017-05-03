@@ -9,6 +9,9 @@ using TaskManager.SqlRepositories;
 
 namespace TaskManager.SqlRepositories
 {
+    /// <summary>
+    /// Repository for categories
+    /// </summary>
     public class TaskCategoryRepository : ITaskCategoryRepository
     {
         private readonly ISQLClient _sqlClient;
