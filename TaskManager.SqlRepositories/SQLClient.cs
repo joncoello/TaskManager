@@ -1,6 +1,7 @@
 ﻿using Dapper;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -16,37 +17,30 @@ namespace TaskManager.SqlRepositories
         {
             this._connectionString = connectionString;
         }
-
-        public async Task<T> GetSingle<T>(string storedProcedureName, object parameters)
-        {
-            using (var conn = new SqlConnection(_connectionString))
-            {
-                await conn.OpenAsync();
-                return await conn.QuerySingleAsync<T>(storedProcedureName, commandType: System.Data.CommandType.StoredProcedure, param: parameters);
-            }
-        }
-            
-        public async Task<IEnumerable<TReturn>> GetComplex<T1, T2, TReturn>(string storedProcedureName, object parameters, Func<T1, T2, TReturn> map, string splitOn)
+        
+        public async Task<IEnumerable<TReturn>> RunSpReturnGraph<T1, T2, TReturn>(string storedProcedureName, Func<T1, T2, TReturn> map, string splitOn, object parameters = null)
         {
             
             using (var conn = new SqlConnection(_connectionString))
             {
                 await conn.OpenAsync();
 
-                var data = conn.Query<T1, T2, TReturn>(storedProcedureName, commandType: System.Data.CommandType.StoredProcedure, map: map, splitOn: splitOn, param: parameters);
+                var data = conn.Query<T1, T2, TReturn>(storedProcedureName, 
+                    commandType: System.Data.CommandType.StoredProcedure, 
+                    map: map, splitOn: splitOn, param: parameters);
 
                 return data;
 
             }
         }
 
-        public async Task<IEnumerable<T>> GetList<T>(string storedProcedureName)
+        public async Task<IEnumerable<T>> RunSpReturnGraph<T>(string storedProcedureName, object parameters = null)
         {
             using (var conn = new SqlConnection(_connectionString))
             {
                 await conn.OpenAsync();
 
-                var data = await conn.QueryAsync<T>(storedProcedureName);
+                var data = await conn.QueryAsync<T>(storedProcedureName, commandType: CommandType.StoredProcedure, param: parameters);
 
                 return data;
 
@@ -58,7 +52,8 @@ namespace TaskManager.SqlRepositories
             using (var conn = new SqlConnection(_connectionString))
             {
                 await conn.OpenAsync();
-                await conn.ExecuteAsync(storedProcedureName, commandType: System.Data.CommandType.StoredProcedure, param: parameters);
+                await conn.ExecuteAsync(storedProcedureName, 
+                    commandType: System.Data.CommandType.StoredProcedure, param: parameters);
             }
         }
     }

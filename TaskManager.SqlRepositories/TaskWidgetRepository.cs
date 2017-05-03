@@ -19,7 +19,7 @@ namespace TaskManager.SqlRepositories
 
         public async Task<IEnumerable<TaskWidgetItem>> Get()
         {
-            return await _sqlClient.GetList<TaskWidgetItem>("Task.TaskWidget_Get");
+            return await _sqlClient.RunSpReturnGraph<TaskWidgetItem>("Task.TaskWidget_Get");
         }
 
 

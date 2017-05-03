@@ -21,28 +21,7 @@ namespace TaskManager.SqlRepositoriesTests
         {
             var sut = new SQLClient(null);
         }
-
-        [Fact]
-        public async Task SQLClient_GetSingleEntity()
-        {
-            var connectionString = ConfigurationManager.ConnectionStrings["TaskManager"].ConnectionString;
-            var csb = new DbConnectionStringBuilder();
-            csb.ConnectionString = connectionString;
-            csb["database"] = "SQLClientTest";
-
-            var sut = new SQLClient(csb.ConnectionString);
-
-            var entity = await sut.GetSingle<TestSimpleEntity>("spGetTestSimpleEntity", new
-            {
-                TestSimpleEntityID = 1
-            });
-
-            Assert.NotNull(entity);
-            Assert.Equal(1, entity.TestSimpleEntityID);
-            Assert.Equal("bob", entity.TestSimpleEntityName);
-
-        }
-
+        
         [Fact]
         public async Task SQLClient_GetEntityList()
         {
@@ -53,7 +32,7 @@ namespace TaskManager.SqlRepositoriesTests
 
             var sut = new SQLClient(csb.ConnectionString);
 
-            var list = await sut.GetList<TestSimpleEntity>("spGetTestSimpleEntityList");
+            var list = await sut.RunSpReturnGraph<TestSimpleEntity>("spGetTestSimpleEntityList");
 
             Assert.NotNull(list);
             Assert.True(list.Count()>0);
@@ -71,7 +50,7 @@ namespace TaskManager.SqlRepositoriesTests
             var sut = new SQLClient(csb.ConnectionString);
 
             var entity = 
-                await sut.GetComplex<TestComplexEntity, TestSimpleEntity, TestComplexEntity>("spGetTestComplexEntities", null,
+                await sut.RunSpReturnGraph<TestComplexEntity, TestSimpleEntity, TestComplexEntity>("spGetTestComplexEntities",
                     (complex, simple)=> { complex.Parent = simple; return complex; }, "TestSimpleEntityID");
 
 

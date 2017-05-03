@@ -29,14 +29,15 @@ namespace TaskManager.SqlRepositories
 
         public async Task<TaskCategory> Get(Guid taskCategoryID)
         {
-            return await _sqlClient.GetSingle<TaskCategory>("Task.TaskCategory_Get", new {
+            var result = await _sqlClient.RunSpReturnGraph<TaskCategory>("Task.TaskCategory_Get", new {
                 TaskCategoryID = taskCategoryID
             });
+            return result.ToList()[0];
         }
 
         public async Task<IEnumerable<TaskCategory>> GetAll()
         {
-            return await _sqlClient.GetList<TaskCategory>("Task.TaskCategory_GetAll");
+            return await _sqlClient.RunSpReturnGraph<TaskCategory>("Task.TaskCategory_GetAll");
         }
 
         public async Task Update(TaskCategory taskCategory)

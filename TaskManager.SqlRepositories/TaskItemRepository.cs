@@ -11,9 +11,9 @@ namespace TaskManager.SqlRepositories
 {
     public class TaskItemRepository : ITaskItemRepository
     {
-        private SQLClient _sqlClient;
+        private (ISQLClient _sqlClient;
 
-        public TaskItemRepository(SQLClient sqlClient)
+        public TaskItemRepository(ISQLClient sqlClient)
         {
             this._sqlClient = sqlClient;
         }
@@ -21,25 +21,32 @@ namespace TaskManager.SqlRepositories
         public async Task<TaskItem> Create(TaskItem newTaskItem)
         {
             newTaskItem.TaskItemID = Guid.NewGuid();
-            return await _sqlClient.GetSingle<TaskItem>("Task.TaskItem_Insert", new
+            var result = await _sqlClient.RunSpReturnGraph<TaskItem>("Task.TaskItem_Insert", new
             {
                 TaskItemID = newTaskItem.TaskItemID,
                 TaskName = newTaskItem.TaskName
             });
+            return result.ToList()[0];
         }
 
         public async Task<TaskItem> Get(Guid taskItemID)
         {
-            return await _sqlClient.GetSingle<TaskItem>("Task.TaskItem_Get", new
+            var result = await _sqlClient.RunSpReturnGraph<TaskItem>("Task.TaskItem_Get", new
             {
                 TaskItemID = taskItemID
             });
+            return result.ToList()[0];
         }
 
         public async Task<IEnumerable<TaskItem>> GetAll(string categoryName)
         {
-            return await _sqlClient.GetComplex<TaskItem, TaskCategory, TaskItem>("Task.TaskItem_GetAll", new { Category = categoryName },
-                (task, category)=> { task.Category = category; return task; }, "TaskCategoryID");
+            return await _sqlClient.RunSpReturnGraph<TaskItem, TaskCategory, TaskItem>(
+                "Task.TaskItem_GetAll",
+                (task, category)=> { task.Category = category; return task; }, 
+                "TaskCategoryID",
+                new {
+                    Category = categoryName
+                });
         }
 
         public async Task Update(TaskItem taskItem)

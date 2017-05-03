@@ -7,9 +7,8 @@ namespace TaskManager.SqlRepositories
 {
     public interface ISQLClient
     {
-        Task<IEnumerable<TReturn>> GetComplex<T1, T2, TReturn>(string storedProcedureName, object parameters, Func<T1, T2, TReturn> map, string splitOn);
-        Task<IEnumerable<T>> GetList<T>(string storedProcedureName);
-        Task<T> GetSingle<T>(string storedProcedureName, object parameters);
+        Task<IEnumerable<TReturn>> RunSpReturnGraph<T1, T2, TReturn>(string storedProcedureName, Func<T1, T2, TReturn> map, string splitOn, object parameters = null);
+        Task<IEnumerable<T>> RunSpReturnGraph<T>(string storedProcedureName, object parameters = null);
         Task RunSp(string storedProcedureName, object parameters);
     }
 }
