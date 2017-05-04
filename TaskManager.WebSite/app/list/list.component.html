@@ -1,8 +1,8 @@
 ﻿<h2>{{pageTitle}}</h2>
 
 <!-- add new -->
-<form #heroForm="ngForm"
-      (ngSubmit)="onSubmit(heroForm.value)">
+<form #addNewForm="ngForm"
+      (ngSubmit)="onSubmit(addNewForm.value)">
 
     <div class="form-group">
         <label class="control-label">Create new</label>
@@ -28,15 +28,21 @@
     <thead>
         <tr>
             <td *ngFor='let field of formData.fields'>
-                {{field.id}}
+                <b>{{field.name}}</b>
             </td>
         </tr>
     </thead>
     <tr *ngFor='let item of data'>
         <td *ngFor='let field of formData.fields'>
-            {{item[field.id]}}
+            <input type="text" [(ngModel)]="item[field.id]" />
         </td>
-        <td>
+        <td style="width: 50px;">
+            <a class="btn btn-primary btn-xs delete-button"
+               (click)="save(item)">
+                <i class="fa fa-floppy-o fa-sm"></i>
+            </a>
+        </td>
+        <td style="width: 50px;">
             <a class="btn btn-danger btn-xs delete-button"
                (click)="delete(item[formData.idField])">
                 <i class="fa fa-trash-o fa-sm"></i>

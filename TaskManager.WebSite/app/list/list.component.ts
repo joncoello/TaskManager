@@ -25,7 +25,7 @@ export class ListComponent implements OnInit {
         this.formData = {
             idField: 'taskCategoryID',
             fields: [
-                { id: 'categoryName' }
+                { id: 'categoryName', name: 'category' }
             ],
             url: '/api/category'
         };
@@ -53,8 +53,19 @@ export class ListComponent implements OnInit {
             });
     }
 
+    public save(data: any): void {
+        console.log('saving');
+        console.log(data);
+        this.http.patch(this.entityUrl, data)
+            .subscribe((res: Response) => {
+                console.log(res.statusText);
+                this.loadTasks();
+            });
+    }
+
     public onSubmit(data: any): void {
-        console.log('adding ' + data);
+        console.log('adding');
+        console.log(data);
         this.http.post(this.entityUrl, data)
             .subscribe((res: Response) => {
                 console.log(res.statusText);

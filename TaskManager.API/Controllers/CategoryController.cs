@@ -38,6 +38,13 @@ namespace TaskManager.API.Controllers
             return Created<TaskCategory>("", newCateogry);
         }
 
+        [Route("")]
+        public async Task<IHttpActionResult> Patch(TaskCategory newCateogry)
+        {
+            await _categoryRepository.Update(newCateogry);
+            return Ok<TaskCategory>(newCateogry);
+        }
+
         [Route("{newCategoryID}")]
         public async Task<IHttpActionResult> Delete(Guid newCategoryID)
         {
