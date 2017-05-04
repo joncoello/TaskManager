@@ -1,19 +1,21 @@
 ﻿<h2>{{pageTitle}}</h2>
 
- <!-- add new -->
-<form [formGroup]="insertForm"
-      (ngSubmit)="onSubmit(insertForm.value)">
+<!-- add new -->
+<form #heroForm="ngForm"
+      (ngSubmit)="onSubmit(heroForm.value)">
 
     <div class="form-group">
         <label class="control-label">Create new</label>
         <div class="input-group">
 
-            <input class="form-control"
+            <input *ngFor='let field of formData.fields'
+                   class="form-control"
                    placeholder="new"
                    type="text"
-                   id="name"
-                   autocomplete="off"
-                   [formControl]="insertForm.controls['categoryName']">
+                   name="{{field.id}}"
+                   [(ngModel)]="newData[field.id]"
+                   id="{{field.id}}"
+                   autocomplete="off">
             <span class="input-group-btn">
                 <button class="btn btn-default" type="submit">add</button>
             </span>
