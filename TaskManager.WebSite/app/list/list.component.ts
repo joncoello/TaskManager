@@ -1,6 +1,7 @@
 ﻿import { Component, OnInit, Inject } from '@angular/core';
 import { HttpClient } from '../shared/httpclient';
 import { Response } from '@angular/http';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
     selector: 'list',
@@ -10,29 +11,38 @@ export class ListComponent implements OnInit {
     public pageTitle: string = 'list';
     public formData: any;
     public data: any;
-
     public newData: any = {};
+    public isLoading: boolean = true;
 
     private entityUrl: string;
 
-    constructor(private http: HttpClient, @Inject('API_URL') private apiURL: string) {
+    constructor(private http: HttpClient, @Inject('API_URL') private apiURL: string, private route: ActivatedRoute) {
 
     }
 
     public ngOnInit(): void {
 
-        // meta data
-        this.formData = {
-            idField: 'taskCategoryID',
-            fields: [
-                { id: 'categoryName', name: 'category' }
-            ],
-            url: '/api/category'
-        };
+        this.route.params.subscribe((params: { [key: string]: any }) => {
 
-        this.entityUrl = this.apiURL + this.formData.url;
+            var id = params['id'];
+            console.log('id is ' + id);
 
-        this.loadTasks();
+            // meta data
+            this.http.get(this.apiURL + '/api/list')
+                .subscribe((res: Response) => {
+                    console.log(res.statusText);
+
+                    this.formData = res.json();
+
+                    this.isLoading = false;
+                    
+                    this.entityUrl = this.apiURL + this.formData.url;
+
+                    this.loadTasks();
+
+                });
+            
+        });
 
     }
 

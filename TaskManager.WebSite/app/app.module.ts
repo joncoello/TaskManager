@@ -43,7 +43,7 @@ const routes: Routes = [
     { path: 'categories', component: CategoryListComponent, canActivate: [LoggedInGuard] },
     { path: 'about', component: AboutComponent, canActivate: [LoggedInGuard]  },
     { path: 'grid', component: GridComponent, canActivate: [LoggedInGuard] },
-    { path: 'list', component: ListComponent, canActivate: [LoggedInGuard] },
+    { path: 'list/:id', component: ListComponent, canActivate: [LoggedInGuard] },
     { path: 'login', component: LoginComponent }
 ];
 
