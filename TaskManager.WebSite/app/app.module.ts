@@ -20,6 +20,7 @@ import { LoginComponent } from './login/login.component';
 import { LoginService } from './login/login.service';
 import { GridService } from './grid/grid.service';
 import { RedComponentComponent } from './grid/red-component.component';
+import { ListComponent } from './list/list.component';
 
 import { LoggedInGuard } from './guards/login.guard';
 
@@ -42,6 +43,7 @@ const routes: Routes = [
     { path: 'categories', component: CategoryListComponent, canActivate: [LoggedInGuard] },
     { path: 'about', component: AboutComponent, canActivate: [LoggedInGuard]  },
     { path: 'grid', component: GridComponent, canActivate: [LoggedInGuard] },
+    { path: 'list', component: ListComponent, canActivate: [LoggedInGuard] },
     { path: 'login', component: LoginComponent }
 ];
 
@@ -67,6 +69,7 @@ const routes: Routes = [
         GridComponent,
         LoginComponent,
         RedComponentComponent,
+        ListComponent,
         WrapperExampleComponent
     ],
     bootstrap: [AppComponent],
