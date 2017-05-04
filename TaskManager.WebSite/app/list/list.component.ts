@@ -1,46 +1,28 @@
 ﻿import { Component, OnInit, Inject } from '@angular/core';
 import { HttpClient } from '../shared/httpclient';
 import { Response } from '@angular/http';
+import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 
 @Component({
     selector: 'list',
-    template: `
-                <h2>{{pageTitle}}</h2>
-                <table class="table table-striped table-hover">
-                    <thead>
-                        <tr>
-                            <td *ngFor='let field of formData.fields'>
-                                {{field.id}}
-                            </td>
-                        </tr>
-                    </thead>
-                    <tr *ngFor='let item of data'>
-                        <td *ngFor='let field of formData.fields'>
-                            {{item[field.id]}}
-                        </td>
-                        <td>
-                            <a class="btn btn-danger btn-xs delete-button"
-                               (click)="delete(item[formData.idField])">
-                                <i class="fa fa-trash-o fa-sm"></i>
-                            </a>
-                        </td>
-                    </tr>
-                </table>
-                `
+    templateUrl: './app/list/list.component.html'
 })
 export class ListComponent implements OnInit {
     public pageTitle: string = 'list';
     public formData: any;
     public data: any;
+    public insertForm: FormGroup;
+    public nameField: FormControl;
 
     private entityUrl: string;
 
-    constructor(private http: HttpClient, @Inject('API_URL') private apiURL: string) {
+    constructor(private http: HttpClient, @Inject('API_URL') private apiURL: string, private fb: FormBuilder) {
 
     }
 
     public ngOnInit(): void {
 
+        // meta data
         this.formData = {
             idField: 'taskCategoryID',
             fields: [
@@ -48,6 +30,19 @@ export class ListComponent implements OnInit {
             ],
             url: '/api/category'
         };
+
+        // form
+
+        //this.nameField = new FormControl('');
+        //this.insertForm = this.fb.group({
+        //    categoryName: this.nameField
+        //});
+
+        let formDef: any = {};
+        for (let field of this.formData.fields) {
+            formDef[field.id] = new FormControl('');
+        }
+        this.insertForm = this.fb.group(formDef);
 
         this.entityUrl = this.apiURL + this.formData.url;
         

@@ -64,6 +64,7 @@
   <ItemGroup>
     <Content Include="app\category\category-list.component.html" />
     <Content Include="app\grid\grid.component.html" />
+    <Content Include="app\list\list.component.html" />
     <Content Include="app\task\task-list.component.html" />
     <Content Include="bootstrap.min.css" />
     <Content Include="favicon.ico" />
