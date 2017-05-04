@@ -14,7 +14,7 @@ namespace TaskManager.SqlRepositories
     /// </summary>
     public class TaskItemRepository : ITaskItemRepository
     {
-        private (ISQLClient _sqlClient;
+        private ISQLClient _sqlClient;
 
         public TaskItemRepository(ISQLClient sqlClient)
         {
