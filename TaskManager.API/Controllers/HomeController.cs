@@ -11,7 +11,6 @@ using TaskManager.DomainModel.Repositories;
 
 namespace TaskManager.API.Controllers
 {
-    [RoutePrefix("api/home")]
     public class HomeController : ApiController
     {
         private readonly ITaskWidgetRepository _taskWidgetRepository;
@@ -20,14 +19,12 @@ namespace TaskManager.API.Controllers
         {
             _taskWidgetRepository = taskWidgetRepository;
         }
-
-        [Route("")]
+        
         public async Task<IEnumerable<TaskWidgetItem>> Get()
         {
             return await _taskWidgetRepository.Get();
         }
-
-        [Route("{id?}")]
+        
         public void Options(Guid? id = null)
         {
 

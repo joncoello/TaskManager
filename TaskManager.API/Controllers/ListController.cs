@@ -43,7 +43,7 @@ namespace TaskManager.API.Controllers
                         Id = "taskCategoryID",
                         Name = "category",
                         Combo =new TaskViewComb() {
-                            dataField = "catgories",
+                            ListIndex = 0,
                             IdField = "taskCategoryID",
                             DisplayField = "categoryName"
                         }

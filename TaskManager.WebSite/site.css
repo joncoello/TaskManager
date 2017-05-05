@@ -40,3 +40,8 @@ td {
 .button-column a{
     margin-right: 5px;
 }
+
+select.form-control{
+    height: auto;
+    padding: 0;
+}

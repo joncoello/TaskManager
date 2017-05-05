@@ -52,7 +52,7 @@ export class CategoryListComponent {
     public loadTasks() {
         this.http.get(this.tasksUrl)
             .subscribe((res: Response) => {
-                this.data = res.json();
+                this.data = res.json().data;
                 this.pageTitle = 'categories (' + this.data.length + ')';
                 this.isLoading = false;
             });

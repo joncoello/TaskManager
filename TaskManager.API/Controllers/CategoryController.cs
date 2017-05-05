@@ -23,18 +23,22 @@ namespace TaskManager.API.Controllers
         {
             _categoryRepository = categoryRepository;
         }
-        
-        public async Task<IHttpActionResult> Get() {
+
+        public async Task<IHttpActionResult> Get()
+        {
             var result = await _categoryRepository.GetAll();
-            return Ok<IEnumerable<TaskCategory>>(result);
+            return Ok(new GenericResponse
+            {
+                Data = result
+            });
         }
-        
+
         public async Task<IHttpActionResult> Post(TaskCategory newCateogry)
         {
             await _categoryRepository.Create(newCateogry);
             return Created<TaskCategory>("", newCateogry);
         }
-        
+
         public async Task<IHttpActionResult> Patch(TaskCategory newCateogry)
         {
             await _categoryRepository.Update(newCateogry);
@@ -49,7 +53,8 @@ namespace TaskManager.API.Controllers
 
         [AllowAnonymous]
         [Route("{id?}")]
-        public void Options(Guid? id = null) {
+        public void Options(Guid? id = null)
+        {
 
         }
 

@@ -25,7 +25,8 @@ namespace TaskManager.API.Models
     }
 
     public class TaskViewComb {
-        internal string dataField;
+
+        public int ListIndex { get; set; }
 
         public string IdField { get; set; }
         public string DisplayField { get; set; }

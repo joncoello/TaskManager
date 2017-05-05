@@ -9,11 +9,9 @@ using TaskManager.API.Models;
 namespace TaskManager.API.Controllers
 {
     [Authorize]
-    [RoutePrefix("api/grid")]
     public class GridController : ApiController
     {
 
-        [Route("")]
         public object Post(List<GridItem> gridItems)
         {
             

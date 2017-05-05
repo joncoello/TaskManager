@@ -13,7 +13,7 @@ export class TaskViewModel {
 }
 
 export class TasksViewModel {
-    public tasks: TaskItem[];
+    public data: TaskItem[];
     public categories: TaskCategory[];
 }
 

@@ -26,7 +26,7 @@ export class TaskService {
                 var taskListVM = new Array<TaskListViewModel>();
                 var tasksVM = <TasksViewModel>response.json();
 
-                for (let task of tasksVM.tasks) {
+                for (let task of tasksVM.data) {
 
                     // performance ?
                     var taskGroup = taskListVM.find((t: TaskListViewModel) => t.categoryID === task.category.taskCategoryID);

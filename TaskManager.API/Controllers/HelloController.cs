@@ -8,11 +8,8 @@ using System.Web.Http;
 
 namespace TaskManager.API.Controllers
 {
-    [Authorize]
-    [RoutePrefix("api/hello")]
     public class HelloController : ApiController
     {
-        [Route("")]
         public object Get()
         {
             return new

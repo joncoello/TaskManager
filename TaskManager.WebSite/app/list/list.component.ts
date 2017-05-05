@@ -10,7 +10,7 @@ import { ActivatedRoute } from '@angular/router';
 export class ListComponent implements OnInit {
     public pageTitle: string = 'list';
     public formData: any;
-    public data: any;
+    public vm: any;
     public newData: any = {};
     public isLoading: boolean = true;
 
@@ -33,8 +33,6 @@ export class ListComponent implements OnInit {
                     console.log(res.statusText);
 
                     this.formData = res.json();
-
-                    this.isLoading = false;
                     
                     this.entityUrl = this.apiURL + this.formData.url;
 
@@ -50,7 +48,8 @@ export class ListComponent implements OnInit {
         this.newData = {};
         this.http.get(this.entityUrl)
             .subscribe((res: Response) => {
-                this.data = res.json();
+                this.vm = res.json();
+                this.isLoading = false;
             });
     }
 

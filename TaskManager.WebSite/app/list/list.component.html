@@ -14,7 +14,7 @@
         <tr>
             <td *ngFor='let field of formData.fields'>
 
-                <input *ngIf="!field.combo" 
+                <input *ngIf="!field.combo"
                        placeholder="{{field.id}}"
                        type="text"
                        name="{{field.id}}"
@@ -23,17 +23,36 @@
                        autocomplete="off">
 
                 <select *ngIf="field.combo"
-                       autocomplete="off"></select>
+                        autocomplete="off">
+                    <option *ngFor="let comboItem of vm.lists[field.combo.listIndex]">
+                        {{comboItem[field.combo.displayField]}}
+                    </option>
+                </select>
 
             </td>
             <td class="button-column">
                 <button class="btn btn-xs btn-default" type="submit">add</button>
             </td>
         </tr>
-        <tr *ngFor='let item of data'>
+        <tr *ngFor='let item of vm.data'>
             <td *ngFor='let field of formData.fields'>
-                <input *ngIf="item.isEdit" type="text" [(ngModel)]="item[field.id]" />
-                <span *ngIf="!item.isEdit">{{item[field.id]}}</span>
+
+                <!-- edit text -->
+                <input *ngIf="item.isEdit && !field.combo" type="text" [(ngModel)]="item[field.id]" />
+
+                <!-- edit / view drop down -->
+                <select *ngIf="field.combo"
+                        autocomplete="off"
+                        class="form-control"
+                        [(ngModel)]="item[field.id]">
+                    <option *ngFor="let comboItem of vm.lists[field.combo.listIndex]" [ngValue]="comboItem[field.combo.idField]">
+                        {{comboItem[field.combo.displayField]}}
+                    </option>
+                </select>
+
+                <!-- view -->
+                <span *ngIf="!item.isEdit && !field.combo">{{item[field.id]}}</span>
+
             </td>
             <td class="button-column">
                 <a *ngIf="item.isEdit" class="btn btn-danger btn-xs delete-button"

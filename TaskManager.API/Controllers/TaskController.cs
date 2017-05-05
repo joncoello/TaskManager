@@ -34,9 +34,9 @@ namespace TaskManager.API.Controllers
             var taskList = tasks.ToList();
             var result = new TaskListResponse
             {
-                Tasks = taskList,
-                Categories = categoryList
+                Data = taskList,
             };
+            result.Lists.Add(categories);
             return Ok(result);
         }
 
