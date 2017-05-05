@@ -56,6 +56,7 @@ namespace TaskManager.APITests.Tests
                 response.EnsureSuccessStatusCode();
 
                 var content = await response.Content.ReadAsStringAsync();
+                content = JObject.Parse(content)["data"].ToString();
 
                 var categories = JsonConvert.DeserializeObject<List<TaskCategory>>(content);
 
@@ -83,6 +84,7 @@ namespace TaskManager.APITests.Tests
                 response.EnsureSuccessStatusCode();
                 
                 var content = await response.Content.ReadAsStringAsync();
+                content = JObject.Parse(content)["data"].ToString();
 
                 var categories = JsonConvert.DeserializeObject<List<TaskCategory>>(content);
 
