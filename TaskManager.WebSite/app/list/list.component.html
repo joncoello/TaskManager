@@ -2,37 +2,6 @@
 
 <div *ngIf="!isLoading">
 
-    <!-- add new -->
-    <form #addNewForm="ngForm"
-          (ngSubmit)="onSubmit(addNewForm.value)">
-
-        <div class="form-group">
-            <label class="control-label">Create new</label>
-
-            <table class="table table-striped table-hover">
-                <tr>
-                    <td *ngFor='let field of formData.fields'>
-                        <div class="input-group">
-
-                            <input class="form-control"
-                                   placeholder="{{field.id}}"
-                                   type="text"
-                                   name="{{field.id}}"
-                                   [(ngModel)]="newData[field.id]"
-                                   id="{{field.id}}"
-                                   autocomplete="off">
-                        </div>
-                    </td>
-                    <td class="button-column">
-                        <span class="input-group-btn">
-                            <button class="btn btn-default" type="submit">add</button>
-                        </span>
-                    </td>
-                </tr>
-            </table>
-        </div>
-    </form>
-
     <!-- list -->
     <table class="table table-striped table-hover">
         <thead>
@@ -42,6 +11,21 @@
                 </td>
             </tr>
         </thead>
+        <tr>
+            <td *ngFor='let field of formData.fields'>
+
+                <input placeholder="{{field.id}}"
+                       type="text"
+                       name="{{field.id}}"
+                       [(ngModel)]="newData[field.id]"
+                       id="{{field.id}}"
+                       autocomplete="off">
+
+            </td>
+            <td class="button-column">
+                <button class="btn btn-xs btn-default" type="submit">add</button>
+            </td>
+        </tr>
         <tr *ngFor='let item of data'>
             <td *ngFor='let field of formData.fields'>
                 <input *ngIf="item.isEdit" type="text" [(ngModel)]="item[field.id]" />

@@ -33,7 +33,8 @@ td {
 }
 
 .button-column{
-    width: 150px;
+    width: 100px;
+    text-align:right;
 }
 
 .button-column a{

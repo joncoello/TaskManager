@@ -45,6 +45,7 @@ export class HomeComponent {
         { // grey
             backgroundColor:
             [
+                'lightgray',
                 'rgba(240,125,136,0.7)',
                 'rgba(255,140,0,0.7)',
                 'rgba(254,203,111,0.7)',
