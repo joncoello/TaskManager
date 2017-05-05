@@ -57,6 +57,17 @@ export class ListComponent implements OnInit {
         data.isEdit = true;
     }
 
+    public create(data: any): void {
+        console.log('creating');
+        console.log(data);
+        this.http.post(this.entityUrl, data)
+            .subscribe((res: Response) => {
+                console.log(res.statusText);
+                this.loadTasks();
+            });
+        data.isEdit = false;
+    }
+
     public delete(data: any): void {
         var id = data[this.formData.idField];
         console.log('deleting ' + id);
@@ -66,7 +77,7 @@ export class ListComponent implements OnInit {
                 this.loadTasks();
             });
     }
-
+    
     public save(data: any): void {
         console.log('saving');
         console.log(data);

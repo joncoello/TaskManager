@@ -27,7 +27,8 @@ namespace TaskManager.SqlRepositories
             var result = await _sqlClient.RunSpReturnGraph<TaskItem>("Task.TaskItem_Insert", new
             {
                 TaskItemID = newTaskItem.TaskItemID,
-                TaskName = newTaskItem.TaskName
+                TaskName = newTaskItem.TaskName,
+                TaskCategoryID = newTaskItem.TaskCategoryID
             });
             return result.ToList()[0];
         }

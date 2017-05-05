@@ -23,15 +23,16 @@
                        autocomplete="off">
 
                 <select *ngIf="field.combo"
+                        [(ngModel)]="newData[field.id]"
                         autocomplete="off">
-                    <option *ngFor="let comboItem of vm.lists[field.combo.listIndex]">
+                    <option *ngFor="let comboItem of vm.lists[field.combo.listIndex]" [ngValue]="comboItem[field.combo.idField]">
                         {{comboItem[field.combo.displayField]}}
                     </option>
                 </select>
 
             </td>
             <td class="button-column">
-                <button class="btn btn-xs btn-default" type="submit">add</button>
+                <button class="btn btn-xs btn-default" (click)="create(newData)">add</button>
             </td>
         </tr>
         <tr *ngFor='let item of vm.data'>
