@@ -11,6 +11,7 @@ as
 	select
 		ti.TaskItemID,
 		ti.TaskName,
+		ti.TaskCategoryID,
 		tc.TaskCategoryID,
 		tc.CategoryName
 	from

@@ -32,7 +32,8 @@ import { Component } from '@angular/core';
                         <li><a (click)="beforeNav()" [routerLink]="['categories']">Categories</a></li>
                         <li><a (click)="beforeNav()" [routerLink]="['about']">Examples</a></li>
                         <li><a (click)="beforeNav()" [routerLink]="['grid']">Grid</a></li>
-                        <li><a (click)="beforeNav()" [routerLink]="['list/1']">List</a></li>
+                        <li><a (click)="beforeNav()" [routerLink]="['list/1']">cat list</a></li>
+                        <li><a (click)="beforeNav()" [routerLink]="['list/2']">task list</a></li>
                     </ul>
                 </div>
             </div>

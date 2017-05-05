@@ -14,17 +14,42 @@ namespace TaskManager.API.Controllers
         [Route("{id?}")]
         public async Task<IHttpActionResult> Get(string id = null)
         {
-            return this.Ok<ListView>(new ListView()
+            if (id == "1")
             {
-                IdField = "taskCategoryID",
-                Url = "/api/category",
-                Fields = new List<ListViewField>(new[] {
+                return this.Ok<ListView>(new ListView()
+                {
+                    IdField = "taskCategoryID",
+                    Url = "/api/category",
+                    Fields = new List<ListViewField>(new[] {
                     new ListViewField() {
                         Id = "categoryName",
                         Name = "category"
                     }
                 })
-            });
+                });
+            }
+            else if (id == "2")
+            {
+                return this.Ok<ListView>(new ListView()
+                {
+                    IdField = "taskItemID",
+                    Url = "/api/task",
+                    Fields = new List<ListViewField>(new[] {
+                    new ListViewField() {
+                        Id = "taskName",
+                        Name = "task"
+                    },
+                    new ListViewField() {
+                        Id = "taskCategoryID",
+                        Name = "category"
+                    }
+                })
+                });
+            }
+            else
+            {
+                return Ok();
+            }
         }
 
         [AllowAnonymous]

@@ -28,7 +28,7 @@ export class ListComponent implements OnInit {
             console.log('id is ' + id);
 
             // meta data
-            this.http.get(this.apiURL + '/api/list')
+            this.http.get(this.apiURL + '/api/list/' + id)
                 .subscribe((res: Response) => {
                     console.log(res.statusText);
 
