@@ -1,4 +1,6 @@
-﻿import { Component, OnInit, Inject } from '@angular/core';
+﻿// main component for managing generic lists
+
+import { Component, OnInit, Inject } from '@angular/core';
 import { HttpClient } from '../shared/httpclient';
 import { Response } from '@angular/http';
 import { ActivatedRoute } from '@angular/router';
@@ -9,9 +11,9 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ListComponent implements OnInit {
     public pageTitle: string = 'list';
-    public formData: any;
-    public vm: any;
-    public newData: any = {};
+    public formData: any; // meta data of list - TODO: NEED TYPED VERSION
+    public vm: any; // list data - TODO: NEED TYPED VERSION
+    public newData: any = {}; // add new row
     public isLoading: boolean = true;
 
     private entityUrl: string;
@@ -24,6 +26,7 @@ export class ListComponent implements OnInit {
 
         this.route.params.subscribe((params: { [key: string]: any }) => {
 
+            // this is the id of the list to load
             var id = params['id'];
             console.log('id is ' + id);
 
@@ -32,14 +35,39 @@ export class ListComponent implements OnInit {
                 .subscribe((res: Response) => {
                     console.log(res.statusText);
 
+                    // meta data
                     this.formData = res.json();
+
+                    /*
+                    {
+                        "idField": "taskItemID",
+                        "url": "/api/task",
+                        "fields": [
+                            {
+                                "combo": null,
+                                "id": "taskName",
+                                "name": "task",
+                                "isCombo": false
+                            },
+                            {
+                                "combo": {
+                                    "listIndex": 0,
+                                    "idField": "taskCategoryID",
+                                    "displayField": "categoryName"
+                                },
+                                "id": "taskCategoryID",
+                                "name": "category",
+                                "isCombo": true
+                            }]
+                    }
+                    */
                     
                     this.entityUrl = this.apiURL + this.formData.url;
 
                     this.loadTasks();
 
                 });
-            
+
         });
 
     }
@@ -77,7 +105,7 @@ export class ListComponent implements OnInit {
                 this.loadTasks();
             });
     }
-    
+
     public save(data: any): void {
         console.log('saving');
         console.log(data);

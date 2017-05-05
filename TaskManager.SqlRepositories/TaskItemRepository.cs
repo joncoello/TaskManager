@@ -28,7 +28,7 @@ namespace TaskManager.SqlRepositories
             {
                 TaskItemID = newTaskItem.TaskItemID,
                 TaskName = newTaskItem.TaskName,
-                TaskCategoryID = newTaskItem.TaskCategoryID
+                TaskCategoryID = newTaskItem.TaskCategoryID == Guid.Empty ? (Guid?)null : (Guid?)newTaskItem.TaskCategoryID
             });
             return result.ToList()[0];
         }
