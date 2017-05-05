@@ -1,7 +1,7 @@
 ﻿import { Inject, Injectable } from '@angular/core';
 import { Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
-import { TaskViewModel, TaskItem, TaskListViewModel } from './task.model';
+import { TaskViewModel, TasksViewModel, TaskItem, TaskListViewModel } from './task.model';
 import 'rxjs/add/operator/map';
 import { HttpClient } from '../shared/httpclient';
 
@@ -24,9 +24,9 @@ export class TaskService {
 
             .map((response: Response) => {
                 var taskListVM = new Array<TaskListViewModel>();
-                var tasks = <TaskItem[]>response.json();
+                var tasksVM = <TasksViewModel>response.json();
 
-                for (let task of tasks) {
+                for (let task of tasksVM.tasks) {
 
                     // performance ?
                     var taskGroup = taskListVM.find((t: TaskListViewModel) => t.categoryID === task.category.taskCategoryID);

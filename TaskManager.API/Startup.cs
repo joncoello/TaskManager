@@ -30,7 +30,7 @@ namespace TaskManager.API
             //config.EnableCors(cors);
 
             // routes
-            config.MapHttpAttributeRoutes();
+            config.Routes.MapHttpRoute("default", "api/{controller}/{id}", new { id = RouteParameter.Optional });
 
             //filters
             config.Filters.Add(new Infrastructure.NoCacheHeaderFilter());

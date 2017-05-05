@@ -14,8 +14,22 @@ namespace TaskManager.API.Models
 
     public class ListViewField
     {
+        public TaskViewComb Combo { get; internal set; }
         public string Id { get; set; }
         public string Name { get; set; }
+
+        public bool IsCombo {
+            get { return Combo != null; }
+        }
+
+    }
+
+    public class TaskViewComb {
+        internal string dataField;
+
+        public string IdField { get; set; }
+        public string DisplayField { get; set; }
+
     }
 
 }

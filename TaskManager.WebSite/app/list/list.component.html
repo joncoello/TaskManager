@@ -14,12 +14,16 @@
         <tr>
             <td *ngFor='let field of formData.fields'>
 
-                <input placeholder="{{field.id}}"
+                <input *ngIf="!field.combo" 
+                       placeholder="{{field.id}}"
                        type="text"
                        name="{{field.id}}"
                        [(ngModel)]="newData[field.id]"
                        id="{{field.id}}"
                        autocomplete="off">
+
+                <select *ngIf="field.combo"
+                       autocomplete="off"></select>
 
             </td>
             <td class="button-column">

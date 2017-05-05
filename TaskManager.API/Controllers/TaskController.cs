@@ -14,7 +14,6 @@ using TaskManager.SqlRepositories;
 namespace TaskManager.API.Controllers
 {
     [Authorize]
-    [RoutePrefix("api/task")]
     public class TaskController : ApiController
     {
 
@@ -27,14 +26,20 @@ namespace TaskManager.API.Controllers
             _taskRepository = taskRepository;
         }
         
-        [Route("")]
         public async Task<IHttpActionResult> Get([FromUri]string categoryName = null)
         {
-            var result = await _taskRepository.GetAll(categoryName);
+            var categories = await _taskCategoryRepository.GetAll();
+            var categoryList = categories.ToList();
+            var tasks = await _taskRepository.GetAll(categoryName);
+            var taskList = tasks.ToList();
+            var result = new TaskListResponse
+            {
+                Tasks = taskList,
+                Categories = categoryList
+            };
             return Ok(result);
         }
 
-        [Route("{id}")]
         public async Task<IHttpActionResult> Get(Guid id)
         {
             var categories = await _taskCategoryRepository.GetAll();
@@ -52,28 +57,24 @@ namespace TaskManager.API.Controllers
             return Ok(result);
             }
 
-        [Route("{id}")]
         public async Task<IHttpActionResult> Delete(Guid id)
         {
             await _taskRepository.Delete(id);
             return Ok();
         }
 
-        [Route("")]
         public async Task<IHttpActionResult> Patch(TaskItem task)
         {
             await _taskRepository.Update(task);
             return Ok();
         }
 
-        [Route("")]
         public async Task<object> Post(TaskItem task)
         {
             return await _taskRepository.Create(task);
         }
 
         [AllowAnonymous]
-        [Route("{id?}")]
         public void Options(Guid? id = null)
         {
 

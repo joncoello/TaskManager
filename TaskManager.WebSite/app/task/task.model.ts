@@ -12,6 +12,11 @@ export class TaskViewModel {
     public categories: TaskCategory[];
 }
 
+export class TasksViewModel {
+    public tasks: TaskItem[];
+    public categories: TaskCategory[];
+}
+
 export class TaskItem {
     public taskItemID: string;
     public taskName: string;

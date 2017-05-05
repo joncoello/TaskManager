@@ -162,6 +162,7 @@
     <Compile Include="Models\GridItem.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ListModels.cs" />
+    <Compile Include="Models\TaskListResponse.cs" />
     <Compile Include="Models\TaskItemResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />

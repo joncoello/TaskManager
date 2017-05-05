@@ -41,7 +41,12 @@ namespace TaskManager.API.Controllers
                     },
                     new ListViewField() {
                         Id = "taskCategoryID",
-                        Name = "category"
+                        Name = "category",
+                        Combo =new TaskViewComb() {
+                            dataField = "catgories",
+                            IdField = "taskCategoryID",
+                            DisplayField = "categoryName"
+                        }
                     }
                 })
                 });
