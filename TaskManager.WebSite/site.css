@@ -31,3 +31,11 @@ td {
 .table a {
     text-decoration: none;
 }
+
+.button-column{
+    width: 150px;
+}
+
+.button-column a{
+    margin-right: 5px;
+}
