@@ -74,7 +74,7 @@ namespace TaskManager.APITests.Tests
             {
                 
                 var response = await serverAndClient.Client.PatchAsJsonAsync(
-                    "api/task/" + task.TaskItemID, task);
+                    "api/task" , task);
 
                 response.EnsureSuccessStatusCode();
                 
