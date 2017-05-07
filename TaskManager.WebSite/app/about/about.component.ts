@@ -11,6 +11,7 @@
                 <wrapper-example [isLoading]='loading'>
                     this is a test
                 </wrapper-example>
+                <button kendoButton (click)="onButtonClick()" [primary]="true">My Kendo UI Button</button>
                 `
 })
 export class AboutComponent {
@@ -20,4 +21,9 @@ export class AboutComponent {
     public onClick(): void {
         this.loading = !this.loading;
     }
+
+    onButtonClick() {
+        this.pageTitle = 'Hello from Kendo UI!';
+    }
+
 }

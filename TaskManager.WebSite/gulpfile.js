@@ -176,6 +176,7 @@ gulp.task('vendor:20:copy', function () {
           'node_modules/font-awesome/css/font-awesome.min.css',
           'node_modules/ag-grid/dist/styles/ag-grid.css',
           'node_modules/ag-grid/dist/styles/theme-fresh.css',
+          'node_modules/@progress/kendo-theme-default/dist/all.css',
           'site.css'
       ])
       .pipe(gulp.dest('lib'));

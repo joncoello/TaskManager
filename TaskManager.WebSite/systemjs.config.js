@@ -18,6 +18,7 @@
             '@angular/common': 'npm:@angular/common/bundles/common.umd.js',
             '@angular/compiler': 'npm:@angular/compiler/bundles/compiler.umd.js',
             '@angular/platform-browser': 'npm:@angular/platform-browser/bundles/platform-browser.umd.js',
+            '@angular/platform-browser/animations': 'npm:@angular/platform-browser/bundles/platform-browser-animations.umd.js',
             '@angular/platform-browser-dynamic': 'npm:@angular/platform-browser-dynamic/bundles/platform-browser-dynamic.umd.js',
             '@angular/http': 'npm:@angular/http/bundles/http.umd.js',
             '@angular/router': 'npm:@angular/router/bundles/router.umd.js',
@@ -30,11 +31,20 @@
 
             // ag libraries
             'ag-grid-angular': 'npm:ag-grid-angular',
-            'ag-grid': 'npm:ag-grid'
+            'ag-grid': 'npm:ag-grid',
+
+            // kendo
+            '@progress': 'npm:@progress',
+            '@angular/animations': 'npm:@angular/animations/bundles/animations.umd.js',
+            '@angular/animations/browser': 'npm:@angular/animations/bundles/animations-browser.umd.js',
 
         },
         // packages tells the System loader how to load when no filename and/or no extension
         packages: {
+            "@progress/kendo-angular-buttons": { "main": "dist/cdn/js/kendo-angular-buttons.js", "defaultExtension": "js" },
+            "@progress/kendo-angular-l10n": { "main": "dist/cdn/js/kendo-angular-l10n.js", "defaultExtension": "js" },
+
+
             app: {
                 main: './main.js',
                 defaultExtension: 'js'

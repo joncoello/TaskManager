@@ -32,6 +32,12 @@ import { WrapperExampleComponent } from './shared/wrapper.example';
 
 import { AppSettings } from './environments/environment';
 
+// Import the Animations module
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+// Import the ButtonsModule
+import { ButtonsModule } from '@progress/kendo-angular-buttons';
+
 // need to move this to its own module
 // clarify lazy loading approach
 const routes: Routes = [
@@ -57,7 +63,11 @@ const routes: Routes = [
         ChartsModule,
         AgGridModule.withComponents(
             [RedComponentComponent]
-        )
+        ),
+
+        // Register the modules
+        BrowserAnimationsModule,
+        ButtonsModule
     ],
     declarations: [
         AppComponent,
