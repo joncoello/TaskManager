@@ -1,4 +1,4 @@
-﻿<div id="wrapper" class='container-fluid standard-transition'>
+﻿<div id="wrapper" class='container-fluid standard-transition' (window:resize)="onResize()">
 
     <!-- sidebar -->
     <nav id="sidebar-wrapper" role="navigation">
@@ -21,7 +21,7 @@
     <!-- page -->
     <div id="page-content-wrapper" class="standard-transition">
 
-        <button (click)="openSidebar()" class="burger">
+        <button (click)="toggleSidebar()" class="burger">
 
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
@@ -33,5 +33,10 @@
         <router-outlet></router-outlet>
 
     </div>
+
+    <div class="device-xs visible-xs"></div>
+    <div class="device-sm visible-sm"></div>
+    <div class="device-md visible-md"></div>
+    <div class="device-lg visible-lg"></div>
 
 </div>
