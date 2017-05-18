@@ -5,7 +5,7 @@
     template: `
     <div class="wrapper-example">
       <div *ngIf='isLoading' class="table-loader">
-        <img src="/img/gears.gif" />
+        <img src="/img/ring.gif" />
       </div>
       <ng-content *ngIf='!isLoading'></ng-content>
     </div>

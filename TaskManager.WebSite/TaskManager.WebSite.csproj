@@ -70,10 +70,7 @@
     <Content Include="bootstrap.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="gulpfile.js" />
-    <Content Include="img\gears.gif" />
-    <Content Include="img\loading.gif" />
-    <Content Include="img\loading2.gif" />
-    <Content Include="img\table-loading.gif" />
+    <Content Include="img\ring.gif" />
     <Content Include="karma-test-shim.js" />
     <Content Include="karma.conf.js" />
     <Content Include="package.json" />
