@@ -18,13 +18,42 @@
                 </div>
             </div>
             <ul>
-                <li><a (click)="beforeNav()" [routerLink]="['home']">Home</a></li>
-                <li><a (click)="beforeNav()" [routerLink]="['tasks']">Tasks</a></li>
-                <li><a (click)="beforeNav()" [routerLink]="['categories']">Categories</a></li>
+
+                <li>
+                    <a (click)="beforeNav()" [routerLink]="['home']">
+                        <i class="fa fa-dashboard"></i>
+                        <span>Home</span>
+                        <span class="pull-right-container">
+                            <span class="label label-info pull-right">2</span>
+                        </span>
+                    </a>
+                </li>
+
+                <li>
+                    <a (click)="beforeNav()" [routerLink]="['tasks']">
+                        <i class="fa fa-edit"></i>
+                        <span>Tasks</span>
+                        <span class="pull-right-container">
+                            <span class="label label-warning pull-right">7</span>
+                        </span>
+                    </a>
+                </li>
+
+                <li>
+                    <a (click)="beforeNav()" [routerLink]="['categories']">
+                        <i class="fa fa-th"></i>
+                        <span>Categories</span>
+                        <span class="pull-right-container">
+                            <span class="label label-success pull-right">1</span>
+                        </span>
+                    </a>
+                </li>
+
                 <li><a (click)="beforeNav()" [routerLink]="['about']">Examples</a></li>
                 <li><a (click)="beforeNav()" [routerLink]="['grid']">Grid</a></li>
                 <li><a (click)="beforeNav()" [routerLink]="['list/1']">cat list</a></li>
                 <li><a (click)="beforeNav()" [routerLink]="['list/2']">task list</a></li>
+
             </ul>
         </div>
     </nav>
