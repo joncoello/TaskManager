@@ -1,21 +1,21 @@
 ﻿<div id="wrapper" class='container-fluid standard-transition'>
 
     <!-- sidebar -->
-    <nav class="navbar navbar-fixed-top standard-transition" id="sidebar-wrapper" role="navigation">
-        <ul class="nav sidebar-nav">
-            <li class="sidebar-brand">
-                <a href="#">
-                    Bootstrap 3
-                </a>
-            </li>
-            <li><a (click)="beforeNav()" [routerLink]="['home']">Home</a></li>
-            <li><a (click)="beforeNav()" [routerLink]="['tasks']">Tasks</a></li>
-            <li><a (click)="beforeNav()" [routerLink]="['categories']">Categories</a></li>
-            <li><a (click)="beforeNav()" [routerLink]="['about']">Examples</a></li>
-            <li><a (click)="beforeNav()" [routerLink]="['grid']">Grid</a></li>
-            <li><a (click)="beforeNav()" [routerLink]="['list/1']">cat list</a></li>
-            <li><a (click)="beforeNav()" [routerLink]="['list/2']">task list</a></li>
-        </ul>
+    <nav id="sidebar-wrapper" role="navigation">
+        <div class="sidebar-content standard-transition">
+            <h4>
+                Task Manager
+            </h4>
+            <ul>
+                <li><a (click)="beforeNav()" [routerLink]="['home']">Home</a></li>
+                <li><a (click)="beforeNav()" [routerLink]="['tasks']">Tasks</a></li>
+                <li><a (click)="beforeNav()" [routerLink]="['categories']">Categories</a></li>
+                <li><a (click)="beforeNav()" [routerLink]="['about']">Examples</a></li>
+                <li><a (click)="beforeNav()" [routerLink]="['grid']">Grid</a></li>
+                <li><a (click)="beforeNav()" [routerLink]="['list/1']">cat list</a></li>
+                <li><a (click)="beforeNav()" [routerLink]="['list/2']">task list</a></li>
+            </ul>
+        </div>
     </nav>
 
     <!-- page -->
