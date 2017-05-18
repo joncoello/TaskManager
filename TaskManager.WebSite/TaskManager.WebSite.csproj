@@ -71,6 +71,7 @@
     <Content Include="favicon.ico" />
     <Content Include="gulpfile.js" />
     <Content Include="img\ring.gif" />
+    <Content Include="img\user.jpg" />
     <Content Include="karma-test-shim.js" />
     <Content Include="karma.conf.js" />
     <Content Include="package.json" />

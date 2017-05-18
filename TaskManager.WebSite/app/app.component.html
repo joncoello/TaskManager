@@ -1,11 +1,22 @@
-﻿<div id="wrapper" class='container-fluid standard-transition' (window:resize)="onResize()">
+﻿<!-- top bar -->
+<nav class="navbar navbar-static-top">
+    <span class="sidebar-title"><b>Task</b>Manager</span>
+</nav>
+
+<div id="wrapper" class='container-fluid standard-transition' (window:resize)="onResize()">
 
     <!-- sidebar -->
     <nav id="sidebar-wrapper" role="navigation">
         <div class="sidebar-content standard-transition">
-            <h4>
-                Task Manager
-            </h4>
+            <div class="user-panel">
+                <div class="pull-left image">
+                    <img src="/img/user.jpg" class="img-circle" alt="User Image">
+                </div>
+                <div class="pull-left info">
+                    <p>Jon Smith</p>
+                    <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+                </div>
+            </div>
             <ul>
                 <li><a (click)="beforeNav()" [routerLink]="['home']">Home</a></li>
                 <li><a (click)="beforeNav()" [routerLink]="['tasks']">Tasks</a></li>
