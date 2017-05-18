@@ -14,6 +14,12 @@ export class AppComponent {
         console.log('before nav');
         var navBar: any = $('.navbar-collapse');
         navBar.collapse('hide');
+        this.openSidebar();
+    }
+
+    // open sidebar
+    public openSidebar() {
+        $('#wrapper').toggleClass('toggled');
     }
 
 }
