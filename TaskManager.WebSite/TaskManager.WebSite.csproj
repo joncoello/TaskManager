@@ -62,6 +62,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\app.component.html" />
     <Content Include="app\category\category-list.component.html" />
     <Content Include="app\grid\grid.component.html" />
     <Content Include="app\list\list.component.html" />
