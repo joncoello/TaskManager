@@ -1,11 +1,21 @@
-﻿/*#region sidebar */
+﻿
+/*#region native */
+
+body {
+    position: relative;
+    overflow-x: hidden;
+}
+
+td {
+    padding: 5px;
+}
+
+
+/*#endregion */
+
+/*#region sidebar */
 
 #wrapper {
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
 }
 
     #wrapper.toggled {
@@ -20,8 +30,14 @@
                 display: block;
             }
 
+        #wrapper.toggled #page-content-wrapper {
+            margin-right: -220px;
+            position: absolute;
+        }
+
 #page-content-wrapper {
     padding: 5px;
+    width: 100%;
 }
 
 #sidebar-wrapper {
@@ -35,9 +51,9 @@
     height: 100%;
 }
 
-#sidebar-wrapper .sidebar-content {
-    display: none;
-}
+    #sidebar-wrapper .sidebar-content {
+        display: none;
+    }
 
 .standard-transition {
     -moz-transition: all 0.5s ease;
@@ -46,7 +62,7 @@
     transition: all 0.5s ease;
 }
 
-.burger{
+.burger {
     margin-right: 15px;
     padding: 9px 10px;
     margin-top: 13px;
@@ -54,26 +70,24 @@
     background-color: transparent;
     background-image: none;
     border: 1px solid grey;
-    border-radius: 4px
+    border-radius: 4px;
 }
 
-.burger .icon-bar{
-    display: block;
-    width: 22px;
-    height: 2px;
-    border-radius: 1px;
-    background-color: black;
-    margin-top: 3px;
-}
+    .burger .icon-bar {
+        display: block;
+        width: 22px;
+        height: 2px;
+        border-radius: 1px;
+        background-color: black;
+        margin-top: 3px;
+    }
 
 /*#endregion */
 
+/*#region table */
+
 .table-loader {
     text-align: center;
-}
-
-td {
-    padding: 5px;
 }
 
 .amount-cell {
@@ -84,23 +98,13 @@ td {
     float: right;
 }
 
-/*.input-group{
-    margin-bottom: 5px;
-}
-
-#taskEdit .input-group-addon {
-    min-width: 70px;
-    text-align: left;
-}
-
-.multi-line-text {
-    margin-left: 2px;
-    min-width: 100%;
-}*/
-
 .table a {
     text-decoration: none;
 }
+
+/*#endregion */
+
+/*#region forms */
 
 .button-column {
     width: 100px;
@@ -115,3 +119,6 @@ select.form-control {
     height: auto;
     padding: 0;
 }
+
+
+/*#endregion */
