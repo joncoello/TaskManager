@@ -11,6 +11,7 @@ using TaskManager.DomainModel.Repositories;
 
 namespace TaskManager.API.Controllers
 {
+    [Authorize]
     public class HomeController : ApiController
     {
         private readonly ITaskWidgetRepository _taskWidgetRepository;
