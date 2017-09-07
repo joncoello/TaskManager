@@ -19,7 +19,7 @@
     "webdriver:update": "webdriver-manager update"
   },
   "dependencies": {
-    "@angular/animations": "^4.1.1",
+    "@angular/animations": "4.1.1",
     "@angular/common": "4.2.0-beta.0",
     "@angular/compiler": "4.2.0-beta.0",
     "@angular/core": "4.2.0-beta.0",
